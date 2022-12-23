@@ -1,0 +1,80 @@
+{% extends '/layouts/base_updown.html' %} {% block content %}
+<section>
+  <h2>post.html</h2>
+  <p>post</p>
+
+  <a href="{{url_for('post_views.post_edit', pstId=post_list[0].pstId)}}"
+    >편집하기</a
+  >
+  <a href="{{url_for('post_views.post_del', pstId=post_list[0].pstId)}}"
+    >삭제하기</a
+  ><br />
+
+  {{post_list}} {% if post_list %} {% for post in post_list %}
+  <ul>
+    {% for key, value in post.items() %}
+    <li>
+      <a>{{key}} - {{value}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endfor %} {% else %}
+  <p>post_list가 없습니다.</p>
+  {% endif %}
+  <p>댓글 창</p>
+  <p>댓글 추가기능</p>
+
+  <form
+    method="post"
+    action="{{url_for('comment_views.comment_add', pstId=post_list[0].pstId)}}"
+  >
+    <input name="cmtCntnt" type="text" />
+    <button type="submit">추가하기</button>
+  </form>
+
+  <p>댓글들</p>
+  <table class="table">
+    <thead>
+      <tr class="table-dark">
+        <th>userId</th>
+        <th>cmtCntnt</th>
+        <th>cmtCrtDate</th>
+        <th>cmtLikeCnt</th>
+        <th>cmtUnlikeCnt</th>
+        <th>기능</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if comment_list %} {% for comment in comment_list %}
+      <tr>
+        <td>
+          <a>{{ comment.userId }}</a>
+        </td>
+        <td>
+          <a>{{ comment.cmtCntnt }}</a>
+        </td>
+        <td>
+          <a>{{ comment.cmtCrtDate }}</a>
+        </td>
+        <td>
+          <a>{{ comment.cmtLikeCnt }}</a>
+        </td>
+        <td>
+          <a>{{ comment.cmtUnlikeCnt }}</a>
+        </td>
+        <td>
+          <a
+            href="{{url_for('comment_views.comment_del', cmtId=comment.cmtId)}}"
+            >삭제하기</a
+          >
+        </td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="6">comment_list가 없습니다.</td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

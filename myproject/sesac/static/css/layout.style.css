@@ -1,0 +1,331 @@
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 100px;
+  padding-top: 114px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 114px;
+  background-color: white;
+  transition: top 0.2s ease-in-out;
+}
+
+/* �먮컮�ㅽ겕由쏀듃濡� 異붽��섎뒗 �대옒��(硫붾돱 �ㅽ겕濡�) */
+.nav-up {
+  top: -114px;
+}
+
+.menucontaier {
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+.down-wrapper {
+  padding-top: 114px;
+}
+
+/* �꾨쾭嫄� 踰꾪듉 */
+.navbar-togglebtn {
+  display: none;
+}
+
+.loginbar-list {
+  list-style: none;
+  padding: 0px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.loginbar-item {
+  display: inline-block;
+  margin: 2px;
+}
+
+.btn-login {
+  background-color: #91e661;
+  border: 0;
+  border-radius: 2px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 12px;
+}
+
+.btn-login:hover {
+  background-color: #cffc5d;
+}
+
+.btn-sign {
+  background-color: #dadada;
+  border: 0;
+  border-radius: 2px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 12px;
+}
+.btn-sign:hover {
+  background-color: #cffc5d;
+}
+
+/* �곷떒 硫붾돱 諛� */
+.menu-list {
+  list-style: none;
+  padding: 0px;
+  /* 硫붾돱 �섑룊 �뺣젹, 以묒븰 �뺣젹  */
+  display: flex;
+  justify-content: center;
+}
+
+.menu-item {
+  display: inline-block;
+  font-size: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+/* 諛곕꼫 */
+.middle {
+  width: 100vw;
+}
+.imagecontainer {
+  height: 400px;
+  background-image: url("bannertest.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bodywrapper {
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+.tablewrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.board-table {
+  margin-top: 70px;
+  max-width: 1353px;
+}
+
+/* �뚯씠釉� 由ъ뒪�� */
+.board-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* �뚯씠釉� 由ъ뒪�� �대� 媛쒖껜 */
+.board-item {
+  background-color: white;
+  height: 200px;
+  width: 26vw;
+  max-width: 600px;
+  min-width: 270px;
+  padding-left: 0px;
+  margin-top: 40px;
+  max-width: 430px;
+  min-width: 330px;
+}
+
+/* �뚯씠釉� �대� �ㅼ뼱媛��� �곗씠�� */
+.list-inner {
+  list-style: none;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  padding-right: 10px;
+}
+
+.board-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+  margin-bottom: 15px;
+}
+
+.board-title {
+  margin: 0px;
+  height: 45px;
+  line-height: 43px;
+}
+
+.btn-more {
+  /* �꾩옱�� a �쒓렇濡� 吏��뺣릺�� �덉쓬 */
+  font-size: 12px;
+}
+
+.inner-item {
+  font-size: 14px;
+  line-height: 25px;
+}
+/* footer */
+.bottom {
+  height: 100px;
+  position: relative;
+  transform: tranlateY(-100%);
+  background-color: #dadada;
+}
+
+.btn-top {
+  /* �꾩튂 �섏젙 �덉젙 */
+}
+
+/* 諛섏쓳�� 媛�濡� �볦씠媛� 840 �댄븯硫� 誘몃뵒�� 荑쇰━ */
+@media screen and (max-width: 840px) {
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    transition: top 0.2s ease-in-out;
+  }
+
+  .wrapper {
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 100px;
+    padding-top: 60px;
+  }
+
+  /* �먮컮�ㅽ겕由쏀듃濡� 異붽��섎뒗 �대옒��(硫붾돱 �ㅽ겕濡�) */
+  .nav-up {
+    top: -60px;
+  }
+
+  .menu-list {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+  .menu-item {
+    text-align: center;
+
+    padding: 10px;
+    font-size: 17px;
+    width: 100%;
+    line-height: 20px;
+    background-color: white;
+  }
+  .menu-item:hover {
+    background-color: #91e661;
+    border-bottom: 1px solid white;
+  }
+
+  .navbar-togglebtn {
+    display: block;
+    position: absolute;
+    padding-left: 10vw;
+    left: 10px;
+    margin: 2px;
+  }
+
+  /* active */
+  .menu-list.active {
+    display: flex;
+  }
+
+  .board-table {
+    margin-top: 50px;
+  }
+
+  .board-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .board-item {
+    background-color: white;
+    height: 200px;
+    width: 80vw;
+    max-width: 600px;
+    min-width: 270px;
+    padding-left: 0px;
+    margin-top: 20px;
+    min-width: 330px;
+  }
+}
+
+/* ------------ 寃뚯떆�� �섏씠吏� css ------------ */
+
+.board-bodywrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar {
+  margin-top: 80px;
+  margin-right: 10vw;
+  min-width: 120px;
+}
+
+.sidebar-title {
+  margin: 0px;
+}
+
+.sidebar-list {
+  padding: 0;
+  line-height: 2em;
+  font-size: 14px;
+  list-style: none;
+}
+
+.main {
+  margin-top: 80px;
+}
+
+.article-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+  margin-bottom: 15px;
+}
+.article-list {
+  line-height: 2em;
+  min-width: 580px;
+  list-style: none;
+}
+
+.board-list-bar {
+  display: none;
+}
+
+.board-btn-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* 諛섏쓳�� 媛�濡� �볦씠媛� 840 �댄븯硫� 誘몃뵒�� 荑쇰━ */
+@media screen and (max-width: 840px) {
+  .sidebar {
+    display: none;
+  }
+
+  .articlecontainer {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+  }
+
+  .article-list {
+    width: 80vw;
+  }
+
+  .board-list-bar {
+    display: block;
+  }
+}

@@ -1,0 +1,36 @@
+
+{% extends '/layouts/base_updown.html' %} {% block content %}
+<div class = "middle">
+  <div class = "imagecontainer" style='background-image: url({{url_for("static", filename= "img/bannertest.png")}})';>
+      <!-- 현재 백그라운드로 테스트 이미지 삽입, 메인 페이지는 배너가 들어갈 예정임 -->
+  </div>
+</div>
+<div class="bodywrapper">
+  <div class="tablewrapper">
+    <div class="board-table">
+      <ul class="board-list">
+        {% for board in board_ls %}
+        <li class="board-item">
+          <!-- 게시판 내부 목록 리스트 -->
+          <ul class="list-inner">
+            <div class="board-title-bar">
+              <h3 class="board-title">{{board.brdNm}}</h3>
+              <a class="btn-more" href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"> 더보기</a>
+            </div>
+            {% for post in post_dict[board.brdId] %}
+            <li class="inner-item"><a href="{{url_for('post_views.post', pstId=post.pstId)}}">{{post.title}}</a></li>
+            {% endfor %}
+          </ul>
+
+        </li>
+        {% endfor %}
+
+
+      </ul>
+    <!-- 게시판 리스트 담은 테이블 끝 -->
+    </div>
+  </div>
+  <!-- bodywrapper 끝 -->
+</div>
+<!-- wrapper 끝 -->  
+{% endblock %}
