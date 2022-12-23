@@ -14,6 +14,11 @@ html {
 a {
   cursor: pointer;
 }
+.carousel-inner > .carousel-item > img{
+  margin: auto;
+  height: 400px;
+  width: 500px;
+}
 ::selection {
   background: #555;
   color: #FFF;
