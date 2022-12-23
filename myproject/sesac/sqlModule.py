@@ -190,7 +190,40 @@ class DBUpdater():
         data = self.cursor.fetchall()
         return data
     
-    
+    ## 특정 게시판 카운트  <정섭> 
+    def pageCnt(self, brdId):
+        sql = f'''
+        select  count(*) count from Post
+        where brdId={brdId};
+        '''
+        self.cursor= self.conn.cursor(pymysql.cursors.DictCursor)
+        self.cursor.execute(sql)
+        data = self.cursor.fetchone()
+        return data
+
+    ## 전체 페이지 페이징 시 필요한 커리 <정섭>
+    def pageSelect(self, number, page):
+        sql=f"""
+        select * from Post order by finalDate desc, pstCrtDate desc limit {number}  offset {number *(page-1)};
+        """
+        self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+        self.cursor.execute(sql)
+        data = self.cursor.fetchall()
+        return data
+
+
+    ## 각 페이징 시 필요한 커리 <정섭>
+    def eachPageSelect(self, number, page, brdId):
+        sql=f"""
+        select * from Post 
+        where brdId={brdId} order by finalDate desc, pstCrtDate desc 
+        limit {number}  offset {number *(page-1)};
+        """
+        self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+        self.cursor.execute(sql)
+        data = self.cursor.fetchall()
+        return data
+
     def load_post_brdId_list(self, brdId):
         sql = f'SELECT * FROM Post WHERE brdId={brdId} ORDER BY pstCrtDate DESC ;'
         self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
