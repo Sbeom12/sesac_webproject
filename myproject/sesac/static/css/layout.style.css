@@ -329,3 +329,12 @@ header {
     display: block;
   }
 }
+/* 페이징 표시 css 추가<정섭> */
+ul{
+  list-style: none;
+}
+.page-item {
+  display: inline;
+  border: 1px solid #bcbcbc;
+  padding: 10px;
+  }
