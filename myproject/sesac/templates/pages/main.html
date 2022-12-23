@@ -70,7 +70,7 @@
             <a class = "board-link" href= "링크"> 
               <div class="board-title-bar">
               <h3 class="board-title">{{board.brdNm}}</h3>
-              <a class="btn-more" href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"> 더보기</a>
+              <p class="btn-more" href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"> 더보기</p>
               </div>
             </a>
             {% for post in post_dict[board.brdId] %}
