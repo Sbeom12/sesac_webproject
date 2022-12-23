@@ -11,7 +11,7 @@ class DBUpdater():
     def __init__(self):
         self.conn = pymysql.connect(
             user='root', 
-            passwd='admin', 
+            passwd='qhdkscjfwj0!', 
             host='127.0.0.1', 
             db='community', 
             charset='utf8',
@@ -112,6 +112,7 @@ class DBUpdater():
                 CREATE TABLE IF NOT EXISTS Comment (
 
                 cmtId	     INT                     AUTO_INCREMENT,
+                brdId        INT           NOT NULL,
                 pstId        INT          NOT NULL,
                 userId       VARCHAR(255) NOT NULL,
                 cmtCntnt     VARCHAR(255) NOT NULL,
