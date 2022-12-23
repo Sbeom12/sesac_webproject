@@ -365,6 +365,16 @@ header {
   padding: 0;
 }
 
+/* 페이징 표시 css 추가<정섭> */
+ul{
+  list-style: none;
+}
+.page-item {
+  display: inline;
+  border: 1px solid #bcbcbc;
+  padding: 10px;
+  }
+
 /* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
 @media screen and (max-width: 840px){
 
@@ -390,3 +400,4 @@ header {
   }
   
 }
+
