@@ -1,3 +1,3 @@
-# Sesac_Webproject
+# Sesac_Webproject(Connecting the SESACKERs)
 This repository is for Sesac Webproject 
-team SeongHyeon
+team SeSAC Community
