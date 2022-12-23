@@ -1,3 +1,3 @@
-# sesac_webproject
-This repository is for Sesac Webproject   
+# Sesac_Webproject
+This repository is for Sesac Webproject 
 team 남성현
