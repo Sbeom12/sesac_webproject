@@ -23,7 +23,7 @@ def board():
     db = DBUpdater()
     number= 5
     page = request.args.get('page', type=int, default=1)
-    paging = db.pageSelect(number ,page)
+    paging = db.pageSelect2(number ,page)
     board_list = db.load_board_list()
     post_list = db.load_post_list()
     post_len= len(post_list)
@@ -44,25 +44,6 @@ def board():
 
 # /board/boardId
 # 특정 게시판의 이동
-# @bp.route('/brdId=<int:brdId>/', methods=('GET', 'POST'))
-# def board_boardID(brdId):
-#     """
-#     Args:
-#         brdId (int): 게시판 ID
-#     """
-#     print('board_boardID(brdId) -', brdId)
-    
-#     db = DBUpdater()
-    
-#     # board_list = 전체 게시판 리스트
-#     board_list = db.load_board_list()
-#     # print(board_list)
-#     # data = 특정 게시판의 게시물 리스트
-#     data = db.load_post_brdId_list(brdId)
-#     # print(data)
-    
-#     # 특정 게시판 html 불러오기
-#     return render_template('pages/board.html', board_list=board_list, post_list=data, brdId=brdId)
 @bp.route('/brdId=<int:brdId>/', methods=('GET', 'POST'))
 def board_boardID(brdId):
     number= 5
@@ -77,7 +58,7 @@ def board_boardID(brdId):
     # board_list = 전체 게시판 리스트
     board_list = db.load_board_list()
     # data = 특정 게시판의 게시물 리스트
-    data = db.eachPageSelect(number, page, brdId)
+    data = db.eachPageSelect2(number, page, brdId)
     ## 특정 게시판의 카운트수
     cntAll= db.pageCnt(brdId)
     max_page = (cntAll['count'] -1) // number +1

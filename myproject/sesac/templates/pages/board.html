@@ -73,7 +73,7 @@
           <li class="article-item">
             <a href="{{url_for('post_views.post',pstId=post.pstId)}}"
               >{{ boards.postCnt['count'] - (boards.page - 1) * boards.number -
-              loop.index0 }} //[{{post.userId}}] // {{post.title}} //</a
+              loop.index0 }} //[{{post.subNm}}] // {{post.title}} //</a
             >
           </li>
           {% endfor %} {% else %}

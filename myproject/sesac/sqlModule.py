@@ -12,7 +12,7 @@ class DBUpdater():
     def __init__(self):
         self.conn = pymysql.connect(
             user='root', 
-            passwd='qhdkscjfwj0!', 
+            passwd='1111', 
             host='127.0.0.1', 
             db='community', 
             charset='utf8',
@@ -178,6 +178,8 @@ class DBUpdater():
         self.cursor.execute(sql)
         data = self.cursor.fetchall()
         return data
+    
+    
 
 
 
@@ -211,13 +213,39 @@ class DBUpdater():
         data = self.cursor.fetchall()
         return data
 
+    ## 전체 페이지 페이징 시 필요한 커리 <택관>
+    def pageSelect2(self, number, page):
+        sql=f"""
+        select * from Post p
+        join UserInfo ui on ui.userId=p.userId
+        order by finalDate desc, pstCrtDate desc
+        limit {number}  offset {number *(page-1)};
+        """
+        self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+        self.cursor.execute(sql)
+        data = self.cursor.fetchall()
+        return data
+
 
     ## 각 페이징 시 필요한 커리 <정섭>
     def eachPageSelect(self, number, page, brdId):
         sql=f"""
         select * from Post 
         where brdId={brdId} order by finalDate desc, pstCrtDate desc 
-        limit {number}  offset {number *(page-1)};
+        limit {number} offset {number *(page-1)};
+        """
+        self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+        self.cursor.execute(sql)
+        data = self.cursor.fetchall()
+        return data
+    
+    ## 각 페이징 시 필요한 커리 <택관>
+    def eachPageSelect2(self, number, page, brdId):
+        sql=f"""
+        select * from Post p
+        join UserInfo ui on ui.userId=p.userId
+        where brdId={brdId} order by finalDate desc, pstCrtDate desc 
+        limit {number} offset {number *(page-1)};
         """
         self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
         self.cursor.execute(sql)
@@ -294,7 +322,11 @@ class DBUpdater():
             print('insert_comment - error')
     
     def load_comm_pstId_list(self, pstId):
-        sql = f'SELECT * FROM Comment WHERE pstId={pstId};'
+        sql = f'''
+        SELECT *    
+        FROM Comment c 
+        JOIN UserInfo ui on ui.userId=c.userId
+        WHERE pstId={pstId};'''
         self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
         self.cursor.execute(sql)
         data = self.cursor.fetchall()
