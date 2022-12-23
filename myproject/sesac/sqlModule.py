@@ -289,8 +289,7 @@ class DBUpdater():
             print('del_comm - success')
         except:
             print('del_comm - error')
-        
-    
+
 
 
     # Table 출력1 (Pandas DataFrame)
@@ -365,7 +364,7 @@ class DBUpdater():
             print("\n게시판이 생성되었습니다.\n")
         except:
             print("\n내용이 없거나, 이미 등록된 게시판입니다.\n")
-  
+
     # Post (linked Board)
     def insertPost(self, brdId, userId, title, pstCntnt):
         try:
@@ -415,7 +414,43 @@ class DBUpdater():
     ################################################  Modify Date  ################################################
     
     # userInfo
+    def update_grade(self, userId):
+        sql = f"SELECT * FROM UserInfo where userId={userId}"
+        self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+        self.cursor.execute(sql)
+        data = self.cursor.fetchall()
+        if data[0]['grade'] == 1:
+            sql = f"""
+            UPDATE UserInfo
+            SET grade = 0
+            WHERE userId = {userId};"""
+            self.cursor.execute(sql)
+            self.conn.commit()
+        else:
+            sql = f"""
+            UPDATE UserInfo
+            SET grade = 1
+            WHERE userId = {userId};"""
+            self.cursor.execute(sql)
+            self.conn.commit()
+            
+        print("\nupdate_grade 완료.\n")
+    
+    
     # Board
+        # userInfo
+    def update_brdNm(self, brdId, brdNm):
+        sql = f"""
+        UPDATE Board
+        SET brdNm = \'{brdNm}\'
+        WHERE brdId = {brdId};"""
+        self.cursor.execute(sql)
+        self.conn.commit()
+            
+        print("\nupdate_brdNm 완료.\n")
+    
+    
+    
     # Post
     # comment
     

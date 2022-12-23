@@ -2,4 +2,23 @@
 <section>
   <h2>admin.userinfo.html</h2>
 </section>
-{% endblock %}
+
+{% if userinfo %} {% for user in userinfo %}
+<ul>
+  {% for key, value in user.items() %}
+  <li>{{key}} - {{value}}</li>
+  {% endfor %}
+  <li>
+    <a href="{{url_for('admin_views.userinfo_del', userId=user.userId)}}"
+      >삭제 - {{user.userId}}</a
+    >
+  </li>
+  <li>
+    <a href="{{url_for('admin_views.userinfo_grade', userId=user.userId)}}"
+      >권한 변경 - {{user.grade}}</a
+    >
+  </li>
+</ul>
+{% endfor %} {% else %}
+<li>userinfo가 없음</li>
+{% endif %} {% endblock %}

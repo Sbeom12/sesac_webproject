@@ -2,4 +2,30 @@
 <section>
   <h2>admin.boardinfo.html</h2>
 </section>
-{% endblock %}
+
+<form method="post" action="{{url_for('admin_views.boardinfo_add')}}">
+  <input name="brdNm" type="text" />
+  <button type="submit">게시판 추가하기</button>
+</form>
+
+{% if BoardInfo %} {% for board in BoardInfo %}
+<ul>
+  {% for key, value in board.items() %}
+  <li>{{key}} - {{value}}</li>
+  {% endfor %}
+  <li>
+    <a href="{{url_for('admin_views.boardinfo_del', brdId=board.brdId)}}"
+      >삭제 - {{board.brdId}}</a
+    >
+  </li>
+  <form
+    method="post"
+    action="{{url_for('admin_views.boardinfo_edit', brdId=board.brdId)}}"
+  >
+    <input name="brdNm" type="text" />
+    <button type="submit">게시판 이름 편집하기</button>
+  </form>
+</ul>
+{% endfor %} {% else %}
+<li>BoardInfo가 없음</li>
+{% endif %} {% endblock %}
