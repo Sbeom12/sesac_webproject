@@ -2,4 +2,17 @@
 <section>
   <h2>admin.postinfo.html</h2>
 </section>
-{% endblock %}
+{% if PostInfo %} {% for post in PostInfo %}
+<ul>
+  {% for key, value in post.items() %}
+  <li>{{key}} - {{value}}</li>
+  {% endfor %}
+  <li>
+    <a href="{{url_for('admin_views.postinfo_del', pstId=post.pstId)}}"
+      >삭제 - {{post.pstId}}</a
+    >
+  </li>
+</ul>
+{% endfor %} {% else %}
+<li>PostInfo가 없음</li>
+{% endif %} {% endblock %}

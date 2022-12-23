@@ -12,7 +12,7 @@ class DBUpdater():
     def __init__(self):
         self.conn = pymysql.connect(
             user='root', 
-            passwd='dkssudgktpdy!', 
+            passwd='qhdkscjfwj0!', 
             host='127.0.0.1', 
             db='community', 
             charset='utf8',
@@ -113,7 +113,6 @@ class DBUpdater():
                 CREATE TABLE IF NOT EXISTS Comment (
 
                 cmtId	     INT                     AUTO_INCREMENT,
-                brdId        INT           NOT NULL,
                 pstId        INT          NOT NULL,
                 userId       VARCHAR(255) NOT NULL,
                 cmtCntnt     VARCHAR(255) NOT NULL,
@@ -450,7 +449,43 @@ class DBUpdater():
     ################################################  Modify Date  ################################################
     
     # userInfo
+    def update_grade(self, userId):
+        sql = f"SELECT * FROM UserInfo where userId={userId}"
+        self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+        self.cursor.execute(sql)
+        data = self.cursor.fetchall()
+        if data[0]['grade'] == 1:
+            sql = f"""
+            UPDATE UserInfo
+            SET grade = 0
+            WHERE userId = {userId};"""
+            self.cursor.execute(sql)
+            self.conn.commit()
+        else:
+            sql = f"""
+            UPDATE UserInfo
+            SET grade = 1
+            WHERE userId = {userId};"""
+            self.cursor.execute(sql)
+            self.conn.commit()
+            
+        print("\nupdate_grade 완료.\n")
+    
+    
     # Board
+        # userInfo
+    def update_brdNm(self, brdId, brdNm):
+        sql = f"""
+        UPDATE Board
+        SET brdNm = \'{brdNm}\'
+        WHERE brdId = {brdId};"""
+        self.cursor.execute(sql)
+        self.conn.commit()
+            
+        print("\nupdate_brdNm 완료.\n")
+    
+    
+    
     # Post
     # comment
     

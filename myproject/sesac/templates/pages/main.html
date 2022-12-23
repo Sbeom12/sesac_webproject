@@ -1,4 +1,3 @@
-
 {% extends '/layouts/base_updown.html' %} {% block content %}
 <!-- baner -->
 <div id="demo" class="carousel slide" data-ride="carousel">
@@ -6,87 +5,146 @@
     <!-- 슬라이드 쇼 data interval로 속도 조절-->
     <div class="carousel-item active" data-interval="2000">
       <!--가로-->
-      <img class="d-block w-100" 
+      <img
+        class="d-block w-100"
         src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd6GmZ0%2FbtrUrUrJYlY%2F3Je1z9FBgBlhoqnGTA4afk%2Fimg.png"
         alt="First slide"
-        style = "max-height: 500px; margin: auto; max-width: 1334px;">
-        <div class="carousel-caption d-none d-md-block">
-      </div>
+        style="max-height: 500px; margin: auto; max-width: 1334px"
+      />
+      <div class="carousel-caption d-none d-md-block"></div>
     </div>
     <div class="carousel-item" data-interval="2000">
-      <img class="d-block w-100"
+      <img
+        class="d-block w-100"
         src="https://sesac.seoul.kr/storage/image/temp/2022/10/24/I5tKJLpuxbyDvAF26DwA.jpg"
         alt="Second slide"
-        style = "max-height: 500px; margin: auto; max-width: 1334px;">
+        style="max-height: 500px; margin: auto; max-width: 1334px"
+      />
     </div>
     <div class="carousel-item" data-interval="2000">
-      <img class="d-block w-100"
+      <img
+        class="d-block w-100"
         src="https://www.mkgsa.org/zbxe/files/attach/images/88/464/245/001/79dad2bf67f11631cc33d0dfcaf6bf9a.jpg"
         alt="Third slide"
-        style = "max-height: 500px; margin: auto; max-width: 1334px;">
+        style="max-height: 500px; margin: auto; max-width: 1334px"
+      />
     </div>
     <div class="carousel-item" data-interval="2000">
-      <img class="d-block w-100"
+      <img
+        class="d-block w-100"
         src="https://sesac.seoul.kr/storage/image/temp/2022/10/05/67lEomjeTpe2GqteIfzB.gif"
         alt="Fourth slide"
-        style = "max-height: 500px; margin: auto; max-width: 1334px;">
+        style="max-height: 500px; margin: auto; max-width: 1334px"
+      />
     </div>
     <div class="carousel-item" data-interval="2000">
-      <img class="d-block w-100"
+      <img
+        class="d-block w-100"
         src="https://cdn.imweb.me/upload/S20200211c0ce72cb6a932/cd9fb1e59d1cc.png"
         alt="Fifth slide"
-        style = "max-height: 500px; margin: auto; max-width: 1334px;">
+        style="max-height: 500px; margin: auto; max-width: 1334px"
+      />
     </div>
-  <!-- / 슬라이드 쇼 끝 -->
-  <!-- 왼쪽 오른쪽 화살표 버튼 -->
-  <a id="arrow" class="carousel-control-prev" data-target="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon" style="cursor:pointer; background-color: bisque;" aria-hidden="true"></span>
-    <!-- <span>Previous</span> -->
-  </a>
-  <a id="arrow" class="carousel-control-next" data-target="#demo" data-slide="next">
-    <span class="carousel-control-next-icon" style="cursor:pointer; background-color: bisque;"  aria-hidden="true"></span>
-    <!-- <span>Next</span> -->
-  </a>
-  <!-- / 화살표 버튼 끝 -->
-  <!-- 인디케이터 -->
-  <ul class="carousel-indicators"> <!--0번부터시작-->
-    <li data-target="#demo" data-slide-to="0" class="active" style="background-color: rgb(146, 251, 153);"></li> 
-    <li data-target="#demo" data-slide-to="1" style="background-color: rgb(146, 251, 153);"></li>
-    <li data-target="#demo" data-slide-to="2" style="background-color: rgb(146, 251, 153);"></li>
-    <li data-target="#demo" data-slide-to="3" style="background-color: rgb(146, 251, 153);"></li>
-    <li data-target="#demo" data-slide-to="4" style="background-color: rgb(146, 251, 153);"></li>
-  </ul>
-  <!-- 인디케이터 끝 -->
-</div>
-<!-- 게시판 -->
-<div class="bodywrapper">
-  <div class="tablewrapper">
-    <div class="board-table">
-      <ul class="board-list">
-        {% for board in board_ls %}
-        <li class="board-item">
-          <!-- 게시판 내부 목록 리스트 -->
-          <ul class="list-inner">
-            <a class = "board-link" href= "링크"> 
-              <div class="board-title-bar">
-              <h3 class="board-title">{{board.brdNm}}</h3>
-              <p class="btn-more" href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"> 더보기</p>
-              </div>
-            </a>
-            {% for post in post_dict[board.brdId] %}
-            <li class="inner-item"><a href="{{url_for('post_views.post', pstId=post.pstId)}}">{{post.title}}</a></li>
-            {% endfor %}
-          </ul>
-
-        </li>
-        {% endfor %}
-
-
-      </ul>
-    <!-- 게시판 리스트 담은 테이블 끝 -->
-    </div>
+    <!-- / 슬라이드 쇼 끝 -->
+    <!-- 왼쪽 오른쪽 화살표 버튼 -->
+    <a
+      id="arrow"
+      class="carousel-control-prev"
+      data-target="#demo"
+      data-slide="prev"
+    >
+      <span
+        class="carousel-control-prev-icon"
+        style="cursor: pointer; background-color: bisque"
+        aria-hidden="true"
+      ></span>
+      <!-- <span>Previous</span> -->
+    </a>
+    <a
+      id="arrow"
+      class="carousel-control-next"
+      data-target="#demo"
+      data-slide="next"
+    >
+      <span
+        class="carousel-control-next-icon"
+        style="cursor: pointer; background-color: bisque"
+        aria-hidden="true"
+      ></span>
+      <!-- <span>Next</span> -->
+    </a>
+    <!-- / 화살표 버튼 끝 -->
+    <!-- 인디케이터 -->
+    <ul class="carousel-indicators">
+      <!--0번부터시작-->
+      <li
+        data-target="#demo"
+        data-slide-to="0"
+        class="active"
+        style="background-color: rgb(146, 251, 153)"
+      ></li>
+      <li
+        data-target="#demo"
+        data-slide-to="1"
+        style="background-color: rgb(146, 251, 153)"
+      ></li>
+      <li
+        data-target="#demo"
+        data-slide-to="2"
+        style="background-color: rgb(146, 251, 153)"
+      ></li>
+      <li
+        data-target="#demo"
+        data-slide-to="3"
+        style="background-color: rgb(146, 251, 153)"
+      ></li>
+      <li
+        data-target="#demo"
+        data-slide-to="4"
+        style="background-color: rgb(146, 251, 153)"
+      ></li>
+    </ul>
+    <!-- 인디케이터 끝 -->
   </div>
-  <!-- bodywrapper 끝 -->
+  <!-- 게시판 -->
+  <div class="bodywrapper">
+    <div class="tablewrapper">
+      <div class="board-table">
+        <ul class="board-list">
+          {% for board in board_ls %}
+          <li class="board-item">
+            <!-- 게시판 내부 목록 리스트 -->
+            <ul class="list-inner">
+              <a
+                class="board-link"
+                href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"
+              >
+                <div class="board-title-bar">
+                  <h3 class="board-title">{{board.brdNm}}</h3>
+                  <p
+                    class="btn-more"
+                    href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"
+                  >
+                    더보기
+                  </p>
+                </div>
+              </a>
+              {% for post in post_dict[board.brdId] %}
+              <li class="inner-item">
+                <a href="{{url_for('post_views.post', pstId=post.pstId)}}"
+                  >{{post.title}}</a
+                >
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+        <!-- 게시판 리스트 담은 테이블 끝 -->
+      </div>
+    </div>
+    <!-- bodywrapper 끝 -->
+  </div>
+  <!-- wrapper 끝 -->
+  {% endblock %}
 </div>
-<!-- wrapper 끝 -->  
-{% endblock %}

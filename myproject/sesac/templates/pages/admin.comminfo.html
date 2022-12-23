@@ -1,0 +1,18 @@
+{% extends '/layouts/base_updown.html' %} {% block content %}
+<section>
+  <h2>admin.admin.comminfo.html.html</h2>
+</section>
+{% if CommentInfo %} {% for comm in CommentInfo %}
+<ul>
+  {% for key, value in comm.items() %}
+  <li>{{key}} - {{value}}</li>
+  {% endfor %}
+  <li>
+    <a href="{{url_for('admin_views.comminfo_del', cmtId=comm.cmtId)}}"
+      >삭제 - {{comm.cmtId}}</a
+    >
+  </li>
+</ul>
+{% endfor %} {% else %}
+<li>CommentInfo가 없음</li>
+{% endif %} {% endblock %}

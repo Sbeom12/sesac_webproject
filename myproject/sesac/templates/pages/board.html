@@ -15,11 +15,12 @@
         <li class="sidebar-item">
           <a href="{{url_for('board_views.board')}}">전체 게시판</a>
         </li>
-        {% if boards %} 
-        {% for board in boards.board_list %}
-          <li class="sidebar-item">
-            <a href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}">{{board.brdNm}}</a>
-          </li>
+        {% if boards %} {% for board in boards.board_list %}
+        <li class="sidebar-item">
+          <a href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"
+            >{{board.brdNm}}</a
+          >
+        </li>
         {% endfor %} {% else %}
         <p>board_list가 없습니다.</p>
         {% endif %}
@@ -55,11 +56,15 @@
           </div>
         </div>
 
-        {% if boards.brdId %} {% for board in boards.board_list %} {% if board.brdId == boards.brdId
-        %}
-        <div class="article-title-bar"><h3>{{board.brdNm}} // 전체 게시글 {{boards.postCnt['count']}}</h3></div>
+        {% if boards.brdId %} {% for board in boards.board_list %} {% if
+        board.brdId == boards.brdId %}
+        <div class="article-title-bar">
+          <h3>{{board.brdNm}} // 전체 게시글 {{boards.postCnt['count']}}</h3>
+        </div>
         {% endif %} {% endfor %} {% else %}
-        <div class="article-title-bar"><h3>전체 게시판 // 전체 게시글 {{boards.postCnt['count']}}</h3> </div>
+        <div class="article-title-bar">
+          <h3>전체 게시판 // 전체 게시글 {{boards.postCnt['count']}}</h3>
+        </div>
         {% endif %}
 
         <ul class="article-list">
@@ -67,8 +72,8 @@
 
           <li class="article-item">
             <a href="{{url_for('post_views.post',pstId=post.pstId)}}"
-              >{{ boards.postCnt['count'] - (boards.page - 1) * boards.number - loop.index0 }} 
-              //[{{post.userId}}]  // {{post.title}}  //</a
+              >{{ boards.postCnt['count'] - (boards.page - 1) * boards.number -
+              loop.index0 }} //[{{post.userId}}] // {{post.title}} //</a
             >
           </li>
           {% endfor %} {% else %}
@@ -77,10 +82,10 @@
           {% endif %}
         </ul>
         {% for page_num in boards.max_page%}
-        <li class="page-item" >
+        <li class="page-item">
           <a class="page-link" href="?page={{ page_num }}">{{page_num}}</a>
-      </li>
-      {%endfor%}
+        </li>
+        {%endfor%}
         <a href="{{url_for('post_views.post_write')}}">작성하기</a>
       </div>
     </section>
