@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import pandas as pd
 import pymysql
 from pymysql import cursors, connect 
@@ -11,7 +12,7 @@ class DBUpdater():
     def __init__(self):
         self.conn = pymysql.connect(
             user='root', 
-            passwd='qhdkscjfwj0!', 
+            passwd='dkssudgktpdy!', 
             host='127.0.0.1', 
             db='community', 
             charset='utf8',
