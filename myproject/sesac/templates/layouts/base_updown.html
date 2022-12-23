@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/layout.style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/layout.style_menu.css') }}"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
+    <script
+      type="text/javascript"
+      defer
+      src="{{ url_for('static', filename='js/main.js') }}"
+    ></script>
+    <script
+      type="text/javascript"
+      defer
+      src="{{ url_for('static', filename='js/menu.js') }}"
+    ></script>
+    <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header class="menucontainer">
+        <div class="loginbar">
+          <ul class="loginbar-list">
+            <!-- 드롭다운 애니메이션, 햄버거 버튼 아이콘 수정 예정 -->
+            <a class="navbar-togglebtn" href="#"> 햄버거버튼 </a>
+            <!-- 로그인바 아이템 내부 로그인 시 로그인/로그아웃, 회원가입/마이페이지로 변경되는 기능 구현해야 함 -->
+            {% if session['username'] %}
+            <li class="loginbar-item">
+              <button
+                class="btn-login"
+                onclick="location.href='{{url_for('user_views.user_logout')}}'"
+                type="button"
+              >
+                로그아웃
+              </button>
+            </li>
+            <li class="loginbar-item">
+              <button
+                class="btn-login"
+                onclick="location.href='{{url_for('user_views.user_mypage')}}'"
+                type="button"
+              >
+                마이페이지
+              </button>
+            </li>
+
+            {% else %}
+            <li class="loginbar-item">
+              <button
+                class="btn-login"
+                onclick="location.href='{{url_for('user_views.user_login')}}'"
+                type="button"
+              >
+                로그인
+              </button>
+            </li>
+            <li class="loginbar-item">
+              <button
+                class="btn-login"
+                onclick="location.href='{{url_for('user_views.user_signup')}}'"
+                type="button"
+              >
+                회원가입
+              </button>
+            </li>
+
+            {% endif %}
+          </ul>
+        </div>
+
+        <div class="menu">
+          <ul class="menu-list">
+            <li class="menu-item"><a href="{{url_for('main')}}"> 홈</a></li>
+            <li class="menu-item"><a> 새싹 홈페이지</a></li>
+            <li class="menu-item"><a> 취·창업 게시판</a></li>
+            <li class="menu-item"><a> 강의 정보</a></li>
+            <li class="menu-item"><a> 공모전 정보</a></li>
+          </ul>
+        </div>
+      </header>
+      <!-- 기본 템플릿 안에 삽입될 내용 Start -->
+      {% block content %} {% endblock %}
+      <!-- 기본 템플릿 안에 삽입될 내용 End -->
+    </div>
+    <footer class="bottom">
+      <p>footer test</p>
+      <a href="#" class="btn_top"> top button(위치 바꿀거임) </a>
+    </footer>
+    <script>
+      $(window);
+    </script>
+  </body>
+</html>

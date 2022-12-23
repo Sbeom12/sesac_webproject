@@ -1,0 +1,64 @@
+{% extends '/layouts/base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<head>
+    <script>
+        function enterFunc(event, id, focus){
+            data = document.querySelector(`#${id}`)
+            if(event.code=="Enter"){
+                console.log(data.value)
+                event.preventDefault()
+                document.querySelector(`#${focus}`).focus() // enter 누르면 다음으로 focus 이동
+                if(id=="pwcheck"){
+                    pwCheckValue = data.value
+                    dropDulp(pwCheckValue)
+                }
+            }
+            // 마우스 클릭될 때 none
+        }
+        function dropDulp(pwCheckValue){
+            pwValue = document.querySelector('#userPw').value
+            // pwCheck = document.querySelector('#pwcheck')
+            if(pwValue!=pwCheckValue){
+                console.log("pw 와 pwCheck의 값이 다릅니다.")
+                li = document.createElement('li')
+                li.innerText = "비밀번호와 일치하지 않습니다. 다시 입력해주세요."
+                ul.appendChild(li)
+                pwCheckValue.value=""
+            }
+            else{
+                console.log("pw 와 pwCheck의 값이 같습니다.")
+            }
+        }
+    </script>
+</head>
+<body>
+
+  <section>
+    <h2>user.signup.html</h2>
+  </section>
+
+  <form action="{{url_for('user_views.user_signup')}}" method="POST">
+      <p> Login Form </p>
+      <ul id="ul" style="list-style:none;">
+          <li> 이름 <input type="text" id="userNm" name="userNm" onkeydown="enterFunc(event,'userNm','tel')"/></li><br>
+          <li> 전화번호 <input type="text" id="tel" name="tel" onkeydown="enterFunc(event,'tel','email')" placeholder="010-1234-5678"/></li><br>
+          <li> 이메일 <input type="email" id="email" name="email" onkeydown="enterFunc(event,'email','subNm')" placeholder="address@mail.com"/></li><br>
+          <li> 닉네임 <input type="text" id="subNm" name="subNm" onkeydown="enterFunc(event,'subNm','userId')"/></li><br>
+          <li> 아이디 <input type="text" id="userId" name="userId" onkeydown="enterFunc(event,'userId','userPw')"/></li><br>
+          <li> 비밀번호 <input type="password" id="userPw" name="userPw" onkeydown="enterFunc(event,'userPw','pwcheck')"/></li><br>
+          <li> 비밀번호 확인 <input type="password" id="pwcheck" name="pwcheck" onkeydown="enterFunc(event,'pwcheck','submit')"/></li><br>
+      </ul>
+      {% for message in get_flashed_messages() %}
+      <div class="alert alert-danger" role="alert">
+          {{ message }}
+      </div>
+      {% endfor %}
+      <p><input type="submit" id="submit" value="제출"/></p>
+  </form>
+
+</body>
+{% endblock %}
+</html>
+ 

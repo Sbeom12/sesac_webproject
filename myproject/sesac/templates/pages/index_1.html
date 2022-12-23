@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="/Users/user/Library/CloudStorage/OneDrive-개인/Data_Science/금천캠퍼스/Web/myproject/sesac/static/css/layout.baseupdown.css"
+    />
+    <!-- 탑버튼 스크립트 -->
+    <script>
+      $("#btn_top").click(function () {
+        $("html,body").scrollTop(0);
+      });
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <div class="menucontainer">
+        <div class="loginbar">
+          <ul class="loginbar-list">
+            <li class="loginbar-item">로그인</li>
+            <li class="loginbar-item">회원가입</li>
+          </ul>
+        </div>
+
+        <div class="menu">
+          <img
+            class="logo"
+            src="https://sesac.seoul.kr/static/common/images/www/common/logo.png"
+            width="80px"
+          />
+          <div class="list-container">
+            <ul class="menu-list">
+              <!-- 내용 수정해야 함, 메뉴바 여백 고정 할 예정-->
+              <li class="menu-item">홈</li>
+              <li class="menu-item">새싹 홈페이지</li>
+              <li class="menu-item">강의 정보</li>
+              <li class="menu-item">취창업 정보</li>
+              <li class="menu-item">공모전 정보</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="imagecontainer">이미지 삽입</div>
+    <div class="bodywrapper">
+      <aside class="sidebar">
+        <h1 class="title">title(생략가능)</h1>
+        <ul class="sidebar-list">
+          <li class="sidebar-item">게시판 1</li>
+          <li class="sidebar-item">게시판 2</li>
+          <li class="sidebar-item">게시판 3</li>
+        </ul>
+      </aside>
+      <section class="main">
+        <iframe
+          width="1000"
+          height="500"
+          src="https://zep.us/play/2zKWXm"
+        ></iframe>
+
+        <!-- 게시판 위치 수정 예정 -->
+        <h1 class="title">게시판 이름</h1>
+        <hr />
+        <ul class="article-list">
+          <li class="article-item">게시물 1</li>
+          <li class="article-item">게시물 1</li>
+          <li class="article-item">게시물 1</li>
+          <li class="article-item">게시물 1</li>
+          <li class="article-item">게시물 1</li>
+          <li class="article-item">게시물 1</li>
+          <li class="article-item">게시물 1</li>
+          <li class="article-item">게시물 1</li>
+          <li class="article-item">게시물 1</li>
+          <li class="article-item">게시물 1</li>
+        </ul>
+        <p>1 2 3 4 5 6 7 8 9 10</p>
+      </section>
+    </div>
+
+    <footer class="bottom">
+      <p>footer test</p>
+      <a href="#" class="btn_top"> top button(위치 바꿀거임) </a>
+    </footer>
+    <script>
+      $(window);
+    </script>
+  </body>
+</html>

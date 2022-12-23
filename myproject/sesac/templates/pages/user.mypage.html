@@ -1,0 +1,74 @@
+{% extends '/layouts/base_updown.html' %} {% block content %}
+<section>
+  <h2>user.mypage.html</h2>
+  {% if session['grade'] == 0 %}
+  <h4>Admin</h4>
+  <a href="{{url_for('admin_views.admin')}}">admin_views.admin</a>
+  {% endif %}
+  <div>작성한 게시글</div>
+  <table class="table">
+    <thead>
+      <tr class="table-dark">
+        <th>pstId</th>
+        <th>brdId</th>
+        <th>title</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if post_list %} {% for post in post_list %}
+      <tr>
+        <td>{{ post.pstId }}</td>
+        <td>
+          <a href="{{url_for('post_views.post',pstId=post.pstId)}}"
+            >{{ post.brdId }}</a
+          >
+        </td>
+        <td>
+          <a href="{{url_for('post_views.post',pstId=post.pstId)}}"
+            >{{ post.title }}</a
+          >
+        </td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="3">post_list가 없습니다.</td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+
+  <div>작성한 댓글</div>
+  <table class="table">
+    <thead>
+      <tr class="table-dark">
+        <th>cmtId</th>
+        <th>pstId</th>
+        <th>brdId</th>
+        <th>cmtCntnt</th>
+        <th>cmtCrtDate</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if comm_list %} {% for comm in comm_list %}
+      <tr>
+        <td>{{ comm.cmtId }}</td>
+        <td>{{ comm.pstId }}</td>
+        <td>
+          <a>{{ comm.brdId }}</a>
+        </td>
+        <td>
+          <a>{{ comm.cmtCntnt }}</a>
+        </td>
+        <td>
+          <a>{{ comm.cmtCrtDate }}</a>
+        </td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="5">comm_list가 없습니다.</td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

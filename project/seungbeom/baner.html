@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>부트스트랩Carousel</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    /* image size 조절 */
+    .carousel-inner > .carousel-item > img{
+      margin: auto;
+      max-width: 1200px;
+      height: 720px; 
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script>
+
+  </script>
+  <div id="demo" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <!-- 슬라이드 쇼 data interval로 속도 조절-->
+      <div class="carousel-item active" data-interval="2000">
+        <!--가로-->
+        <img class="d-block w-100" 
+          src="https://sesac.seoul.kr/storage/image/temp/2022/12/01/6GYnjkd9Z0JMg02P5VRi.png"
+          alt="First slide">
+          <div class="carousel-caption d-none d-md-block">
+        </div>
+      </div>
+      <div class="carousel-item" data-interval="2000">
+        <img class="d-block w-100"
+          src="https://sesac.seoul.kr/storage/image/temp/2022/10/24/I5tKJLpuxbyDvAF26DwA.jpg"
+          alt="Second slide">
+      </div>
+      <div class="carousel-item" data-interval="2000">
+        <img class="d-block w-100"
+          src="https://www.mkgsa.org/zbxe/files/attach/images/88/464/245/001/79dad2bf67f11631cc33d0dfcaf6bf9a.jpg"
+          alt="Third slide">
+      </div>
+      <div class="carousel-item" data-interval="2000">
+        <img class="d-block w-100"
+          src="https://sesac.seoul.kr/storage/image/temp/2022/10/05/67lEomjeTpe2GqteIfzB.gif"
+          alt="Fourth slide">
+      </div>
+      <div class="carousel-item" data-interval="2000">
+        <img class="d-block w-100"
+          src="https://cdn.imweb.me/upload/S20200211c0ce72cb6a932/cd9fb1e59d1cc.png"
+          alt="Fifth slide">
+      </div>
+    <!-- / 슬라이드 쇼 끝 -->
+    <!-- 왼쪽 오른쪽 화살표 버튼 -->
+    <a class="carousel-control-prev" data-target="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon" style="cursor:pointer" aria-hidden="true"></span>
+      <!-- <span>Previous</span> -->
+    </a>
+    <a class="carousel-control-next" data-target="#demo" data-slide="next">
+      <span class="carousel-control-next-icon" style="cursor:pointer"  aria-hidden="true"></span>
+      <!-- <span>Next</span> -->
+    </a>
+    <!-- / 화살표 버튼 끝 -->
+
+    <!-- 인디케이터 -->
+    <ul class="carousel-indicators"> <!--0번부터시작-->
+      <li data-target="#demo" data-slide-to="0" class="active" style="background-color: rgb(146, 251, 153);"></li> 
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+      <li data-target="#demo" data-slide-to="3"></li>
+      <li data-target="#demo" data-slide-to="4"></li>
+    </ul>
+    <!-- 인디케이터 끝 -->
+  </div>
+</body>
+</html>
