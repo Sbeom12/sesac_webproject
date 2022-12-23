@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href="style.css">
+    <script type="text/javascript" defer src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+    <div class = "wrapper">
+
+        <header class = "menucontainer">
+        
+            <div class = "loginbar">
+                <ul class = "loginbar-list">
+                    <!-- 드롭다운 애니메이션, 햄버거 버튼 아이콘 수정 예정 -->
+                    <a class="navbar-togglebtn" href="#">
+                        햄버거버튼
+                    </a>
+                    <!-- 로그인바 아이템 내부 로그인 시 로그인/로그아웃, 회원가입/마이페이지로 변경되는 기능 구현해야 함 -->
+                    <li class = "loginbar-item">
+                        <button class = "btn-login" onclick="location.href='로그인페이지'" type="button">로그인</button>
+                    </li>
+                    <li class = "loginbar-item">
+                        <button class = "btn-sign" onclick="location.href='회원가입페이지'" type="button">회원가입</button>
+                    </li>
+                </ul>
+            </div>
+        
+            <div class = "menu">
+                <ul class = "menu-list">
+                    <li class = "menu-item">홈</li>
+                    <li class = "menu-item">새싹 홈페이지</li>
+                    <li class = "menu-item">취·창업 게시판</li>
+                    <li class = "menu-item">강의 정보</li>
+                    <li class = "menu-item">공모전 정보</li>
+                </ul>
+            </div>
+        </header>
+        <!-- 상단 메뉴가 사라져도 높이 일정하도록 고정 예정 -->
+
+        
+            <div class = "middle">
+                <div class = "imagecontainer">
+                    <!-- 현재 백그라운드로 테스트 이미지 삽입, 메인 페이지는 배너가 들어갈 예정임 -->
+                </div>
+            </div>
+
+
+            <!-- 이하 데이터나 게시판 형태가 들어가는 중간 부분 -->
+            <!-- 2*3 대신 3*2 형태도 가능 -->
+            <div class = "bodywrapper">
+
+            <div class = "tablewrapper">
+                <div class = "board-table">
+
+                    
+                    <ul class = "board-list">
+                        <!-- 게시판 첫번째 -->
+                        <li class = "board-item">
+
+                            <!-- 게시판 내부 목록 리스트 -->
+                            <ul class = "list-inner">
+
+                                <div class = "board-title-bar">
+                                    <h3 class = "board-title"> 자유 게시판 </h3>
+                                    <a class = "btn-more" href = "게시판링크"> 더보기</a>
+                                </div>
+                                
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                            </ul>
+                    
+                        </li>
+                        
+                        <!-- 게시판 두번째 -->
+                        <li class = "board-item">
+
+                            <!-- 게시판 내부 목록 리스트 -->
+                            <ul class = "list-inner">
+
+                                <div class = "board-title-bar">
+                                    <h3 class = "board-title"> 익명 게시판 </h3>
+                                    <a class = "btn-more" href = "게시판링크"> 더보기</a>
+                                </div>
+                                
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                            </ul>
+
+                        </li>
+
+                        <!-- 게시판 세번째 -->
+                        <li class = "board-item">
+
+                            <!-- 게시판 내부 목록 리스트 -->
+                            <ul class = "list-inner">
+
+                                <div class = "board-title-bar">
+                                    <h3 class = "board-title"> 스터디 게시판 </h3>
+                                    <a class = "btn-more" href = "게시판링크"> 더보기</a>
+                                </div>
+                                
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                            </ul>
+
+                        </li>
+
+                        <!-- 게시판 네번째 -->
+                        <li class = "board-item">
+
+                            <!-- 게시판 내부 목록 리스트 -->
+                            <ul class = "list-inner">
+
+                                <div class = "board-title-bar">
+                                    <h3 class = "board-title"> 정보 게시판 </h3>
+                                    <a class = "btn-more" href = "게시판링크"> 더보기</a>
+                                </div>
+                                
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                            </ul>
+
+                        </li>
+
+                        <!-- 게시판 다섯번째 -->
+                        <li class = "board-item">
+
+                            <!-- 게시판 내부 목록 리스트 -->
+                            <ul class = "list-inner">
+
+                                <div class = "board-title-bar">
+                                    <h3 class = "board-title"> 취업 게시판 </h3>
+                                    <a class = "btn-more" href = "게시판링크"> 더보기</a>
+                                </div>
+                                
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                            </ul>
+
+                        </li>
+
+                        <!-- 게시판 여섯번째 -->
+                        <li class = "board-item">
+
+                            <!-- 게시판 내부 목록 리스트 -->
+                            <ul class = "list-inner">
+
+                                <div class = "board-title-bar">
+                                    <h3 class = "board-title"> 창업 게시판 </h3>
+                                    <a class = "btn-more" href = "게시판링크"> 더보기</a>
+                                </div>
+                                
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                                <li class ="inner-item"> 게시물 제목 </li>
+                            </ul>
+                        </li>                
+
+                    </ul>
+                    <!-- 6개 게시판 리스트 끝 -->
+                
+                </div>
+                <!-- 게시판 리스트 담은 테이블 끝 -->
+        
+            </div>
+        </div>
+        <!-- bodywrapper 끝 -->
+
+    </div>
+    <!-- wrapper 끝 -->
+
+    <footer class = "bottom">
+
+        <p style="color: white; text-align: center;">footer 하단 고정</p>
+        <a href="#" class= "btn-top">
+            top button
+        </a>
+    </footer>
+</body>
+</html>
