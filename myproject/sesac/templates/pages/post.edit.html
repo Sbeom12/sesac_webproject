@@ -1,0 +1,36 @@
+{% extends '/layouts/base_updown.html' %} {% block content %}
+<section>
+  <h2>post.edit.html</h2>
+  {% if post_list %} {% for p in post_list %}
+  <!-- 기존 게시물 편집하기 -->
+  <form
+    method="post"
+    action="{{ url_for('post_views.post_save_edit', pstId=p.pstId)}}"
+  >
+    <div>post.title</div>
+    <input type="text" name="title" id="" value="{{p.title}}" />
+
+    <div>p.brdId</div>
+    <input type="text" name="brdId" id="" value="{{p.brdId}}" />
+
+    <div>post.pstCntnt</div>
+    <input type="text" name="pstCntnt" id="" value="{{p.pstCntnt}}" />
+    <button type="submit">저장하기</button>
+  </form>
+  {% endfor %} {% else %}
+  <!-- 새로운 게시물 작성하기 -->
+  <form method="post" action="{{ url_for('post_views.post_save_new')}}">
+    <div>p.title</div>
+    <input type="text" name="title" id="" placeholder="제목을 입력해주세요" />
+
+    <div>p.brdId</div>
+    <input type="text" name="brdId" id="" placeholder="게시판을 선택해주세요" />
+
+    <div>post.pstCntnt</div>
+    <input type="text" name="pstCntnt" id="" placeholder="내용을 입력해주세요" />
+    <button type="submit">저장하기</button>
+  </form>
+  {% endif %}
+  <a href="{{url_for('board_views.board')}}">취소하기</a>
+</section>
+{% endblock %}

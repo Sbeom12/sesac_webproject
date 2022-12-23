@@ -1,0 +1,38 @@
+table {
+  border-collapse: collapse;
+} /*이중선 제거*/
+
+th,
+td {
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  border: 1px solid #000;
+
+  vertical-align: top; /* 위 */
+  vertical-align: bottom; /* 아래 */
+  vertical-align: middle; /* 가운데 */
+}
+
+* {
+  box-sizing: border-box;
+  border: 1px solid sandybrown;
+  margin: 0;
+  text-align: center;
+  /* height: 90%; */
+  width: 90%;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+  justify-self: center;
+}
+
+.row {
+  flex-direction: row;
+}
