@@ -1,9 +1,0 @@
-{% extends '/layouts/base_updown.html' %} {% block content %}
-<section>
-  <h2>user.mypage.html</h2>
-  {% if session['grade'] == 0 %}
-    <h4>Admin</h4>
-    <a href="{{url_for('admin_views.admin')}}">admin_views.admin</a>
-  {% endif %}
-</section>
-{% endblock %}
