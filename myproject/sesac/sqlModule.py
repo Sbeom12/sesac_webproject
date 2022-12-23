@@ -12,7 +12,7 @@ class DBUpdater():
     def __init__(self):
         self.conn = pymysql.connect(
             user='root', 
-            passwd='qhdkscjfwj0!', 
+            passwd='12345', 
             host='127.0.0.1', 
             db='community', 
             charset='utf8',
@@ -61,9 +61,9 @@ class DBUpdater():
                 userId  VARCHAR(255),
                 userPw  VARCHAR(255)    NOT NULL,
                 userNm  VARCHAR(255)    NOT NULL,
+                email   VARCHAR(255)    NOT NULL,
                 subNm   VARCHAR(255)    NOT NULL    UNIQUE,
                 tel     VARCHAR(255)    NOT NULL    UNIQUE,
-                email   VARCHAR(255)    NOT NULL    UNIQUE,
                 grade   INT             NOT NULL    DEFAULT 1,
                 
                 PRIMARY KEY(userId)
@@ -123,7 +123,6 @@ class DBUpdater():
 
                 PRIMARY KEY(cmtId),
                 
-                FOREIGN KEY (brdId) REFERENCES Board (brdId) ON UPDATE CASCADE ON DELETE CASCADE,
                 FOREIGN KEY (pstId) REFERENCES Post (pstId) ON UPDATE CASCADE ON DELETE CASCADE,
                 FOREIGN KEY (userId) REFERENCES UserInfo (userId) ON UPDATE CASCADE ON DELETE CASCADE
                 )
