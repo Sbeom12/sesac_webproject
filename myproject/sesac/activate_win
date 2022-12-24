@@ -1,0 +1,28 @@
+deactivate
+cd win_env
+cd Scripts
+activate
+cd../../
+cd sesac_webproject
+cd myproject
+set FLASK_APP=sesac.py
+set FLASK_DEBUG=true
+flask run
+
+
+
+
+
+deactivate
+cd win_env
+cd Scripts
+activate
+cd../../
+cd Flask-SocketIO-Chat
+set FLASK_APP=chat.py
+set FLASK_DEBUG=true
+flask run
+
+
+
+
