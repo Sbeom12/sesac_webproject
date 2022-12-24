@@ -1,0 +1,164 @@
+/* .matrix-item-header {
+    background-color: aqua;
+} */
+
+ul, ol {
+    list-style: none;
+}
+
+/* 컨테이너 */
+.matrix-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-left: 3px solid var(--dark-gray);
+    border-bottom: 3px solid var(--dark-gray);
+    margin: 1rem 4rem 4rem;
+    position: relative;
+}
+
+.matrix-item {
+    width: 45%;
+    height: 30rem;
+    border: .5px solid var(--dark-gray);
+    border-radius: 5px 5px 0 0;
+    margin: 2rem 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* 아이템 헤더 */
+.matrix-item-header {
+    text-align: center;
+    background-color: var(--light-gray);
+    padding: 1rem 0;
+}
+
+.matrix-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.matrix-input {
+    width: 90%;
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    padding-left: .5rem;
+    line-height: 1.8;
+}
+
+/* 아이템 리스트 */
+
+.matrix-item-list {
+    flex: 1;
+    /* 헤더를 제외한 모든 높이 차지하기 */
+    overflow-y: auto;
+}
+
+.list-item {
+    width: 90%;
+    margin: .5rem auto;
+    border: 3px solid var(--light-gray);
+    border-radius: 5px;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.done-text-container {
+    flex: 1;
+    /* update-delete-container를 제외한 모든 너비 차지 */
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+}
+
+.todo-done {
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.todo-done:checked + .todo-text {
+    text-decoration: line-through;
+}
+
+.todo-text {
+    flex: 1;
+    /* .todo-text를 제외한 모든 너비를 차지 */
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.update-delete-container {
+    font-size: 1.6rem;
+}
+
+.todo-update {
+    margin-right: .5rem;
+    cursor: pointer;
+}
+
+.todo-delete {
+    cursor: pointer;
+}
+
+/* 순서 */
+
+#decide {
+    order: 1;
+}
+
+#do {
+    order: 2;
+}
+
+#delete {
+    order: 3;
+}
+
+#delegate {
+    order: 4;
+}
+
+/* 중요도, 긴급성 포지션 */
+
+.importance {
+    position: absolute;
+    font-size: 1.5rem;
+    top: 50%;
+    left: -3%;
+    writing-mode: vertical-rl;
+}
+
+.urgency {
+    position: absolute;
+    font-size: 1.5rem;
+    bottom: -4%;
+}
+
+/* 모바일 레이아웃 설정 */
+
+@media only all and (max-width: 768px) {
+    .matrix-container {
+        display: block;
+    }
+
+    .matrix-item {
+        width: 90%;
+        margin: 0 auto 1rem;
+    }
+    
+    .importance {
+        left: -7%;
+    }
+
+    .urgency {
+        bottom: -2%;
+        left: 45%;
+    }
+}
