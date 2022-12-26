@@ -10,7 +10,7 @@ from datetime import timedelta
 
 # Blueprint views 불러오기 
 from .views import (
-	user_views, post_views, board_views, admin_views, comment_views, main_views
+	user_views, post_views, board_views, admin_views, comment_views, main_views, info_views
 )
 # flask의 create_app - Flask Application Factory
 def create_app():
@@ -34,6 +34,7 @@ def create_app():
 	app.register_blueprint(admin_views.bp)
 	app.register_blueprint(comment_views.bp)
 	app.register_blueprint(main_views.bp)
+	app.register_blueprint(info_views.bp)
 
 	return app
 
