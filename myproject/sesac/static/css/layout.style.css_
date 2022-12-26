@@ -3,6 +3,30 @@ body {
   overflow-x: hidden;
 }
 
+/* 링크 건 거 */
+a:link{
+  color: black;
+  text-decoration: none;
+}
+
+/* 링크 호버 시 */
+a:hover{
+  color: black;
+  text-decoration: none;
+}
+
+/* 방문한 링크 */
+a:visited{
+  color: black;
+  text-decoration: none;
+}
+
+/* 들어간 링크 */
+a:active{
+  color: #91e661;
+  text-decoration: none;
+}
+
 .wrapper {
   height: auto;
   min-height: 100%;
@@ -20,7 +44,7 @@ header {
   transition: top 0.2s ease-in-out;
 }
 
-/* �먮컮�ㅽ겕由쏀듃濡� 異붽��섎뒗 �대옒��(硫붾돱 �ㅽ겕濡�) */
+/* 자바스크립트로 추가되는 클래스(메뉴 스크롤) */
 .nav-up {
   top: -114px;
 }
@@ -34,7 +58,7 @@ header {
   padding-top: 114px;
 }
 
-/* �꾨쾭嫄� 踰꾪듉 */
+/* 햄버거 버튼 */
 .navbar-togglebtn {
   display: none;
 }
@@ -76,11 +100,11 @@ header {
   background-color: #cffc5d;
 }
 
-/* �곷떒 硫붾돱 諛� */
+/* 상단 메뉴 바 */
 .menu-list {
   list-style: none;
   padding: 0px;
-  /* 硫붾돱 �섑룊 �뺣젹, 以묒븰 �뺣젹  */
+  /* 메뉴 수평 정렬, 중앙 정렬  */
   display: flex;
   justify-content: center;
 }
@@ -92,12 +116,13 @@ header {
   padding-right: 25px;
 }
 
-/* 諛곕꼫 */
+/* 배너 */
 .middle {
   width: 100vw;
 }
 .imagecontainer {
-  height: 400px;
+  /*height: 400px;*/
+  height: 300px;
   background-image: url("bannertest.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -118,7 +143,7 @@ header {
   max-width: 1353px;
 }
 
-/* �뚯씠釉� 由ъ뒪�� */
+/* 테이블 리스트 */
 .board-list {
   list-style: none;
   padding: 0;
@@ -127,7 +152,7 @@ header {
   justify-content: space-around;
 }
 
-/* �뚯씠釉� 由ъ뒪�� �대� 媛쒖껜 */
+/* 테이블 리스트 내부 개체 */
 .board-item {
   background-color: white;
   height: 200px;
@@ -140,12 +165,19 @@ header {
   min-width: 330px;
 }
 
-/* �뚯씠釉� �대� �ㅼ뼱媛��� �곗씠�� */
+/* 테이블 내부 들어가는 데이터 */
 .list-inner {
   list-style: none;
   padding-left: 10px;
   padding-bottom: 20px;
   padding-right: 10px;
+}
+
+/* 게시판 더보기 버튼 링크 글자 색, 언더라인 삭제 */
+.board-link:link{
+  color: black;
+  text-decoration: none;
+
 }
 
 .board-title-bar {
@@ -163,14 +195,42 @@ header {
 }
 
 .btn-more {
-  /* �꾩옱�� a �쒓렇濡� 吏��뺣릺�� �덉쓬 */
+  /* 이미지 버튼으로 수정하는 것도 가능할듯 */
   font-size: 12px;
 }
 
-.inner-item {
+
+.inner-item a {
   font-size: 14px;
   line-height: 25px;
+  display: flex;
+  justify-content: space-between;
+
 }
+
+.idname{
+  width: 25%;
+  padding-right: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.articletitle{
+  width: 65%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hits{
+  width: 10%;
+  font-size: 12px;
+  font-weight: bold;
+  color: #AEAEAE;
+  text-align: end;
+  vertical-align: center;
+}
+
+
 /* footer */
 .bottom {
   height: 100px;
@@ -180,10 +240,11 @@ header {
 }
 
 .btn-top {
-  /* �꾩튂 �섏젙 �덉젙 */
+  /* 위치 수정 예정 */
 }
 
-/* 諛섏쓳�� 媛�濡� �볦씠媛� 840 �댄븯硫� 誘몃뵒�� 荑쇰━ */
+
+/* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
 @media screen and (max-width: 840px) {
   header {
     position: fixed;
@@ -202,31 +263,45 @@ header {
     padding-top: 60px;
   }
 
-  /* �먮컮�ㅽ겕由쏀듃濡� 異붽��섎뒗 �대옒��(硫붾돱 �ㅽ겕濡�) */
+  /* 자바스크립트로 추가되는 클래스(메뉴 스크롤) */
   .nav-up {
     top: -60px;
   }
 
-  .menu-list {
+  .menu{
+    z-index: 999;
+    position:relative;
+  }
+  .overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgb(0,0,0,0.7)
+    z-index: 998;
+    display: none;
+  }
+  .menu-list{
     display: none;
     flex-direction: column;
     align-items: center;
+    z-index: 999;
+    position:relative;
   }
-  .menu-item {
+  .menu-item{
     text-align: center;
-
     padding: 10px;
     font-size: 17px;
     width: 100%;
     line-height: 20px;
     background-color: white;
+    z-index: 999;
+    position:relative;
   }
-  .menu-item:hover {
-    background-color: #91e661;
-    border-bottom: 1px solid white;
+  .menu-item:hover{
+    background-color: #91E661;
   }
 
-  .navbar-togglebtn {
+  .navbar-togglebtn{
     display: block;
     position: absolute;
     padding-left: 10vw;
@@ -235,97 +310,125 @@ header {
   }
 
   /* active */
-  .menu-list.active {
+  /* active가 지금 z-index 안 먹는 상태임... */
+  .menu-list.active{
     display: flex;
+    color: black;    
+    z-index: 999;
+    position:relative;
   }
 
-  .board-table {
+  .board-table{
     margin-top: 50px;
   }
 
-  .board-list {
+  .board-list{
     display: flex;
-    flex-direction: column;
+    flex-direction: column;  
   }
-  .board-item {
+
+  .board-item{
     background-color: white;
     height: 200px;
     width: 80vw;
     max-width: 600px;
     min-width: 270px;
     padding-left: 0px;
-    margin-top: 20px;
+    margin-top:20px;
     min-width: 330px;
   }
 }
 
-/* ------------ 寃뚯떆�� �섏씠吏� css ------------ */
 
-.board-bodywrapper {
+/* ------------ 게시판 페이지 css ------------ */
+
+
+.board-bodywrapper{
   display: flex;
   justify-content: center;
 }
 
-.sidebar {
+.sidebar{
   margin-top: 80px;
   margin-right: 10vw;
   min-width: 120px;
 }
 
-.sidebar-title {
-  margin: 0px;
+.sidebar-title{
+  margin:0px;
 }
 
-.sidebar-list {
-  padding: 0;
+.sidebar-list{
+  padding:0;
   line-height: 2em;
   font-size: 14px;
   list-style: none;
 }
 
-.main {
-  margin-top: 80px;
+
+.main{
+  margin-top:80px;
 }
 
-.article-title-bar {
+.article-title-bar{
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid black;
   margin-bottom: 15px;
 }
-.article-list {
+.article-list{
   line-height: 2em;
   min-width: 580px;
   list-style: none;
 }
 
-.board-list-bar {
+.board-list-bar{
   display: none;
+  position:relative;
+  z-index: 1;
 }
 
-.board-btn-list {
+.board-btn-list{
   list-style: none;
   padding: 0;
 }
 
-/* 諛섏쓳�� 媛�濡� �볦씠媛� 840 �댄븯硫� 誘몃뵒�� 荑쇰━ */
-@media screen and (max-width: 840px) {
-  .sidebar {
-    display: none;
-  }
-
-  .articlecontainer {
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
-  }
-
-  .article-list {
-    width: 80vw;
-  }
-
-  .board-list-bar {
-    display: block;
-  }
+/* 페이징 표시 css 추가<정섭> */
+ul{
+  list-style: none;
 }
+.page-item {
+  display: inline;
+  border: 1px solid #bcbcbc;
+  padding: 10px;
+  }
+
+/* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
+@media screen and (max-width: 840px){
+
+  .sidebar{
+      display: none;
+  }
+
+  .articlecontainer{
+      display: flex;
+      flex-direction: column;
+      width: 80vw;
+  }
+
+
+  .article-list{
+      width: 80vw;
+  }
+
+  .board-list-bar{
+      position:relative;
+      z-index: 1;
+      display: block;
+  }
+  
+}
+
+
+
