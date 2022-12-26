@@ -15,7 +15,7 @@ def post(pstId):
 	Args:
 		pstId (int): 게시물 ID
 	"""
-	print('post(pstId) -', pstId)
+	print('post(pstId) ------', pstId) # pstId가 어떻게 전달이 되는거지,,?
 
     # data = 특정 게시물 ID 필터링
 	db = DBUpdater()
@@ -110,8 +110,9 @@ def post_write(brdId):
 # 편집 저장하기 버튼 클릭
 @bp.route('/save/<int:pstId>/', methods=('GET', 'POST'))
 def post_save_edit(pstId):
-    brdId = request.form['brdId']
+    brdId = request.form['reg_id']
     db = DBUpdater()
+    print(request.form)
     db.update_post(request.form, pstId)
     return redirect(url_for('board_views.board_boardID', brdId=brdId))
     # return redirect(url_for('post_views.post', pstId=pstId))
@@ -125,6 +126,7 @@ def post_save_new():
 	title = request.form['title']
 	pstCntnt = request.form['pstCntnt']
 	print(brdId)
+
 	db = DBUpdater()
 	db.insertPost(brdId, userId, title, pstCntnt)
 

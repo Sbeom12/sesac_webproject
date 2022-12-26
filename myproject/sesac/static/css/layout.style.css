@@ -1,148 +1,146 @@
-body {
-  margin: 0;
-  overflow-x: hidden;
+body{
+    margin: 0;
+    overflow-x: hidden;
 }
 
-/* 링크 건 거 */
 a:link{
-  color: black;
-  text-decoration: none;
+    text-decoration: none;
+    color: black;
 }
 
-/* 링크 호버 시 */
-a:hover{
-  color: black;
-  text-decoration: none;
-}
-
-/* 방문한 링크 */
 a:visited{
-  color: black;
-  text-decoration: none;
+    text-decoration:none;
+    color: black;
 }
 
-/* 들어간 링크 */
-a:active{
-  color: #91e661;
-  text-decoration: none;
+.wrapper{
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 100px;
+    padding-top: 114px;
 }
 
-.wrapper {
-  height: auto;
-  min-height: 100%;
-  padding-bottom: 100px;
-  padding-top: 114px;
-}
 
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 114px;
-  background-color: white;
-  transition: top 0.2s ease-in-out;
+header{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 114px;
+    background-color: white;
+    transition: top 0.2s ease-in-out;
+    z-index: 100;
 }
 
 /* 자바스크립트로 추가되는 클래스(메뉴 스크롤) */
-.nav-up {
-  top: -114px;
+.nav-up{
+    top:-114px;
 }
 
-.menucontaier {
-  padding-left: 10vw;
-  padding-right: 10vw;
+.menucontaier{
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
-.down-wrapper {
-  padding-top: 114px;
+.down-wrapper{
+    padding-top: 114px;
 }
 
 /* 햄버거 버튼 */
-.navbar-togglebtn {
-  display: none;
+.navbar-togglebtn{
+    display: none;
 }
 
-.loginbar-list {
-  list-style: none;
-  padding: 0px;
-  text-align: right;
-  margin-right: 10px;
+
+.loginbar-list{
+    list-style: none;
+    padding: 0px;
+    text-align: right;
+    margin-right: 10px;
 }
 
-.loginbar-item {
-  display: inline-block;
-  margin: 2px;
+.loginbar-item{
+    display: inline-block;
+    margin: 2px;
 }
 
-.btn-login {
-  background-color: #91e661;
-  border: 0;
-  border-radius: 2px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  font-size: 12px;
+.btn-login{
+    background-color: #91E661;
+    border: 0;
+    border-radius: 2px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 12px;
 }
 
-.btn-login:hover {
-  background-color: #cffc5d;
+.btn-login:hover{
+    background-color: #CFFC5D;
 }
 
-.btn-sign {
-  background-color: #dadada;
-  border: 0;
-  border-radius: 2px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  font-size: 12px;
+.btn-sign{
+    background-color: #dadada;
+    border: 0;
+    border-radius: 2px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 12px;
 }
-.btn-sign:hover {
-  background-color: #cffc5d;
+.btn-sign:hover{
+    background-color: #CFFC5D;
 }
+
+
 
 /* 상단 메뉴 바 */
-.menu-list {
-  list-style: none;
-  padding: 0px;
-  /* 메뉴 수평 정렬, 중앙 정렬  */
-  display: flex;
-  justify-content: center;
+.menu-list{
+    list-style: none;
+    padding: 0px;
+    /* 메뉴 수평 정렬, 중앙 정렬  */
+    display: flex; 
+    justify-content: center;
 }
 
-.menu-item {
-  display: inline-block;
-  font-size: 20px;
-  padding-left: 25px;
-  padding-right: 25px;
+.menu-item{
+    display: inline-block;
+    font-size: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+
 }
+
+
 
 /* 배너 */
-.middle {
-  width: 100vw;
+.middle{
+    width: 100vw;
 }
-.imagecontainer {
-  height: 400px;
-  background-image: url("bannertest.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.bodywrapper {
-  padding-left: 10vw;
-  padding-right: 10vw;
+.imagecontainer{
+    height: 400px;
+    background-image: url("bannertest.png");
+    background-size:cover;
+    background-repeat: no-repeat;
+    
 }
 
-.tablewrapper {
-  display: flex;
-  justify-content: center;
+
+.bodywrapper{
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
 
-.board-table {
-  margin-top: 70px;
-  max-width: 1353px;
+.tablewrapper{
+    display: flex;
+    justify-content: center;
 }
 
-//* 테이블 리스트 */
+.board-table{
+    margin-top: 70px;
+    max-width: 1353px;
+
+}
+
+/* 테이블 리스트 */
+
 .board-list {
   list-style: none;
   padding: 0;
@@ -152,67 +150,85 @@ header {
 }
 
 /* 테이블 리스트 내부 개체 */
-.board-item {
-  background-color: white;
-  height: 200px;
-  width: 26vw;
-  max-width: 600px;
-  min-width: 270px;
-  padding-left: 0px;
-  margin-top: 40px;
-  max-width: 430px;
-  min-width: 330px;
+.board-item{
+    background-color: white;
+    width: 26vw;
+    height: 250px;
+    max-width: 600px;
+    min-width: 270px;
+    padding-left: 0px;
+    margin-top:40px;
+    max-width: 430px;
+    min-width: 330px;
 }
+
 
 /* 테이블 내부 들어가는 데이터 */
-.list-inner {
-  list-style: none;
-  padding-left: 10px;
-  padding-bottom: 20px;
-  padding-right: 10px;
+.list-inner{
+    list-style: none;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    margin-bottom: 20px;
 }
 
-/* 게시판 더보기 버튼 링크 글자 색, 언더라인 삭제 */
 .board-link:link{
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 
 }
 
-.board-title-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 2px solid black;
-  margin-bottom: 15px;
+.board-title-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    margin-bottom: 10px;
 }
 
-.board-title {
-  margin: 0px;
-  height: 45px;
-  line-height: 43px;
+.board-title{
+    margin:0px;
+    height: 45px;
+    line-height: 43px;
 }
 
-.btn-more {
-  /* 이미지 버튼으로 수정하는 것도 가능할듯 */
-  font-size: 12px;
+.btn-more{
+    /* 현재는 a 태그로 지정되어 있음 */
+    font-size: 12px;
 }
 
-.inner-item {
-  font-size: 14px;
-  line-height: 25px;
-}
-/* footer */
-.bottom {
-  height: 100px;
-  position: relative;
-  transform: tranlateY(-100%);
-  background-color: #dadada;
+
+.inner-item a{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    line-height: 25px;
 }
 
-.btn-top {
-  /* 위치 수정 예정 */
+.title-inner{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    line-height: 25px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted rgb(140, 140, 140);
+    margin-bottom: 10px;
 }
+
+.title-article{
+    width: 60%;
+    text-align: center;
+}
+
+.title-id{
+    width: 10%;
+    text-align: center;
+}
+
+
+.title-hits{
+    width: 30%;
+    text-align: center;
 
 
 /* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
@@ -225,29 +241,39 @@ header {
     height: 60px;
     background-color: white;
     transition: top 0.2s ease-in-out;
+    z-index: 100;
   }
 
-  .wrapper {
-    height: auto;
-    min-height: 100%;
-    padding-bottom: 100px;
-    padding-top: 60px;
-  }
 
-  /* 자바스크립트로 추가되는 클래스(메뉴 스크롤) */
-  .nav-up {
-    top: -60px;
-  }
+.articletitle{
+    width: 60%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
+.idname{
+    width: 10%;
+    padding-right: 20px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+  .hits{
+    width: 30%;
   .menu{
-    z-index: 999;
+    z-index: 1000;
     position:relative;
   }
   .overlay{
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgb(0,0,0,0.7)
+    background: rgb(0,0,0,0.7);
     z-index: 998;
     display: none;
   }
@@ -260,17 +286,19 @@ header {
   }
   .menu-item{
     text-align: center;
-    padding: 10px;
-    font-size: 17px;
-    width: 100%;
-    line-height: 20px;
-    background-color: white;
-    z-index: 999;
-    position:relative;
-  }
-  .menu-item:hover{
-    background-color: #91E661;
-  }
+    font-size: 12px;
+    font-weight: bold;
+    color: #aeaeae;
+    text-align: center;
+    vertical-align: center;
+}
+/* footer */
+.bottom{
+    height: 100px;
+    position: relative;
+    transform: tranlateY(-100%);
+    background-color: #dadada;
+}
 
   .navbar-togglebtn{
     display: block;
@@ -279,7 +307,10 @@ header {
     left: 10px;
     margin: 2px;
   }
-
+  .dropdown-menu{
+    display: none;
+    justify-content: center;
+  }
   /* active */
   /* active가 지금 z-index 안 먹는 상태임... */
   .menu-list.active{
@@ -289,115 +320,186 @@ header {
     position:relative;
   }
 
-  .board-table{
-    margin-top: 50px;
-  }
+/* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
+@media screen and (max-width: 840px){
 
-  .board-list{
-    display: flex;
-    flex-direction: column;  
-  }
+    header{
+        position: fixed;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 60px;
+        background-color: white;
+        transition: top 0.2s ease-in-out;
+    }
 
-  .board-item{
-    background-color: white;
-    height: 200px;
-    width: 80vw;
-    max-width: 600px;
-    min-width: 270px;
-    padding-left: 0px;
-    margin-top:20px;
-    min-width: 330px;
-  }
+    .wrapper{
+        height: auto;
+        min-height: 100%;
+        padding-bottom: 100px;
+        padding-top: 60px;
+    }
+
+    /* 자바스크립트로 추가되는 클래스(메뉴 스크롤) */
+    .nav-up{
+        top:-60px;
+    }
+
+    .menu{
+        z-index: 999;
+        position:relative;
+    }
+    .overlay{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgb(0,0,0,0.7)
+        z-index: 998;
+        display: none;
+    
+    }
+    .menu-list{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        z-index: 999;
+        position:relative;
+    }
+    .menu-item{
+        text-align: center;
+
+        padding: 10px;
+        font-size: 17px;
+        width: 100%;
+        line-height: 20px;
+        background-color: white;
+        z-index: 999;
+        position:relative;
+        
+    }
+    .menu-item:hover{
+        background-color: #91E661;
+    }
+
+    .navbar-togglebtn{
+        display: block;
+        position: absolute;
+        padding-left: 10vw;
+        left: 10px;
+        margin: 2px;
+    }
+
+    /* active */
+    .menu-list.active{
+        display: flex;
+        background-color: white;
+        opacity: 0.7;
+        color: black;    
+        z-index: 999;
+        position:relative;
+    }
+
+    .board-table{
+        margin-top: 50px;
+    }
+
+    .board-list{
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .board-item{
+        background-color: white;
+        height: 230px;
+        width: 80vw;
+        max-width: 600px;
+        min-width: 270px;
+        padding-left: 0px;
+        margin-top:20px;
+        min-width: 330px;
+    }
+
 }
-
 
 /* ------------ 게시판 페이지 css ------------ */
 
 
 .board-bodywrapper{
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .sidebar{
-  margin-top: 80px;
-  margin-right: 10vw;
-  min-width: 120px;
+    margin-top: 80px;
+    margin-right: 10vw;
+    min-width: 120px;
 }
 
 .sidebar-title{
-  margin:0px;
+    margin:0px;
 }
 
 .sidebar-list{
-  padding:0;
-  line-height: 2em;
-  font-size: 14px;
-  list-style: none;
+    padding:0;
+    line-height: 2em;
+    font-size: 14px;
+    list-style: none;
 }
 
 
 .main{
-  margin-top:80px;
+    margin-top:80px;
 }
 
 .article-title-bar{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 2px solid black;
-  margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    margin-bottom: 15px;
 }
 .article-list{
-  line-height: 2em;
-  min-width: 580px;
-  list-style: none;
+    line-height: 2em;
+    min-width: 580px;
+    list-style: none;
 }
 
 .board-list-bar{
-  display: none;
-  position:relative;
-  z-index: 1;
+    display: none;
+    position:relative;
+    z-index: 1;
 }
 
 .board-btn-list{
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
-
-/* 페이징 표시 css 추가<정섭> */
-ul{
-  list-style: none;
-}
-.page-item {
-  display: inline;
-  border: 1px solid #bcbcbc;
-  padding: 10px;
-  }
 
 /* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
 @media screen and (max-width: 840px){
 
-  .sidebar{
-      display: none;
-  }
+    .sidebar{
+        display: none;
+    }
+
 
   .articlecontainer{
       display: flex;
       flex-direction: column;
       width: 80vw;
   }
-
-
-  .article-list{
-      width: 80vw;
+  .dropdown-menu{
+    display: none;
   }
 
-  .board-list-bar{
-      position:relative;
-      z-index: 1;
-      display: block;
-  }
-  
+    .article-list{
+        width: 80vw;
+    }
+
+    .board-list-bar{
+        position:relative;
+        z-index: 1;
+        display: block;
+    }
+    
 }
-
