@@ -103,17 +103,17 @@
         <div class="menu">
           <ul class="menu-list" style="vertical-align: center;">
             <li class="menu-item"><a href="{{url_for('main')}}"> 홈</a></li>
-            <li class="menu-item">
-              <div class="dropdown" style="padding: 0%; margin: 0">
+            <li class="menu-item" style="text-align: center;">
+              <div class="dropdown" style=" margin: 0; text-align: center; " >
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownBtn" data-bs-auto-close="true" aria-expanded="false"
-                style="background-color: white; color: black; border: 0px; font-size: 20px; margin: 0px; padding: 0px; z-index: -1;">게시판</button>
+                style=" display: flex;  background-color: white; color: black; border: 0px; font-size: 20px; margin: 0px; padding: 0px;">게시판</button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item active" href="">전체 게시판</a>
-                  <a class="dropdown-item" href="#">자유 게시판</a>
+                  <a class="dropdown-item active" style="z-index: 101;" href="http://127.0.0.1:5000/board/brdId%3D1/">자유 게시판</a>
                   <a class="dropdown-item" href="http://127.0.0.1:5000/board/brdId%3D2/">비밀 게시판</a>
-                  <a class="dropdown-item" href="#">정보 게시판</a>
-                  <a class="dropdown-item" href="#">과학 게시판</a>
-                  <a class="dropdown-item" href="#">사회 게시판</a>
+                  <a class="dropdown-item" href="http://127.0.0.1:5000/board/brdId%3D3/">정보 게시판</a>
+                  <a class="dropdown-item" href="http://127.0.0.1:5000/board/brdId%3D4/">과학 게시판</a>
+                  <a class="dropdown-item" href="http://127.0.0.1:5000/board/brdId%3D5/">사회 게시판</a>
+                  <a class="dropdown-item" href="http://127.0.0.1:5000/board/brdId%3D7/">수학 게시판</a>
                 </div>
               </div>
             </li>
@@ -128,7 +128,7 @@
       <!-- 기본 템플릿 안에 삽입될 내용 End -->
     </div>
     <footer class="bottom">
-      <p>footer test</p>
+      <p>이 웹페이지는 새싹에서 수강하는 교육생들이 만든 페이지 입니다. </p>
       <a href="#" class="btn_top"> top button(위치 바꿀거임) </a>
     </footer>
     <script>
