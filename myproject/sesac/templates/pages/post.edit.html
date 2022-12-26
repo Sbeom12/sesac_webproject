@@ -26,30 +26,129 @@
         }
     }
   }
+  $(document).on('click', '#btnSave', function(e){
+		e.preventDefault();
+		$("#form").submit();
+	});
+	
+	$(document).on('click', '#btnList', function(e){
+		e.preventDefault();
+		location.href="${pageContext.request.contextPath}/board/getBoardList";
+	});
+
 </script>
 
-<h2>post.edit.html</h2>
-
+<h2>게시판 수정</h2>
 {% if post_list %} 
-
   {% for p in post_list %}
     <!-- 기존 게시물 편집하기 -->
+    <article>
+      <div class="container" role="main">
+        <form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/saveBoard">
+          <div class="mb-3">
+            <label for="title">제목</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
+          </div>
+  
+          <div class="mb-3">
+            <label for="reg_id">작성자</label>
+            <input type="text" class="form-control" name="reg_id" id="reg_id" placeholder="이름을 입력해 주세요">
+          </div>
+  
+          <div class="mb-3">
+            <label for="content">내용</label>
+            <textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+          </div>
+  
+          <div class="mb-3">
+            <label for="tag">게시판</label>
+                  <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownBtn" data-bs-auto-close="true" aria-expanded="false">해당 게시판</button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item active" href="#">자유게시판 </a>
+                        <a class="dropdown-item" href="#">익명게시판</a>
+                        <a class="dropdown-item" href="#">취업게시판</a>
+                        <a class="dropdown-item" href="#">창업게시판</a>
+                        <a class="dropdown-item" href="#">수학게시판</a>
+                        <a class="dropdown-item" href="#">대회게시판</a>
+                      </div>
+                  </div>
+            </div>
+        </form>
+        <div>
+          <button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
+          <button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+        </div>
+      </div>
+    </article>
     <form
       method="post"
-      action="{{ url_for('post_views.post_save_edit', pstId=p.pstId)}}"
+      action="{{url_for('post_views.post_save_edit', pstId=p.pstId)}}"
       >
-      <div>post.title</div>
-      <input type="text" name="title" id="title" value="{{p.title}}" />
-      <div>p.brdId</div>
+      <div>제목</div>
+      <input type="text" name="title" id="title" value="{{p.title}}"/>
+      <div class="mb-3">
+        <label for="tag">게시판</label>
+              <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle"  type="button" data-toggle="dropdown" id="dropdownBtn" data-bs-auto-close="true" aria-expanded="false">해당 게시판</button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item active" href="#">자유게시판 </a>
+                    <a class="dropdown-item" href="#">익명게시판</a>
+                    <a class="dropdown-item" href="#">취업게시판</a>
+                    <a class="dropdown-item" href="#">창업게시판</a>
+                    <a class="dropdown-item" href="#">수학게시판</a>
+                    <a class="dropdown-item" href="#">대회게시판</a>
+                  </div>
+              </div>
+        </div>
+      <div>게시판</div>
       <input type="text" name="brdId" id="brdId" value="{{p.brdId}}" />
       <div>post.pstCntnt</div>
       <input type="text" name="pstCntnt" id="pstCntnt" value="{{p.pstCntnt}}" />
       <button type="submit">저장하기</button>
-    </form>
   {% endfor %} 
 
 {% else %}
   <!-- 새로운 게시물 작성하기 -->
+  <article>
+    <div class="container" role="main">
+      <form name="form" id="form" role="form" method="post" action="${pageContext.request.contextPath}/board/saveBoard">
+        <div class="mb-3">
+          <label for="title">제목</label>
+          <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
+        </div>
+
+        <div class="mb-3">
+          <label for="reg_id">작성자</label>
+          <input type="text" class="form-control" name="reg_id" id="reg_id" placeholder="이름을 입력해 주세요">
+        </div>
+
+        <div class="mb-3">
+          <label for="content">내용</label>
+          <textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="tag">게시판</label>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownBtn" data-bs-auto-close="true" aria-expanded="false">해당 게시판</button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item active" href="#">자유게시판 </a>
+                      <a class="dropdown-item" href="#">익명게시판</a>
+                      <a class="dropdown-item" href="#">취업게시판</a>
+                      <a class="dropdown-item" href="#">창업게시판</a>
+                      <a class="dropdown-item" href="#">수학게시판</a>
+                      <a class="dropdown-item" href="#">대회게시판</a>
+                    </div>
+                </div>
+          </div>
+      </form>
+      <div>
+        <button type="button" class="btn btn-sm btn-primary" id="btnSave">저장</button>
+        <button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+      </div>
+    </div>
+  </article>
   <form method="post" action="{{ url_for('post_views.post_save_new')}}">
     <div>p.title</div>
     <input type="text"  id="title" name="title" class="clas" onkeydown="enterFunc(event,'title','brdId')" placeholder="제목을 입력해주세요"/>
