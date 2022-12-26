@@ -2,35 +2,31 @@
 
 <script src="{{url_for('static',filename='js/user.login.js') }}"></script>
 
-<h2>user.login.html</h2>
+<main>
+<div class="signin-container">
+  <h1>안녕하세요. <span class="green">새싹커뮤니티</span>입니다.</h1>
+  <div class="signin-form">
+  <form action="{{url_for('user_views.user_login')}}" method="post">
 
-<form action="{{url_for('user_views.user_login')}}" method="post">
-
-  <ul style="list-style: none">
-
-    <li>
-      ID:
       <input
         type="text"
         id="userId"
         name="userId"
         class="clas"
+        placeholder="아이디"
         onkeydown="enterFunc(event,'userId','userPw')"
         onclick="inputClick()"
       />
-    </li>
 
-    <li>
-      PW:
       <input
         type="password"
         id="userPw"
         name="userPw"
         class="clas"
+        placeholder="비밀번호"
         onkeydown="enterFunc(event,'userPw','submit')"
         onclick="inputClick()"
       />
-    </li>
 
   {% for message in get_flashed_messages() %}
     <li id="remv">
@@ -38,12 +34,14 @@
     </li>
   {% endfor %}
 
-  </ul>
+<input type="submit" id="submit" value="Login" onclick="btnClick(event)"/>
 
-  <p><input type="submit" id="submit" value="Login" onclick="btnClick(event)"/></p>
-
-</form>
-
-<p><input type="submit" value="SignUp" onclick="location.href='signup'"/></p>
+  </form>
+  <div class="signup-container">
+    <p><input type="submit" value="SignUp" onclick="location.href='signup'"/></p>
+  </div>
+</div>
+</div>
+</main>
 
 {% endblock %}

@@ -1,9 +1,16 @@
 {% extends '/layouts/base.html' %}
 {% block content %}
 
+
+ <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="{{url_for('static',filename='js/user.signup.js') }}"></script>
 
-
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/signup.css') }}"
+    />
+    
 {% if data=="user"%}
     {% for message in get_flashed_messages() %}
     <script>
@@ -12,47 +19,89 @@
     {% endfor %}
 {% endif %}
 
+<body>
+  <main>
+    <div class="inner">
+        <div class="signup-container">
+            <h1>안녕하세요. <span class="green">새싹커뮤니티</span>입니다.</h1>
+            <div class="signup-form">
+                <form action="{{url_for('user_views.user_signup')}}" method="POST">
+                    <input type="text" placeholder="이름" id="userNm" name="userNm" 
+                    class="clas" onkeydown="enterFunc(event,'userNm','tel')"/>
+                    <div class="userNm-message message">
+                        이름 형식으로 입력해주세요.
+                    </div>
 
+                    <input type="text" placeholder="010-1234-5678" id="tel" name="tel" 
+                    class="clas" onkeydown="enterFunc(event, 'tel', 'email')">
+                    
+                    {% if data=="tel"%}
+                        {% for message in get_flashed_messages() %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <div class="tel-message message">
+                        전화번호 형식으로 입력해주세요.
+                    </div>
 
-<h2>user.signup.html</h2>
+                    <input type="email" placeholder="address@mail.com" id="email" name="email" 
+                    class="clas" onkeydown="enterFunc(event,'email','subNm')"/>
+                    <div class="email-message message">
+                        이메일 형식으로 입력해주세요.
+                    </div>
 
-<form action="{{url_for('user_views.user_signup')}}" method="POST">
+                    <input type="text" placeholder="닉네임" id="subNm" name="subNm" 
+                    class="clas" onkeydown="enterFunc(event,'subNm','userId')"/>
+                    
+                    {% if data=="subNm"%}
+                        {% for message in get_flashed_messages() %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <div class="subNm-message message">
+                        한글 또는 영어 2 ~ 10자로 설정해주세요.
+                    </div>
 
-    <p> Login Form </p>
+                    <input type="text" placeholder="아이디" id="userId" name="userId" 
+                    class="clas" onkeydown="enterFunc(event,'userId','userPw')"/>
+                    
+                    {% if data=="userId"%}
+                        {% for message in get_flashed_messages() %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <div class="userId-message message">
+                        아이디 형식으로 입력해주세요.
+                    </div>
 
-    <ul id="ul" style="list-style:none;">
+                    <input type="password" placeholder="비밀번호" id="userPw" name="userPw" 
+                    class="clas" onkeydown="enterFunc(event,'userPw','pwcheck')" onclick="inputClick()"/>
+                    <div class="password-message message">
+                        영문, 숫자, 특수문자(!@$%^&*)조합 8자 이상 입력
+                    </div>
 
-        <li> 이름 <input type="text" id="userNm" name="userNm" class="clas" onkeydown="enterFunc(event,'userNm','tel')"/></li><br> 
+                    <input type="password" placeholder="비밀번호 확인" id="pwcheck" name="pwcheck" 
+                    class="clas" onkeydown="enterFunc(event,'pwcheck','submit')" onclick="inputClick()"/>
+                    <div class="password-confirm-message message">
+                        비밀번호가 일치하지 않습니다.
+                    </div>
 
-        <li> 전화번호 <input type="text" id="tel" name="tel" class="clas" onkeydown="enterFunc(event,'tel','email')" placeholder="010-0000-0000"/>
-        {% if data=="tel"%}
-            {% for message in get_flashed_messages() %}
-            <script>
-                alert("{{message}}")
-            </script>
-            {% endfor %}
-        {% endif %}
-        </li><br>
+                    <!-- <input type="text" placeholder="닉네임" id="nickname" />
+                    <div class="nickname-message message">
+                        한글 또는 영어 2 ~ 10자로 설정해주세요.
+                    </div> -->
+                    <p><input type="submit" id="submit" value="제출" onclick="btnClick()"/></p>
+                </form>
 
-        <li> 이메일 <input type="email" id="email" name="email" class="clas" onkeydown="enterFunc(event,'email','subNm')" placeholder="address@mail.com"/></li><br>
-
-        <li id="nick" > 닉네임 <input type="text" id="subNm" name="subNm" class="clas" onkeydown="enterFunc(event,'subNm','userId')"  onclick="inputClick(event)"/>
-        <input type="button" value="중복확인" id="dup1" onclick="duplicate()" />
-        </li><br>
-
-        <li id="id"> 아이디 <input type="text" id="userId" name="userId" class="clas" onkeydown="enterFunc(event,'userId','userPw')" onclick="inputClick(event)"/>
-        <input type="button" value="중복확인"id="dup2" onclick="duplicate2()"/>
-        </li><br>
-
-        <li> 비밀번호 <input type="password" id="userPw" name="userPw" class="clas" onkeydown="enterFunc(event,'userPw','pwcheck')" onclick="inputClick()"/></li><br>
-
-        <li id="check"> 비밀번호 확인 <input type="password" id="pwcheck" name="pwcheck" class="clas" onkeydown="enterFunc(event,'pwcheck','submit')" onclick="inputClick()"/></li><br>
-
-    </ul>
-
-    <p><input type="submit" id="submit" value="제출" onclick="btnClick(event)"/></p>
-
-</form>
+                <!-- <input type="button" value="회원가입" id="signup"> -->
+            </div>
+        </div>
+    </div>
+</main>
+</body>
 {% endblock %}
-</html>
+
  

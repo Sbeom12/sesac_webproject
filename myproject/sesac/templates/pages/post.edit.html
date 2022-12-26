@@ -1,5 +1,4 @@
 {% extends '/layouts/base_updown.html' %} {% block content %}
-
 <script src="{{url_for('static',filename='js/user.post.edit.js') }}"></script>
 
 
@@ -34,6 +33,7 @@
             <input type="text" class="form-control" name="reg_id" id="reg_id"  value="{{p.brdId}}" onkeydown="enterFunc(event,'reg_id','content')"/>
           </div>
 
+
           <div class="mb-3">
             <label for="content">내용</label>
             <input type="text" class = "form-control" name="content" id="content" value="{{p.pstCntnt}}" onkeydown="enterFunc(event,'content','btnSave')" style="height:200px;"/>
@@ -53,6 +53,7 @@
 
 <!-- 새로운 게시물 작성하기 -->
 {% else %}
+
 
 <article>
 	<div class="container" role="main">
@@ -92,7 +93,5 @@
     </form>
   </div>
 </article>
-
-
 {% endif %}
 {% endblock %}
