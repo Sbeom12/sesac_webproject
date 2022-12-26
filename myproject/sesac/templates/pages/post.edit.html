@@ -54,7 +54,21 @@
     <div>p.title</div>
     <input type="text"  id="title" name="title" class="clas" onkeydown="enterFunc(event,'title','brdId')" placeholder="제목을 입력해주세요"/>
     <div>p.brdId</div>
-    <input type="text" name="brdId" id="brdId" class="clas" onkeydown="enterFunc(event,'brdId','pstCntnt')" placeholder="게시판을 선택해주세요"/>
+    <select name="boardName">
+      {%if brdId==9999 %}
+        {%for name in data%}
+        <option name = 'brdId' value='{{name.brdId}}' >{{name.brdNm}}</option>
+        {%endfor%}
+      {%else%}
+        {%for name in data %}
+          {%if brdId == name.brdId%}
+          <option name = 'brdId' value='{{name.brdId}}' selected>{{name.brdNm}}</option>
+          {%else%}
+          <option name = 'brdId' value='{{name.brdId}}'>{{name.brdNm}}</option>
+          {%endif%}
+        {%endfor%}
+      {%endif%}
+    </select>
     <div>post.pstCntnt</div>
     <input type="text" name="pstCntnt" id="pstCntnt" class="clas" onkeydown="enterFunc(event,'pstCntnt','submit')" placeholder="내용을 입력해주세요"/>
     <input type="submit" id="submit" value="저장하기" onclick="btnClick()"/></p>
