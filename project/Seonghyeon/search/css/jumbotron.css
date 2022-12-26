@@ -1,0 +1,36 @@
+.jumbotron-item-main {
+    height: 20rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jumbotron-item-main-message {
+    width: 60%;
+    text-align: center;
+}
+
+.jumbotron-item-main-message p {
+    font-size: 1.6rem;
+}
+
+.jumbotron-item-main-message h1 {
+    font-size: 2.4rem;
+}
+
+.jumbotron-item-main-image {
+    width: 40%;
+    height: 100%;
+    /* background-color: black; */
+    /* background-image: url("../img/7112640_harmonious_gesture_teamwork_hand_community_icon\ 2.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain; */
+    background: url("../img/7112640_harmonious_gesture_teamwork_hand_community_icon\ 2.png") no-repeat center / contain;
+}
+
+.jumbotron-item-sub {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.6rem;
+}
