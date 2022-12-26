@@ -66,9 +66,17 @@
         </td>
         <td>
           <a>{{ comment.cmtLikeCnt }}</a>
+          <a
+            href="{{url_for('post_views.like_unlike_click', pstId=comment.cmtId, type='like', post=0)}}"
+            >좋아요</a
+          >
         </td>
         <td>
           <a>{{ comment.cmtUnlikeCnt }}</a>
+          <a
+            href="{{url_for('post_views.like_unlike_click', pstId=comment.cmtId, type='unlike', post=0)}}"
+            >싫어요</a
+          >
         </td>
         <td>
           <a

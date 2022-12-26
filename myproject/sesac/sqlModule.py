@@ -19,7 +19,7 @@ class DBUpdater():
             # cursorclass=cursors.DictCursor
             )
         
-        self.tableList = ['UserInfo', 'Board', 'Post', 'Comment']
+        self.tableList = ['UserInfo', 'Board', 'Post', 'Comment', 'LikeInfo']
         self.cursor = self.conn.cursor()
         self.createTable()
         
@@ -53,7 +53,6 @@ class DBUpdater():
     ###########################################  Create & Delete Date function  ###############################################
     # Table 생성
     def createTable(self):
-        
         # userInfo
         sql = """
                 CREATE TABLE IF NOT EXISTS UserInfo (
@@ -96,9 +95,9 @@ class DBUpdater():
                 
                 pstCrtDate   TIMESTAMP                DEFAULT CURRENT_TIMESTAMP,
                 finalDate    TIMESTAMP                DEFAULT CURRENT_TIMESTAMP,
-                vwCnt        INT                      DEFAULT 1,
-                pstLikeCnt   INT                      DEFAULT 1,
-                pstUnlikeCnt INT                      DEFAULT 1,
+                vwCnt        INT                      DEFAULT 0,
+                pstLikeCnt   INT                      DEFAULT 0,
+                pstUnlikeCnt INT                      DEFAULT 0,
                 
                 PRIMARY KEY(pstId),
                 
@@ -118,16 +117,27 @@ class DBUpdater():
                 cmtCntnt     VARCHAR(255) NOT NULL,
                 cmtCrtDate   TIMESTAMP    NOT NULL   DEFAULT CURRENT_TIMESTAMP,
                 
-                cmtLikeCnt   INT                     DEFAULT 1,
-                cmtUnlikeCnt INT                     DEFAULT 1,
+                cmtLikeCnt   INT                     DEFAULT 0,
+                cmtUnlikeCnt INT                     DEFAULT 0,
 
                 PRIMARY KEY(cmtId),
                 
-                FOREIGN KEY (brdId) REFERENCES Board (brdId) ON UPDATE CASCADE ON DELETE CASCADE,
                 FOREIGN KEY (pstId) REFERENCES Post (pstId) ON UPDATE CASCADE ON DELETE CASCADE,
                 FOREIGN KEY (userId) REFERENCES UserInfo (userId) ON UPDATE CASCADE ON DELETE CASCADE
                 )
             """
+        self.cursor.execute(sql)
+        
+        # * LikeInfo
+        sql = """
+                CREATE TABLE IF NOT EXISTS `LikeInfo` (
+                `pstId` int NOT NULL,
+                `userId` text NOT NULL,
+                `like_cnt` tinyint(1) NOT NULL DEFAULT '0',
+                `unlike_cnt` tinyint(1) DEFAULT '0',
+                `post` tinyint(1) NOT NULL DEFAULT '1'
+                ) ;
+                """
         self.cursor.execute(sql)
         self.conn.commit()
         
@@ -434,38 +444,61 @@ class DBUpdater():
     
     
     def update_pstlikeCnt(self, like, pstId, post=1):
-        try:
+        print('\n\n\n\n')
+        # try:
             # like = 'like'
             # pstId = 45
             # post = 1
             
-            sql = f"""
-            SELECT IFNULL(sum({like}_cnt), 0) as num
-            FROM LikeInfo li 
-            WHERE pstId = {pstId};;"""
-            self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
-            self.cursor.execute(sql)
-            num = self.cursor.fetchall()[0]['num']
-            
-            if like == 'like':
-                like = 'Like'
-            else:
-                like = 'Unlike'
-            
+        sql = f"""
+        SELECT IFNULL(sum({like}_cnt), 0) as num
+        FROM LikeInfo li 
+        WHERE post = {post} AND pstId = {pstId};"""
+        self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+        self.cursor.execute(sql)
+        num = self.cursor.fetchall()[0]['num']
+        print(num)
+        
+        if like == 'like':
+            like = 'Like'
+        else:
+            like = 'Unlike'
+        
+        if post == 1:
             sql = f"""
             UPDATE Post 
             SET pst{like}Cnt = {num}
-            WHERE pstId = {pstId}""";
+            WHERE pstId = {pstId};""";
             print(sql)
             self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
             self.cursor.execute(sql)
             self.conn.commit()
-            print('update_item_type - success')
-            return num
-        except:
-            print('update_item_type - error')
+            print('update_pstlikeCnt - success')
+            id =  pstId
+        else:
+            sql = f"""
+            UPDATE Comment 
+            SET cmt{like}Cnt = {num}
+            WHERE cmtId = {pstId};""";
+            print(sql)
+            self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+            self.cursor.execute(sql)
+            self.conn.commit()
+            print('update_pstlikeCnt - success')
+            
+            sql = f"""
+            SELECT pstId
+            FROM Comment 
+            WHERE cmtId = {pstId};"""
+            self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+            self.cursor.execute(sql)
+            id = self.cursor.fetchall()[0]['pstId']
+        return id
+        # except:
+        #     print('update_pstlikeCnt - error')
     
-    
+
+
     
     
     

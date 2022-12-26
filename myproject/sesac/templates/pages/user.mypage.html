@@ -51,16 +51,30 @@
     <tbody>
       {% if comm_list %} {% for comm in comm_list %}
       <tr>
-        <td>{{ comm.cmtId }}</td>
-        <td>{{ comm.pstId }}</td>
         <td>
-          <a>{{ comm.brdId }}</a>
+          <a href="{{url_for('post_views.post',pstId=comm.pstId)}}"
+            >{{ comm.cmtId }}</a
+          >
         </td>
         <td>
-          <a>{{ comm.cmtCntnt }}</a>
+          <a href="{{url_for('post_views.post',pstId=comm.pstId)}}"
+            >{{ comm.pstId }}</a
+          >
         </td>
         <td>
-          <a>{{ comm.cmtCrtDate }}</a>
+          <a href="{{url_for('post_views.post',pstId=comm.pstId)}}"
+            >{{ comm.brdId }}</a
+          >
+        </td>
+        <td>
+          <a href="{{url_for('post_views.post',pstId=comm.pstId)}}"
+            >{{ comm.cmtCntnt }}</a
+          >
+        </td>
+        <td>
+          <a href="{{url_for('post_views.post',pstId=comm.pstId)}}"
+            >{{ comm.cmtCrtDate }}</a
+          >
         </td>
       </tr>
       {% endfor %} {% else %}
