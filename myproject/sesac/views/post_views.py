@@ -90,16 +90,17 @@ def post_edit(pstId):
 # /post/write
 # 작성하기 버튼 클릭
 # 게시물 새로 작성하기
-@bp.route('/write', methods=('POST', 'GET'))
-def post_write():
+@bp.route('/write/<int:brdId>', methods=('POST', 'GET'))
+def post_write(brdId):
 	print("post_write()")
-    
+	db = DBUpdater()
 	# session의 'username'이 있으면 로그인
 	if "username" in session: 	
 		# 세션이 있는 경우
-
+		data = db.load_board_list()
 		# 특정 게시물 편집 html 불러오기
-		return render_template('pages/post.edit.html')
+		print(data)
+		return render_template('pages/post.edit.html', data = data, brdId=brdId)
 	else:
 		# 세션이 없는 경우
 		print('First Login')
@@ -119,10 +120,12 @@ def post_save_edit(pstId):
 # 작성 저장하기 버튼 클릭
 @bp.route('/save//', methods=('GET', 'POST'))
 def post_save_new():
-	brdId = request.form['reg_id']
+	print('*'*30,request.form)
+	brdId = request.form['boardName']
 	userId = session["username"]
 	title = request.form['title']
-	pstCntnt = request.form['content']
+	pstCntnt = request.form['pstCntnt']
+	print(brdId)
 
 	db = DBUpdater()
 	db.insertPost(brdId, userId, title, pstCntnt)

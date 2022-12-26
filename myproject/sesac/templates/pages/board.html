@@ -71,6 +71,7 @@
         </div>
 <!-- ######################################################################################## -->
 
+
         {% if boards.brdId %} 
           {% for board in boards.board_list %} 
             {% if board.brdId == boards.brdId %}
@@ -80,7 +81,6 @@
               </div>
             {% endif %}
           {% endfor %}
-
         {% else %}
           <div class="article-title-bar">
             <h3>전체 게시판 ({{boards.postCnt['count']}})</h3> 
@@ -110,11 +110,19 @@
         </ul>
 
         {% for page_num in boards.max_page%}
-          <!--<li class="page-item">
-            <a class="page-link" href="?page={{page_num}}">{{page_num}}</a>
-          </li>-->
-            <a href="?page={{page_num}}">{{page_num}}</a>
+
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_num }}">{{page_num}} </a>
+        </li>
         {%endfor%}
+        {%if boards.brdId%}
+        {% for board in boards.board_list %} {% if board.brdId == boards.brdId %}
+        <a href="{{url_for('post_views.post_write', brdId=board.brdId)}}">작성하기</a>
+        {%endif%}
+        {%endfor%}
+        {%else%}
+        <a href="{{url_for('post_views.post_write', brdId=9999)}}">작성하기</a>
+        {%endif%}
       </div>
       <a href="{{url_for('post_views.post_write')}}">작성하기</a>
     </section>
