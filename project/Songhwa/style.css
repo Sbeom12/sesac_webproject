@@ -469,9 +469,46 @@ header{
     margin-bottom: 15px;
 }
 .article-list{
-    line-height: 2em;
     min-width: 580px;
     list-style: none;
+    padding: 0;
+}
+
+.article-list-index{
+    display: flex;
+    justify-content: space-between;
+    vertical-align: center;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #dadada;
+}
+
+.board-index-num{
+    width: 5%;
+}
+.board-index-name{
+    width: 45%;
+}
+
+.board-index-user{
+    width: 20%;
+}
+.board-index-time{
+    width: 20%;
+}
+.board-index-hits{
+    width: 10%;
+}
+
+.article-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 15px;
 }
 
 .board-list-bar{
@@ -483,6 +520,36 @@ header{
 .board-btn-list{
     list-style: none;
     padding: 0;
+}
+
+.board-article-num{
+    width: 5%;
+    text-align: center;
+    font-size: 15px;
+}
+.board-article-name{
+    width: 45%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.board-article-user{
+    width: 20%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+.board-article-time{
+    width: 20%;
+    text-align: center;
+    font-size: 13px;
+}
+.board-article-hits{
+    width: 10%;
+    text-align: center;
+    font-size: 13px;
 }
 
 /* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
@@ -591,6 +658,9 @@ header{
 }
 .myarticle-title{
     width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .myarticle-hits{
     width: 10%;
@@ -652,6 +722,9 @@ header{
 .mycomment-title{
     width: 80%;
     text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .mycomment-time{
     width: 20%;
@@ -730,6 +803,7 @@ header{
     text-decoration: none;
     color: #91E661;
     font-size:9.5pt;}
+
 .quickitem a:hover {
     color:white;
     background-color: #91E661;
