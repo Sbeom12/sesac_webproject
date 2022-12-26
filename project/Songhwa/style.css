@@ -1,3 +1,4 @@
+
 body{
     margin: 0;
     overflow-x: hidden;
@@ -38,6 +39,11 @@ header{
 .navbar-togglebtn{
     display: none;
 }
+
+.navbar-togglebtn{
+    display: none;
+}
+
 
 
 .loginbar-list{
@@ -139,8 +145,8 @@ header{
 /* 테이블 리스트 내부 개체 */
 .board-item{
     background-color: white;
-    height: 200px;
     width: 26vw;
+    height: 250px;
     max-width: 600px;
     min-width: 270px;
     padding-left: 0px;
@@ -156,6 +162,13 @@ header{
     padding-left: 10px;
     padding-bottom: 20px;
     padding-right: 10px;
+    margin-bottom: 20px;
+}
+
+.board-link:link{
+    color: black;
+    text-decoration: none;
+
 }
 
 .board-title-bar{
@@ -163,7 +176,7 @@ header{
     align-items: center;
     justify-content: space-between;
     border-bottom: 2px solid black;
-    margin-bottom: 15px;
+    margin-bottom: 10px;ß
 }
 
 .board-title{
@@ -179,8 +192,58 @@ header{
 
 
 .inner-item{
+    display: flex;
+    justify-content: space-between;
     font-size: 14px;
     line-height: 25px;
+}
+
+.title-inner{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    line-height: 25px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted rgb(140, 140, 140);
+    margin-bottom: 10px;
+}
+
+.title-id{
+    width: 25%;
+    text-align: center;
+}
+
+.title-article{
+    width: 65%;
+    text-align: center;
+}
+
+.title-hits{
+    width: 10%;
+    text-align: center;
+}
+
+.idname{
+    width: 25%;
+    padding-right: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.articletitle{
+    width: 65%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.hits{
+    width: 10%;
+    font-size: 12px;
+    font-weight: bold;
+    color: #aeaeae;
+    text-align: center;
+    vertical-align: center;
 }
 /* footer */
 .bottom{
@@ -215,16 +278,95 @@ header{
         padding-top: 60px;
     }
 
+    /* 버튼 */
+
+
+    .navbar-togglebtn {
+        display: block;
+        position: absolute;
+        padding-left: 10vw;
+        left: 15px;
+        margin: 2px;
+    }
+
+    .navbar-togglebtn,
+    .navbar-togglebtn span {
+        display: inline-block;
+        transition: all .4s;
+        box-sizing: border-box;
+    }
+
+    .navbar-togglebtn {
+        width: 50px;
+        height: 24px;
+    }
+
+    .navbar-togglebtn span {
+        position: absolute;
+        left: 0;
+        width: 33px;
+        height: 4px;
+        background-color: #91E661;
+        border-radius: 4px;
+    }
+
+    .navbar-togglebtn span:nth-of-type(1) {
+        top: 0;
+    }
+
+    .navbar-togglebtn span:nth-of-type(2) {
+        top: 10px;
+    }
+
+    .navbar-togglebtn span:nth-of-type(3) {
+        bottom: 0;
+    }
+
+    /* type-01 */
+    /* 중앙 라인이 고정된 자리에서 투명하게 사라지며 상하라인 회전하며 엑스자 만들기 */
+    .navbar-togglebtn.active-1 span:nth-of-type(1) {
+        -webkit-transform: translateY (20px) rotate (-45deg);
+        transform: translateY(10px) rotate(-45deg);
+    }
+
+    .navbar-togglebtn.active-1 span:nth-of-type(2) {
+        opacity: 0;
+    }
+
+    .navbar-togglebtn.active-1 span:nth-of-type(3) {
+        -webkit-transform: translateY(-10px) rotate(45deg);
+        transform: translateY(-10px) rotate(45deg);
+    }
+
+
+
+
+
     /* 자바스크립트로 추가되는 클래스(메뉴 스크롤) */
     .nav-up{
         top:-60px;
     }
 
+    .
+    .menu{
+        position:relative;
+    }
+    .overlay{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0);
+        z-index: 100;
+        display: none;
+    
+    }
     .menu-list{
         display: none;
         flex-direction: column;
         align-items: center;
+        position:relative;
     }
+
     .menu-item{
         text-align: center;
 
@@ -233,25 +375,37 @@ header{
         width: 100%;
         line-height: 20px;
         background-color: white;
+        position:relative;
+        
     }
     .menu-item:hover{
         background-color: #91E661;
-        border-bottom: 1px solid white;
     }
 
-    .navbar-togglebtn{
-        display: block;
-        position: absolute;
-        padding-left: 10vw;
-        left: 10px;
-        margin: 2px;
-    }
 
     /* active */
     .menu-list.active{
         display: flex;
-    
+        background-color: white;
+        color: black;   
+        opacity: 0.7; 
+        position:relative;
+        animation: dropdown;
+        animation-duration: 500ms;
+        animation-direction: normal;
     }
+
+    @keyframes dropdown {
+        from {
+            opacity: 0;
+            transform: translateY(5px);
+        }
+        to {
+            opacity: 0.7;
+        }
+    }
+
+
 
 
     .board-table{
@@ -265,7 +419,7 @@ header{
     }
     .board-item{
         background-color: white;
-        height: 200px;
+        height: 230px;
         width: 80vw;
         max-width: 600px;
         min-width: 270px;
@@ -273,7 +427,7 @@ header{
         margin-top:20px;
         min-width: 330px;
     }
-    
+
 }
 
 /* ------------ 게시판 페이지 css ------------ */
@@ -304,6 +458,7 @@ header{
 
 .main{
     margin-top:80px;
+    z-index: -1;
 }
 
 .article-title-bar{
@@ -321,6 +476,8 @@ header{
 
 .board-list-bar{
     display: none;
+    position:relative;
+    z-index: 1;
 }
 
 .board-btn-list{
@@ -347,7 +504,271 @@ header{
     }
 
     .board-list-bar{
+        position:relative;
+        z-index: 1;
         display: block;
     }
     
+}
+
+
+/* ------------ 마이 페이지 css ------------ */
+
+.mypage-upper{
+    margin-top: 100px;
+    margin-right: 10vw;
+    margin-left: 10vw;
+    margin-bottom: 80px;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.25em;
+}
+
+.line-1{
+    margin:0;
+    margin-bottom: 10px;
+}
+
+.line-2{
+    margin:0;
+}
+
+.myarticle{
+    margin-right: 10vw;
+    margin-left: 10vw;
+    margin-bottom: 60px;
+}
+
+.myarticle-list{
+    display: none;
+    list-style: none;
+    padding: 0;
+}
+
+.myarticle-list.active{
+    display: block;
+}
+
+.myarticle-bar{
+    background-color: #91E661;
+    color: white;
+    font-weight: 400;
+    padding: 10px;
+    max-width: 80vw;
+}
+
+.index-board{
+    width: 10%;
+}
+.index-title{
+    width: 60%;
+}
+.index-hits{
+    width: 10%;
+}
+.index-time{
+    width: 20%;
+}
+
+.myarticle-index{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.myarticle-item{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.myarticle-board{
+    width: 10%;
+}
+.myarticle-title{
+    width: 60%;
+}
+.myarticle-hits{
+    width: 10%;
+}
+.myarticle-time{
+    width: 20%;
+}
+
+/* ---------------------------- */
+
+
+
+.mycomment{
+    margin-right: 10vw;
+    margin-left: 10vw;
+}
+
+.mycomment-list{
+    display: none;
+    list-style: none;
+    padding: 0;
+}
+
+.mycomment-list.active{
+    display: block;
+}
+
+.mycomment-bar{
+    background-color: #91E661;
+    color: white;
+    font-weight: 400;
+    padding: 10px;
+    max-width: 80vw;
+}
+
+.comment-title{
+    width: 80%;
+}
+.comment-time{
+    width: 20%;
+}
+
+.mycomment-index{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.mycomment-item{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.mycomment-title{
+    width: 80%;
+    text-align: left;
+}
+.mycomment-time{
+    width: 20%;
+}
+
+.mypage-bottom{
+    margin-top: 100px;
+    text-align: end;
+}
+
+.backtomainBtn{
+    height: 42.5px;
+    width: 150px;
+    border: 0px;
+    background-color: #dadada;
+    border-radius: 30px;
+}
+
+.backtomainBtn:hover{
+    background-color:#91E661;
+}
+@media screen and (max-width: 840px){
+    .mypage-upper{
+        margin-top:100px;
+        margin-right: 0;
+        margin-left: 0;
+        font-size:35px;
+    }
+
+    .myarticle{
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .mycomment{
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+/* ------------ 마이 페이지 퀵뷰 ------------ */
+
+.quickmenu{
+    position:absolute;
+    width:120px;
+    top:50%;
+    margin-top:-50px;
+    right:20px;
+    background:#fff;
+}
+
+.quicklist{
+    position:relative;
+    float:left;
+    padding: 0;
+    width:100%;
+    display:inline-block;
+    *display:inline;
+    border:2px solid #91E661;}
+
+.quickitem{
+    float:left;
+    width:100%;
+    text-align:center;
+    font-weight: 500;
+    display:inline-block;
+    *display:inline;}
+
+.quickitem a{
+    position:relative;
+    float:left;
+    width:100%;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    text-decoration: none;
+    color: #91E661;
+    font-size:9.5pt;}
+.quickitem a:hover {
+    color:white;
+    background-color: #91E661;
+}
+.quicklist li:last-child {
+    border-bottom:0;
+}
+
+.adminmenu{
+    display:none;
+}
+
+@media screen and (max-width: 840px){
+    .quickmenu{
+        display: none;
+    }
+    .adminmenu{
+        display:block;
+    }
+    .adminmenulist{
+        display: flex;
+        justify-content: flex-start;
+        padding: 0;
+        list-style: none;
+        margin-bottom: 40px;
+    }
+    .adminmenuitem{
+        font-size: 12px;
+        margin: 7px;
+        text-align: start;
+        background-color: white;
+        padding:10px;
+        border: 2px solid #91E661;
+        border-radius: 20px;
+    }
+
+    .adminmenu a{
+        color: #91E661;
+        font-weight: 700;
+    }
+
 }
