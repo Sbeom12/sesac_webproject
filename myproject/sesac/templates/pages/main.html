@@ -1,4 +1,7 @@
 {% extends '/layouts/base_updown.html' %} {% block content %}
+
+<script src="{{url_for('static',filename='js/post.VwCnt.js') }}"></script>
+
 <!-- baner -->
 <div id="demo" class="carousel slide" data-ride="carousel" style="z-index: 1; position: relative;" >
   <div class="carousel-inner" style= "height: 500px; text-align: center; max-width: 1334px; margin:0 auto;" >
@@ -9,41 +12,50 @@
       <img class="d-block w-100" 
         src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd6GmZ0%2FbtrUrUrJYlY%2F3Je1z9FBgBlhoqnGTA4afk%2Fimg.png"
         alt="First slide"
+
         style = "height: 500px; ">
         <div class="carousel-caption d-none d-md-block">
       </a>
       </div>
+
     </div>
     <div class="carousel-item" data-interval="2000">
       <a href="https://sesac.seoul.kr/course/active/detail.do">
       <img class="d-block w-100"
         src="https://sesac.seoul.kr/storage/image/temp/2022/10/24/I5tKJLpuxbyDvAF26DwA.jpg"
         alt="Second slide"
+
         style = "height: 500px;"
         >
       </a>
+
     </div>
     <div class="carousel-item" data-interval="2000">
       <a href="https://www.jobkorea.co.kr/">
       <img class="d-block w-100"
         src="https://www.mkgsa.org/zbxe/files/attach/images/88/464/245/001/79dad2bf67f11631cc33d0dfcaf6bf9a.jpg"
         alt="Third slide"
+
         style = "height: 500px;">
       </a>
+
     </div>
     <div class="carousel-item" data-interval="2000">
       <a href="https://sesac.seoul.kr/course/active/detail.do">
       <img class="d-block w-100"
         src="https://sesac.seoul.kr/storage/image/temp/2022/10/05/67lEomjeTpe2GqteIfzB.gif"
         alt="Fourth slide"
+
         style = "height: 500px;">
       </a>
+
     </div>
     <div class="carousel-item" data-interval="2000">
       <a href="https://www.jobkorea.co.kr/">
       <img class="d-block w-100"
         src="https://cdn.imweb.me/upload/S20200211c0ce72cb6a932/cd9fb1e59d1cc.png"
         alt="Fifth slide"
+
         style = "height: 500px;">
       </a>
     </div>
@@ -58,7 +70,7 @@
     <!-- <span>Next</span> -->
   </a>
   <!-- / 화살표 버튼 끝 -->
-  <!-- 인디케이터 -->
+     <!-- 인디케이터 -->
   <ul class="carousel-indicators"> <!--0번부터시작-->
     <li data-target="#demo" data-slide-to="0" class="active" style="background-color: rgb(146, 251, 153);"></li> 
     <li data-target="#demo" data-slide-to="1" style="background-color: rgb(146, 251, 153);"></li>
@@ -67,31 +79,61 @@
     <li data-target="#demo" data-slide-to="4" style="background-color: rgb(146, 251, 153);"></li>
   </ul>
   <!-- 인디케이터 끝 -->
-</div>
-<!-- 게시판 -->
-<div class="bodywrapper">
-  <div class="tablewrapper">
-    <div class="board-table">
-      <ul class="board-list">
-        {% for board in board_ls %}
-        <li class="board-item">
-          <!-- 게시판 내부 목록 리스트 -->
-          <ul class="list-inner">
-            <div class="board-title-bar">
-              <h3 class="board-title">{{board.brdNm}}</h3>
-              <a class="btn-more" href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"> 더보기</a>
-            </div>
-            {% for post in post_dict[board.brdId] %}
-            <li class="inner-item"><a href="{{url_for('post_views.post', pstId=post.pstId)}}">{{post.title}}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
-        {% endfor %}
-      </ul>
-    <!-- 게시판 리스트 담은 테이블 끝 -->
+  </div>
+  
+  <!-- 게시판 -->
+  <div class="bodywrapper">
+    <div class="tablewrapper">
+      <div class="board-table">
+        <ul class="board-list">
+          {% for board in board_ls %}
+          <li class="board-item">
+            <!-- 게시판 내부 목록 리스트 -->
+            <ul class="list-inner">
+              <a
+                class="board-link"
+                href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"
+              >
+                <div class="board-title-bar">
+                  <h3 class="board-title">{{board.brdNm}}</h3>
+                  <p
+                    class="btn-more"
+                    href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"
+                  >
+                    더보기
+                  </p>
+                </div>
+              </a>
+
+              <li class ="title-inner">
+                <div class = "title-article">제목</div>
+                <div class = "title-id">작성자</div>
+                <div class = "title-hits">조회</div>
+              </li>
+              
+              {% for post in post_dict[board.brdId] %}
+                <li class="inner-item">
+                 <!-- 조회수 +1 -->
+                 <a
+                 href="javascript:void(0);" 
+                 onclick="lnkClick({{post.pstId}});"
+                 > 
+                  <div class="articletitle"> {{post.title}} </div>
+                  <div class="idname"> {{post.userId}} </div>
+                  <div class="hits"> {{post.vwCnt}} </div>
+                 </a>
+               </li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+        <!-- 게시판 리스트 담은 테이블 끝 -->
     </div>
   </div>
   <!-- bodywrapper 끝 -->
 </div>
+
 <!-- wrapper 끝 -->  
 {% endblock %}
+

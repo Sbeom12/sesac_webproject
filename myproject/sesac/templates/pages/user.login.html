@@ -1,43 +1,47 @@
 {% extends '/layouts/base.html' %} {% block content %}
-<head>
-  <script>
-    function enterFunc(event, id, focus) {
-      data = document.querySelector(`#${id}`);
-      if (event.code == "Enter") {
-        console.log(data.value);
-        event.preventDefault();
-        document.querySelector(`#${focus}`).focus(); // enter 누르면 다음으로 focus 이동
-      }
-    }
-  </script>
-</head>
 
-<body>
-  <main>
-    <div class="signin-container">
-        <h1>안녕하세요. <span class="green">새싹커뮤니티</span>입니다.</h1>
-        <div class="signin-form">
-            <form action="{{url_for('user_views.user_login')}}" method="post">
-              <input type="text" placeholder="아이디" id="userId" name="userId" 
-              onkeydown="enterFunc(event,'userId','userPw')"/>
-              <input type="password" placeholder="비밀번호" id="userPw" name="userPw" 
-              onkeydown="enterFunc(event,'userPw','submit')"/>
-              <input type="submit" value="Login" id="submit">
-            </form>
+<script src="{{url_for('static',filename='js/user.login.js') }}"></script>
 
-            {% for message in get_flashed_messages() %}
-            <div class="alert alert-danger" role="alert">{{ message }}</div>
-            {% endfor %}
+<main>
+<div class="signin-container">
+  <h1>안녕하세요. <span class="green">새싹커뮤니티</span>입니다.</h1>
+  <div class="signin-form">
+  <form action="{{url_for('user_views.user_login')}}" method="post">
 
-            <div class="signup-container">
-                <a href="/sesac_webproject/myproject/sesac/templates/pages/user.signup.html" id="signup">회원가입</a>
-            </div>
-            <!-- signin-container -->
-        </div>
-        <!-- signin-form -->
-    </div>
-    <!-- signin-container -->
+      <input
+        type="text"
+        id="userId"
+        name="userId"
+        class="clas"
+        placeholder="아이디"
+        onkeydown="enterFunc(event,'userId','userPw')"
+        onclick="inputClick()"
+      />
+
+      <input
+        type="password"
+        id="userPw"
+        name="userPw"
+        class="clas"
+        placeholder="비밀번호"
+        onkeydown="enterFunc(event,'userPw','submit')"
+        onclick="inputClick()"
+      />
+
+  {% for message in get_flashed_messages() %}
+    <li id="remv">
+      {{ message }}
+    </li>
+  {% endfor %}
+
+<input type="submit" id="submit" value="Login" onclick="btnClick(event)"/>
+
+  </form>
+  <div class="signup-container">
+    <p><input type="submit" value="SignUp" onclick="location.href='signup'"/></p>
+  </div>
+</div>
+</div>
 </main>
 
-</body>
 {% endblock %}
