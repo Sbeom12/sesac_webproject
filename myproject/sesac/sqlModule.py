@@ -326,7 +326,8 @@ class DBUpdater():
         SELECT *    
         FROM Comment c 
         JOIN UserInfo ui on ui.userId=c.userId
-        WHERE pstId={pstId};'''
+        WHERE pstId={pstId}
+        ORDER BY cmtCrtDate DESC;'''
         self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
         self.cursor.execute(sql)
         data = self.cursor.fetchall()
@@ -357,7 +358,119 @@ class DBUpdater():
             print('del_comm - error')
         
     
+    
+    def existence_item(self, pstId, userId, post=1):
+        try:
+            # pstId = 45
+            # userId = 1
+            # post = 1
+            sql = f"""
+            SELECT count(pstId) as cnt
+            FROM LikeInfo li 
+            WHERE post={post} AND pstId = {pstId} AND userId = \'{userId}\';"""
+            self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+            self.cursor.execute(sql)
+            check = self.cursor.fetchall()[0]['cnt']
+            print('existence_item - success')
+            return check
+        except:
+            print('existence_item - error')
 
+    def insert_item(self, pstId, userId, post=1):
+        try:
+            # pstId = 45
+            # userId = 1
+            # post = 1
+            sql = f"""
+            INSERT INTO LikeInfo (pstId, userId, post)
+            VALUES ({pstId}, '{userId}', {post});"""
+            print(sql)
+            self.cursor.execute(sql)
+            self.conn.commit()
+            print('insert_item - success')
+        except:
+            print('insert_item - error')
+    
+    def update_item_type(self, like, pstId, userId, post=1):
+        print(like, pstId, userId, post)
+        sql = f"""
+            SELECT *
+            FROM LikeInfo li 
+            WHERE post={post} AND pstId = {pstId} AND userId = \'{userId}\';"""
+        print(sql)
+        try:
+            # like = 'like'
+            # pstId = 45
+            # userId = 1
+            # post = 1
+            
+            sql = f"""
+            SELECT *
+            FROM LikeInfo li 
+            WHERE post={post} AND pstId = {pstId} AND userId = \'{userId}\';"""
+            self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+            self.cursor.execute(sql)
+            check = self.cursor.fetchall()[0][f'{like}_cnt']
+            
+            if check == 0:
+                value = 1
+                sql = f"""
+                UPDATE LikeInfo
+                SET {like}_cnt = {value}
+                WHERE post= {post} AND pstId = {pstId} AND userId = {userId}"""
+            else:
+                value = 0
+                sql = f"""
+                UPDATE LikeInfo
+                SET {like}_cnt = {value}
+                WHERE post= {post} AND pstId = {pstId} AND userId = {userId}"""    
+                
+            self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+            self.cursor.execute(sql)
+            self.conn.commit()
+            print('update_item_type - success')
+        except:
+            print('update_item_type - error')
+    
+    
+    def update_pstlikeCnt(self, like, pstId, post=1):
+        try:
+            # like = 'like'
+            # pstId = 45
+            # post = 1
+            
+            sql = f"""
+            SELECT IFNULL(sum({like}_cnt), 0) as num
+            FROM LikeInfo li 
+            WHERE pstId = {pstId};;"""
+            self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+            self.cursor.execute(sql)
+            num = self.cursor.fetchall()[0]['num']
+            
+            if like == 'like':
+                like = 'Like'
+            else:
+                like = 'Unlike'
+            
+            sql = f"""
+            UPDATE Post 
+            SET pst{like}Cnt = {num}
+            WHERE pstId = {pstId}""";
+            print(sql)
+            self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+            self.cursor.execute(sql)
+            self.conn.commit()
+            print('update_item_type - success')
+            return num
+        except:
+            print('update_item_type - error')
+    
+    
+    
+    
+    
+    
+    
 
     # Table 출력1 (Pandas DataFrame)
     def exetractDF(self, table):
@@ -565,4 +678,5 @@ class DBUpdater():
 if __name__ == "__main__":
     print("\n실행 완료\n")
     x = DBUpdater()
-    x.__del__
+    print(x.existence_item(45, 1))
+    # x.__del__

@@ -14,9 +14,17 @@
   <ul>
     {% for key, value in post.items() %}
     <li>
-      <a>{{key}} - {{value}}</a>
+      <a id="{{key}}">{{key}} - {{value}}</a>
     </li>
     {% endfor %}
+    <a
+      href="{{url_for('post_views.like_unlike_click', pstId=post.pstId, type='like', post=1)}}"
+      >좋아요</a
+    >
+    <a
+      href="{{url_for('post_views.like_unlike_click', pstId=post.pstId, type='unlike', post=1)}}"
+      >싫어요</a
+    >
   </ul>
   {% endfor %} {% else %}
   <p>post_list가 없습니다.</p>
@@ -54,7 +62,7 @@
           <a>{{ comment.cmtCntnt }}</a>
         </td>
         <td>
-          <a>{{ comment.cmtCrtDate }}</a>
+          <a>{{ comment.cmtCrtDate.strftime('%Y-%m-%d')}}</a>
         </td>
         <td>
           <a>{{ comment.cmtLikeCnt }}</a>

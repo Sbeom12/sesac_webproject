@@ -101,7 +101,7 @@ def post_write():
 		# 특정 게시물 편집 html 불러오기
 		return render_template('pages/post.edit.html')
 	else:
-		# 세션이 없는 경우
+		# 세션이 없는 경우'
 		print('First Login')
 		return "로그인 해주세요. <br><a href = '/user/login'> 로그인 하러가기! </a>"
 
@@ -116,7 +116,7 @@ def post_save_edit(pstId):
     # return redirect(url_for('post_views.post', pstId=pstId))
 
 # 작성 저장하기 버튼 클릭
-@bp.route('/save//', methods=('GET', 'POST'))
+@bp.route('/save/', methods=('GET', 'POST'))
 def post_save_new():
 	brdId = request.form['brdId']
 	userId = session["username"]
@@ -128,4 +128,45 @@ def post_save_new():
 
 
 	return redirect(url_for('board_views.board_boardID', brdId=brdId))
+    # return redirect(url_for('post_views.post', pstId=pstId))
+    
+
+# 작성 저장하기 버튼 클릭
+@bp.route('/like/<pstId>/<type>/<post>', methods=('GET', 'POST'))
+def like_unlike_click(pstId, type, post):
+	"""
+	Args:
+		pstId (_type_): _description_
+		type (_type_): like or unlike
+		post (int, optional): _description_. Defaults to 1.
+	"""
+	# data = request.args.get('data')
+	# print(data)
+	# # type, pstId, post = data.split('/')
+	post = int(post)
+	pstId = int(pstId)
+	print('like_unlike_click', pstId, type, post)
+	# try:
+	if "username" in session:
+		# 존재하면 로직 진행
+		db = DBUpdater()
+		# 해당 게시물에 대한 좋아요 싫어요 row가 있는지 확인
+		if db.existence_item(pstId, session['username'], post) == 0:
+			# 없으면 insert 기본 값
+			db.insert_item(pstId, session['username'], post)
+
+		# 해당 type(like or unlike)이 False 이면 : True로 변경
+		# 해당 type이 True 이면 : False로 변경
+		db.update_item_type(type, pstId, session['username'], post)
+
+		# 해당 pstId의 sum(like) 값을 Post의 pstLikeCnt으로 업데이트
+		db.update_pstlikeCnt(type, pstId, post)
+		return redirect(url_for('post_views.post', pstId=pstId))
+	else:
+		# 세션이 없는 경우'
+		print('First Login')
+		return "로그인 해주세요. <br><a href = '/user/login'> 로그인 하러가기! </a>"
+	# except:
+	# 	return redirect(url_for('post_views.post', pstId=pstId))
+
     # return redirect(url_for('post_views.post', pstId=pstId))

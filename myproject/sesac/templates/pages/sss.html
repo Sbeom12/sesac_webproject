@@ -1,0 +1,64 @@
+<div>
+  <div>title</div>
+  <div class="post_session">
+    <div class="column">
+      <div>brdId - 1</div>
+      <div>userId - 1</div>
+      <div>finalDate - 2022-12-23 18:35:36</div>
+    </div>
+  </div>
+  <div class="comment_session">
+    <div class="comm_add">
+      <form
+        method="post"
+        action="{{url_for('comment_views.comment_add', pstId=post_list[0].pstId)}}"
+      >
+        <input name="cmtCntnt" type="text" />
+        <button type="submit">추가하기</button>
+      </form>
+    </div>
+    <table class="table">
+      <thead>
+        <tr class="table-dark">
+          <th>userId</th>
+          <th>cmtCntnt</th>
+          <th>cmtCrtDate</th>
+          <th>cmtLikeCnt</th>
+          <th>cmtUnlikeCnt</th>
+          <th>기능</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if comment_list %} {% for comment in comment_list %}
+        <tr>
+          <td>
+            <a>{{ comment.subNm }}</a>
+          </td>
+          <td>
+            <a>{{ comment.cmtCntnt }}</a>
+          </td>
+          <td>
+            <a>{{ comment.cmtCrtDate.strftime('%Y-%m-%d')}}</a>
+          </td>
+          <td>
+            <a>{{ comment.cmtLikeCnt }}</a>
+          </td>
+          <td>
+            <a>{{ comment.cmtUnlikeCnt }}</a>
+          </td>
+          <td>
+            <a
+              href="{{url_for('comment_views.comment_del', cmtId=comment.cmtId)}}"
+              >삭제하기</a
+            >
+          </td>
+        </tr>
+        {% endfor %} {% else %}
+        <tr>
+          <td colspan="6">comment_list가 없습니다.</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+</div>
