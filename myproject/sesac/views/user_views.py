@@ -120,7 +120,7 @@ def user_logout():
     else:
         print(session) 
     # pages/main.html 반환
-    return render_template('pages/main.html')
+    return redirect(url_for('main'))
 
 ################################################################################################################################################
 
