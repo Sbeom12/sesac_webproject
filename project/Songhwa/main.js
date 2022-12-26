@@ -91,3 +91,42 @@ function hasScrolled() {
 $(".btn_top").click(function() {
     $('html,body').scrollTop(0);
 });
+
+
+// --------------------------------------
+
+// 마이페이지
+
+const articleBtn = document.querySelector('.article-btn');
+const myarticle = document.querySelector('.myarticle-list')
+
+articleBtn.addEventListener('click', () => {
+    myarticle.classList.toggle('active'); 
+});
+
+$('.overlay').on('click', function () {
+    $(myarticle).removeClass('active');
+});
+
+
+const commentBtn = document.querySelector('.comment-btn');
+const mycomment = document.querySelector('.mycomment-list')
+
+commentBtn.addEventListener('click', () => {
+    mycomment.classList.toggle('active'); 
+});
+
+$('.overlay').on('click', function () {
+    $(mycomment).removeClass('active');
+});
+
+
+// 퀵메뉴
+
+$(document).ready(function(){
+    var currentPosition = parseInt($(".quickmenu").css("top"));
+    $(window).scroll(function() {
+    var position = $(window).scrollTop(); 
+    $(".quickmenu").stop().animate({"top":position+currentPosition+"px"},1000);
+    });
+});

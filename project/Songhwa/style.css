@@ -469,9 +469,46 @@ header{
     margin-bottom: 15px;
 }
 .article-list{
-    line-height: 2em;
     min-width: 580px;
     list-style: none;
+    padding: 0;
+}
+
+.article-list-index{
+    display: flex;
+    justify-content: space-between;
+    vertical-align: center;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #dadada;
+}
+
+.board-index-num{
+    width: 5%;
+}
+.board-index-name{
+    width: 45%;
+}
+
+.board-index-user{
+    width: 20%;
+}
+.board-index-time{
+    width: 20%;
+}
+.board-index-hits{
+    width: 10%;
+}
+
+.article-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 15px;
 }
 
 .board-list-bar{
@@ -483,6 +520,36 @@ header{
 .board-btn-list{
     list-style: none;
     padding: 0;
+}
+
+.board-article-num{
+    width: 5%;
+    text-align: center;
+    font-size: 15px;
+}
+.board-article-name{
+    width: 45%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.board-article-user{
+    width: 20%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+.board-article-time{
+    width: 20%;
+    text-align: center;
+    font-size: 13px;
+}
+.board-article-hits{
+    width: 10%;
+    text-align: center;
+    font-size: 13px;
 }
 
 /* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
@@ -509,4 +576,273 @@ header{
         display: block;
     }
     
+}
+
+
+/* ------------ 마이 페이지 css ------------ */
+
+.mypage-upper{
+    margin-top: 100px;
+    margin-right: 10vw;
+    margin-left: 10vw;
+    margin-bottom: 80px;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.25em;
+}
+
+.line-1{
+    margin:0;
+    margin-bottom: 10px;
+}
+
+.line-2{
+    margin:0;
+}
+
+.myarticle{
+    margin-right: 10vw;
+    margin-left: 10vw;
+    margin-bottom: 60px;
+}
+
+.myarticle-list{
+    display: none;
+    list-style: none;
+    padding: 0;
+}
+
+.myarticle-list.active{
+    display: block;
+}
+
+.myarticle-bar{
+    background-color: #91E661;
+    color: white;
+    font-weight: 400;
+    padding: 10px;
+    max-width: 80vw;
+}
+
+.index-board{
+    width: 10%;
+}
+.index-title{
+    width: 60%;
+}
+.index-hits{
+    width: 10%;
+}
+.index-time{
+    width: 20%;
+}
+
+.myarticle-index{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.myarticle-item{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.myarticle-board{
+    width: 10%;
+}
+.myarticle-title{
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.myarticle-hits{
+    width: 10%;
+}
+.myarticle-time{
+    width: 20%;
+}
+
+/* ---------------------------- */
+
+
+
+.mycomment{
+    margin-right: 10vw;
+    margin-left: 10vw;
+}
+
+.mycomment-list{
+    display: none;
+    list-style: none;
+    padding: 0;
+}
+
+.mycomment-list.active{
+    display: block;
+}
+
+.mycomment-bar{
+    background-color: #91E661;
+    color: white;
+    font-weight: 400;
+    padding: 10px;
+    max-width: 80vw;
+}
+
+.comment-title{
+    width: 80%;
+}
+.comment-time{
+    width: 20%;
+}
+
+.mycomment-index{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.mycomment-item{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.mycomment-title{
+    width: 80%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mycomment-time{
+    width: 20%;
+}
+
+.mypage-bottom{
+    margin-top: 100px;
+    text-align: end;
+}
+
+.backtomainBtn{
+    height: 42.5px;
+    width: 150px;
+    border: 0px;
+    background-color: #dadada;
+    border-radius: 30px;
+}
+
+.backtomainBtn:hover{
+    background-color:#91E661;
+}
+@media screen and (max-width: 840px){
+    .mypage-upper{
+        margin-top:100px;
+        margin-right: 0;
+        margin-left: 0;
+        font-size:35px;
+    }
+
+    .myarticle{
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .mycomment{
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+/* ------------ 마이 페이지 퀵뷰 ------------ */
+
+.quickmenu{
+    position:absolute;
+    width:120px;
+    top:50%;
+    margin-top:-50px;
+    right:20px;
+    background:#fff;
+}
+
+.quicklist{
+    position:relative;
+    float:left;
+    padding: 0;
+    width:100%;
+    display:inline-block;
+    *display:inline;
+    border:2px solid #91E661;}
+
+.quickitem{
+    float:left;
+    width:100%;
+    text-align:center;
+    font-weight: 500;
+    display:inline-block;
+    *display:inline;}
+
+.quickitem a{
+    position:relative;
+    float:left;
+    width:100%;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    text-decoration: none;
+    color: #91E661;
+    font-size:9.5pt;}
+
+.quickitem a:hover {
+    color:white;
+    background-color: #91E661;
+}
+.quicklist li:last-child {
+    border-bottom:0;
+}
+
+.adminmenu{
+    display:none;
+}
+
+@media screen and (max-width: 840px){
+    .quickmenu{
+        display: none;
+    }
+    .adminmenu{
+        display:block;
+    }
+    .adminmenulist{
+        display: flex;
+        justify-content: flex-start;
+        padding: 0;
+        list-style: none;
+        margin-bottom: 40px;
+    }
+    .adminmenuitem{
+        font-size: 12px;
+        margin: 7px;
+        text-align: start;
+        background-color: white;
+        padding:10px;
+        border: 2px solid #91E661;
+        border-radius: 20px;
+    }
+
+    .adminmenu a{
+        color: #91E661;
+        font-weight: 700;
+    }
+
 }
