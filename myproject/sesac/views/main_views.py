@@ -14,11 +14,9 @@ def grid():
 
     db = DBUpdater()
     board_ls = db.load_board_list()
-    # print(board_ls)
     
     post_dict = {}
     for board in board_ls:
-        # print("erhbfrejhglewkjrberkbl", board)
         brdId = board['brdId']
         post_dict[brdId] = db.load_post_brdId_list(brdId)[:5]
     

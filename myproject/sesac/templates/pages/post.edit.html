@@ -1,12 +1,10 @@
 {% extends '/layouts/base_updown.html' %} {% block content %}
+
 <script src="{{url_for('static',filename='js/user.post.edit.js') }}"></script>
-
-
 <!-- 
       brdId => reg_id 
       pstCntnt = > content
 -->
-
 
 <!-- 기존 게시물 편집하기 -->
 {% if post_list %} 
@@ -33,10 +31,13 @@
             <input type="text" class="form-control" name="reg_id" id="reg_id"  value="{{p.brdId}}" onkeydown="enterFunc(event,'reg_id','content')"/>
           </div>
 
-
           <div class="mb-3">
             <label for="content">내용</label>
-            <input type="text" class = "form-control" name="content" id="content" value="{{p.pstCntnt}}" onkeydown="enterFunc(event,'content','btnSave')" style="height:200px;"/>
+            <textarea rows="10"
+            class = "form-control" name="content" id="content"
+            onkeypress="onkeyenter()"
+            onkeydown="enterFunc(event,'content','btnSave')"
+            placeholder="내용을 입력해 주세요">{{p.pstCntnt}}</textarea>
           </div>
 
           <br><br>
@@ -58,7 +59,9 @@
 	<div class="container" role="main">
     <h2>글 작성</h2>
     <br><br>
-    <form method="post" 
+
+    <form 
+    method="post" 
     name="form"
     id="form"
     role="form"
@@ -72,27 +75,16 @@
 
       <div class="mb-3">
         <label for="reg_id">게시판 종류</label>
-         <select name="boardName">
-      {%if brdId==9999 %}
-        {%for name in data%}
-        <option name = 'brdId' value='{{name.brdId}}' >{{name.brdNm}}</option>
-        {%endfor%}
-      {%else%}
-        {%for name in data %}
-          {%if brdId == name.brdId%}
-          <option name = 'brdId' value='{{name.brdId}}' selected>{{name.brdNm}}</option>
-          {%else%}
-          <option name = 'brdId' value='{{name.brdId}}'>{{name.brdNm}}</option>
-          {%endif%}
-        {%endfor%}
-      {%endif%}
-    </select>
-        
+        <input type="text" class="form-control" name="reg_id" id="reg_id" onkeydown="enterFunc(event,'reg_id','content')" placeholder="게시판 종류를 입력해 주세요">
       </div>
 
       <div class="mb-3">
         <label for="content">내용</label>
-        <input type="text" class = "form-control" name="content" id="content" onkeydown="enterFunc(event,'content','btnSave')" placeholder="내용을 입력해 주세요" style="height:200px;"/>
+        <textarea rows="10"
+        class = "form-control" name="content" id="content"
+        onkeypress="onkeyenter()"
+        onkeydown="enterFunc(event,'content','btnSave')"
+        placeholder="내용을 입력해 주세요"></textarea>
       </div>
       <br><br>
       <div>
@@ -103,6 +95,7 @@
     </form>
   </div>
 </article>
+
 
 {% endif %}
 {% endblock %}

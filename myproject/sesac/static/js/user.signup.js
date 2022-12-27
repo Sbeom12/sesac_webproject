@@ -1,5 +1,6 @@
 function enterFunc(event, id, focus){
 
+    console.log("여기 여기 여기 여기 여기 보세요")
     data = document.querySelector(`#${id}`)
 
     if(event.code=="Enter"){
@@ -41,7 +42,6 @@ function dropDulp(pwCheckValue){
 }
 
 function btnClick(event){
-    
     i=0
     clas = document.querySelectorAll(".clas")
     for(i=0; i<=6; i++){
@@ -53,7 +53,7 @@ function btnClick(event){
 
 function inputClick(){
 
-    //console.log("클릭 클릭")
+    console.log("클릭 클릭")
     p = document.querySelector("#new")
     if(p){
         p.remove()
@@ -62,6 +62,7 @@ function inputClick(){
 
 function duplicate(event){
     subNm = document.querySelector("#subNm").value
+    console.log("여기 여기", subNm)
     
     if(subNm.length==0){
         event.preventDefault()
@@ -102,7 +103,7 @@ function duplicate(event){
 
 function duplicate2(event){
     userId = document.querySelector("#userId").value
-
+    console.log("여기 여기", userId)
     if(userId.length==0){
         event.preventDefault()
     }

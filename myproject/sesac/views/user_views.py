@@ -9,7 +9,7 @@ from ..sqlModule import DBUpdater
 
 bp = Blueprint('user_views', __name__, url_prefix='/user')
 db = DBUpdater()
-
+board_ls = db.load_board_list()
 
 # User 회원가입 (/user/signup)
 @bp.route('/signup', methods=('GET', 'POST'))
@@ -25,16 +25,12 @@ def user_signup():
         subNm = result['subNm']
         userId = result['userId']
         
-        print("ajhfblaeihjrlwajhf", subNm)
-        
         # 이미 존재하는 date인지 확인하기 위해 db에서 date 출력
         db = DBUpdater()
         
         newTel = db.extractWhere("tel", "UserInfo", "tel", tel)
         newSubNm = db.extractWhere("subNm", "UserInfo", "subNm", subNm)
         newUserId = db.extractWhere("userId", "UserInfo", "userId", userId)
-        
-        print("ajhfblaeihjrlwajhf", newSubNm)
         
         # 만약 기존에 있는 계정이라면 다시 signup page 반환
             # ! : 기존에 있었던 정보인지 user에게 알려줄 방법_ flash로
@@ -81,7 +77,7 @@ def fetch():
 def fetch2():
     if request.method == 'POST':
         result = request.get_json()["userId"]
-        print(result)
+        print("userId",result)
         newResult = db.extractWhere("userId", "UserInfo", "userId", result)
         
         if(result == newResult):
@@ -123,7 +119,7 @@ def user_login():
             session['grade'] = grade
             
             print("User Session: ", session)
-            return redirect(url_for('main'))
+            return redirect(url_for('main', board_ls=board_ls))
         
             # 없는 정보거나 정보가 일치하지 않을 경우 다시 pages/user.login.html 반환
         else:
@@ -162,8 +158,11 @@ def user_mypage():
         db = DBUpdater()
         post_list = db.load_post_userId_list(session['userId'])
         comm_list = db.load_comm_userId_list(session['userId'])
+        print(post_list)
+        print("\n\n\n\n\n\n\n")
+        print(comm_list)
         
-        return render_template('pages/user.mypage.html', post_list=post_list, comm_list=comm_list)
+        return render_template('pages/user.mypage.html', post_list=post_list, comm_list=comm_list, board_ls=board_ls)
     else:
         # session에 'userId'가 없으면 pages/user.login.html 반환
         return "로그인 해주세요. <br><a href = '/user/login'> 로그인 하러가기 </a>"

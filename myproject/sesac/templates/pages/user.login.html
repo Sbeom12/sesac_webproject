@@ -2,46 +2,70 @@
 
 <script src="{{url_for('static',filename='js/user.login.js') }}"></script>
 
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/footer.css') }}"
+/>
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/header.css') }}"
+/>
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/signin.css') }}"
+/>
+
 <main>
-<div class="signin-container">
-  <h1>안녕하세요. <span class="green">새싹커뮤니티</span>입니다.</h1>
-  <div class="signin-form">
-  <form action="{{url_for('user_views.user_login')}}" method="post">
+  <div class="signin-container">
 
-      <input
-        type="text"
-        id="userId"
-        name="userId"
-        class="clas"
-        placeholder="아이디"
-        onkeydown="enterFunc(event,'userId','userPw')"
-        onclick="inputClick()"
-      />
-
-      <input
-        type="password"
-        id="userPw"
-        name="userPw"
-        class="clas"
-        placeholder="비밀번호"
-        onkeydown="enterFunc(event,'userPw','submit')"
-        onclick="inputClick()"
-      />
-
-  {% for message in get_flashed_messages() %}
-    <li id="remv">
+    <h1><span class="green">Sign In</span></h1>
+    <br>
+    
+    {% for message in get_flashed_messages() %}
+    <p id="remv">
       {{ message }}
-    </li>
-  {% endfor %}
+    </p>
+    {% endfor %}
 
-<input type="submit" id="submit" value="Login" onclick="btnClick(event)"/>
+    <div class="signin-form">
 
-  </form>
-  <div class="signup-container">
-    <p><input type="submit" value="Sign up" style="padding:0%; margin:auto; text-align: center;"  onclick="location.href='signup'"/></p>
+      <form action="{{url_for('user_views.user_login')}}" method="post">
+
+          <input
+            type="text"
+            id="userId"
+            name="userId"
+            class="clas"
+            placeholder="아이디"
+            onkeydown="enterFunc(event,'userId','userPw')"
+            onclick="inputClick()"
+          />
+
+          <input
+            type="password"
+            id="userPw"
+            name="userPw"
+            class="clas"
+            placeholder="비밀번호"
+            onkeydown="enterFunc(event,'userPw','submit')"
+            onclick="inputClick()"
+          />
+
+      <input type="submit" id="submit" value="Login" onclick="btnClick(event)"/>
+
+      </form>
+
+      <div class="signin-form">
+          <input 
+          type="submit" 
+          id="submit"
+          value="Sign up" 
+          style="padding:0%; margin:auto; text-align: center; background: gray;"  
+          onclick="location.href='signup'"/>
+      </div>
+
+    </div>
   </div>
-</div>
-</div>
 </main>
 
 {% endblock %}

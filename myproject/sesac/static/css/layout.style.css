@@ -13,6 +13,17 @@ a:visited{
     color: black;
 }
 
+.menu-item  a:hover{
+    color: #76b355;
+}
+
+.board-table a:hover{
+    color: #76b355;
+}
+.board-bodywrapper a:hover{
+    color: #76b355;
+}
+
 .wrapper{
     height: auto;
     min-height: 100%;
@@ -20,16 +31,15 @@ a:visited{
     padding-top: 114px;
 }
 
-
 header{
     position: fixed;
+    z-index: 101;
     top:0;
     left:0;
     width: 100%;
     height: 114px;
     background-color: white;
     transition: top 0.2s ease-in-out;
-    z-index: 100;
 }
 
 /* 자바스크립트로 추가되는 클래스(메뉴 스크롤) */
@@ -62,19 +72,20 @@ header{
 .loginbar-item{
     display: inline-block;
     margin: 2px;
+    margin-top: 10px;
 }
 
 .btn-login{
-    background-color: #91E661;
+    background-color: #76b355;
     border: 0;
     border-radius: 2px;
-    padding-top: 3px;
+    padding-top: 3x;
     padding-bottom: 3px;
     font-size: 12px;
 }
 
 .btn-login:hover{
-    background-color: #CFFC5D;
+    background-color: #bde852;
 }
 
 .btn-sign{
@@ -115,11 +126,10 @@ header{
     width: 100vw;
 }
 .imagecontainer{
-    height: 400px;
+    height: 360px;
     background-image: url("bannertest.png");
     background-size:cover;
-    background-repeat: no-repeat;
-    
+    background-repeat: no-repeat;    
 }
 
 
@@ -136,17 +146,15 @@ header{
 .board-table{
     margin-top: 70px;
     max-width: 1353px;
-
 }
 
 /* 테이블 리스트 */
-
-.board-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.board-list{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 /* 테이블 리스트 내부 개체 */
@@ -225,25 +233,10 @@ header{
     text-align: center;
 }
 
-
 .title-hits{
     width: 30%;
     text-align: center;
-
-
-/* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
-@media screen and (max-width: 840px) {
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background-color: white;
-    transition: top 0.2s ease-in-out;
-    z-index: 100;
-  }
-
+}
 
 .articletitle{
     width: 60%;
@@ -262,29 +255,8 @@ header{
     text-overflow: ellipsis;
 }
 
-
-  .hits{
+.hits{
     width: 30%;
-  .menu{
-    z-index: 1000;
-    position:relative;
-  }
-  .overlay{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgb(0,0,0,0.7);
-    z-index: 998;
-    display: none;
-  }
-  .menu-list{
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    z-index: 999;
-    position:relative;
-  }
-  .menu-item{
     text-align: center;
     font-size: 12px;
     font-weight: bold;
@@ -300,25 +272,10 @@ header{
     background-color: #dadada;
 }
 
-  .navbar-togglebtn{
-    display: block;
-    position: absolute;
-    padding-left: 10vw;
-    left: 10px;
-    margin: 2px;
-  }
-  .dropdown-menu{
-    display: none;
-    justify-content: center;
-  }
-  /* active */
-  /* active가 지금 z-index 안 먹는 상태임... */
-  .menu-list.active{
-    display: flex;
-    color: black;    
-    z-index: 999;
-    position:relative;
-  }
+.btn-top{
+   /* 위치 수정 예정 */
+}
+
 
 /* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
 @media screen and (max-width: 840px){
@@ -353,7 +310,7 @@ header{
         position: fixed;
         width: 100%;
         height: 100%;
-        background: rgb(0,0,0,0.7)
+        background: rgb(0,0,0,0.7);
         z-index: 998;
         display: none;
     
@@ -367,7 +324,6 @@ header{
     }
     .menu-item{
         text-align: center;
-
         padding: 10px;
         font-size: 17px;
         width: 100%;
@@ -377,9 +333,7 @@ header{
         position:relative;
         
     }
-    .menu-item:hover{
-        background-color: #91E661;
-    }
+
 
     .navbar-togglebtn{
         display: block;
@@ -446,7 +400,6 @@ header{
     list-style: none;
 }
 
-
 .main{
     margin-top:80px;
 }
@@ -464,6 +417,48 @@ header{
     list-style: none;
 }
 
+.article-list-index{
+    display: flex;
+    justify-content: space-between;
+    vertical-align: center;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #dadada;
+}
+
+.board-index-num{
+    width: 5%;
+    text-align: center;
+}
+.board-index-name{
+    width: 45%;
+    text-align: center;
+}
+
+.board-index-user{
+    width: 20%;
+    text-align: center;
+}
+.board-index-time{
+    width: 20%;
+    text-align: center;
+}
+.board-index-hits{
+    width: 10%;
+    text-align: center;
+}
+
+.article-item a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
 .board-list-bar{
     display: none;
     position:relative;
@@ -475,6 +470,41 @@ header{
     padding: 0;
 }
 
+.board-article-num{
+    width: 5%;
+    text-align: center;
+    font-size: 15px;
+    text-align: center;
+}
+.board-article-name{
+    width: 45%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.board-article-user{
+    width: 20%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    text-align: center;
+}
+.board-article-time{
+    width: 20%;
+    text-align: center;
+    font-size: 13px;
+    text-align: center;
+}
+.board-article-hits{
+    width: 10%;
+    text-align: center;
+    font-size: 13px;
+    text-align: center;
+}
+
 /* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
 @media screen and (max-width: 840px){
 
@@ -482,15 +512,12 @@ header{
         display: none;
     }
 
+    .articlecontainer{
+        display: flex;
+        flex-direction: column;
+        width: 80vw;
+    }
 
-  .articlecontainer{
-      display: flex;
-      flex-direction: column;
-      width: 80vw;
-  }
-  .dropdown-menu{
-    display: none;
-  }
 
     .article-list{
         width: 80vw;
@@ -502,4 +529,265 @@ header{
         display: block;
     }
     
+}
+
+/* ------------ 마이 페이지 css ------------ */
+
+.mypage-upper{
+    margin-top: 100px;
+    margin-right: 10vw;
+    margin-left: 10vw;
+    margin-bottom: 80px;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.25em;
+}
+
+.line-1{
+    margin:0;
+    margin-bottom: 10px;
+}
+
+.line-2{
+    margin:0;
+}
+
+.myarticle{
+    margin-right: 10vw;
+    margin-left: 10vw;
+    margin-bottom: 60px;
+}
+
+.myarticle-list{
+    display: none;
+    list-style: none;
+    padding: 0;
+}
+
+.myarticle-list.active{
+    display: block;
+}
+
+.myarticle-bar{
+    background-color: #91E661;
+    color: white;
+    font-weight: 400;
+    padding: 10px;
+    max-width: 80vw;
+}
+
+.index-board{
+    width: 10%;
+}
+.index-title{
+    width: 60%;
+}
+.index-hits{
+    width: 10%;
+}
+.index-time{
+    width: 20%;
+}
+
+.myarticle-index{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.myarticle-item{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.myarticle-board{
+    width: 10%;
+}
+.myarticle-title{
+    width: 60%;
+}
+.myarticle-hits{
+    width: 10%;
+}
+.myarticle-time{
+    width: 20%;
+}
+
+/* ---------------------------- */
+
+
+
+.mycomment{
+    margin-right: 10vw;
+    margin-left: 10vw;
+}
+
+.mycomment-list{
+    display: none;
+    list-style: none;
+    padding: 0;
+}
+
+.mycomment-list.active{
+    display: block;
+}
+
+.mycomment-bar{
+    background-color: #91E661;
+    color: white;
+    font-weight: 400;
+    padding: 10px;
+    max-width: 80vw;
+}
+
+.comment-title{
+    width: 80%;
+}
+.comment-time{
+    width: 20%;
+}
+
+.mycomment-index{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.mycomment-item{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.mycomment-title{
+    width: 80%;
+    text-align: left;
+}
+.mycomment-time{
+    width: 20%;
+}
+
+.mypage-bottom{
+    margin-top: 100px;
+    text-align: end;
+}
+
+.backtomainBtn{
+    height: 42.5px;
+    width: 150px;
+    border: 0px;
+    background-color: #dadada;
+    border-radius: 30px;
+}
+
+.backtomainBtn:hover{
+    background-color:#91E661;
+}
+@media screen and (max-width: 840px){
+    .mypage-upper{
+        margin-top:100px;
+        margin-right: 0;
+        margin-left: 0;
+        font-size:35px;
+    }
+
+    .myarticle{
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .mycomment{
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+/* ------------ 마이 페이지 퀵뷰 ------------ */
+
+.quickmenu{
+    position:absolute;
+    width:120px;
+    top:50%;
+    margin-top:-50px;
+    right:20px;
+    background:#fff;
+}
+
+.quicklist{
+    position:relative;
+    float:left;
+    padding: 0;
+    width:100%;
+    display:inline-block;
+    *display:inline;
+    border:2px solid #91E661;}
+
+.quickitem{
+    float:left;
+    width:100%;
+    text-align:center;
+    font-weight: 500;
+    display:inline-block;
+    *display:inline;}
+
+.quickitem a{
+    position:relative;
+    float:left;
+    width:100%;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    text-decoration: none;
+    color: #91E661;
+    font-size:9.5pt;}
+.quickitem a:hover {
+    color:white;
+    background-color: #91E661;
+}
+.quicklist li:last-child {
+    border-bottom:0;
+}
+
+.adminmenu{
+    display:none;
+}
+
+@media screen and (max-width: 840px){
+    .quickmenu{
+        display: none;
+    }
+    .adminmenu{
+        display:block;
+    }
+    .adminmenulist{
+        display: flex;
+        justify-content: flex-start;
+        padding: 0;
+        list-style: none;
+        margin-bottom: 40px;
+    }
+    .adminmenuitem{
+        font-size: 12px;
+        margin: 7px;
+        text-align: start;
+        background-color: white;
+        padding:10px;
+        border: 2px solid #91E661;
+        border-radius: 20px;
+    }
+
+    .adminmenu a{
+        color: #91E661;
+        font-weight: 700;
+    }
+
 }

@@ -13,13 +13,25 @@ function enterFunc(event, id, focus){
             document.querySelector(`#${focus}`).focus() // enter 누르면 다음으로 focus 이동
         }
     }
-  }
+}
 function btnClick(event){
-  i=0
-  clas = document.querySelectorAll(".form-control")
-  for(i=0; i<=6; i++){
-      if(clas[i].value.length==0){
-          event.preventDefault()
-      }
-  }
+    i=0
+    clas = document.querySelectorAll(".form-control")
+    for(i=0; i<=6; i++){
+    if(clas[i].value.length==0){
+        event.preventDefault()
+        }
+    }
+}
+<textarea id="txtArea" onkeypress="onTestChange();"></textarea>
+function onkeyenter() {
+    var key = window.event.keyCode;
+    // If the user has pressed enter
+    if (key === 13) {
+        document.getElementById("content").value = document.getElementById("content").value + "\n*";
+        return false;
+    }
+    else {
+        return true;
+    }
 }
