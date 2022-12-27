@@ -67,13 +67,14 @@ def post_edit(pstId):
 	db = DBUpdater()
 	data = db.load_post_pstId_list(pstId)
 	print(data)
+	board_ls = db.load_board_list()
     # session의 'username'이 있으면 로그인
 	if "username" in session:
 		# 세션이 있는 경우
 		# 세션에 있는 'username' 값과 특정 게시물의 작성자 ID가 같은지 확인
 		if str(session['username']) == str(data[0]['userId']):
 			# 특정 게시물 편집 html 불러오기
-			return render_template('pages/post.edit.html', post_list=data)
+			return render_template('pages/post.edit.html', post_list=data, board_ls=board_ls)
 
 		else:
 			print('id가 다름')
@@ -97,9 +98,10 @@ def post_write():
 	# session의 'username'이 있으면 로그인
 	if "username" in session: 	
 		# 세션이 있는 경우
-
+		db =  DBUpdater()
 		# 특정 게시물 편집 html 불러오기
-		return render_template('pages/post.edit.html')
+		board_ls = db.load_board_list()
+		return render_template('pages/post.edit.html', board_ls=board_ls)
 	else:
 		# 세션이 없는 경우'
 		print('First Login')

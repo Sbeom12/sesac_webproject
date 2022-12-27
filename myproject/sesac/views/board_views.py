@@ -72,3 +72,7 @@ def board_boardID(brdId):
     boards['max_page']= list(range(1, max_page+1))
     print('-'*20,boards)
     return render_template('pages/board.html', boards=boards)
+
+@bp.route('/comp/')
+def compInfo():
+    return render_template('pages/competition.html')

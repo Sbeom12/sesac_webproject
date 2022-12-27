@@ -60,9 +60,9 @@ class DBUpdater():
                 userId  VARCHAR(255),
                 userPw  VARCHAR(255)    NOT NULL,
                 userNm  VARCHAR(255)    NOT NULL,
+                email   VARCHAR(255)    NOT NULL,
                 subNm   VARCHAR(255)    NOT NULL    UNIQUE,
                 tel     VARCHAR(255)    NOT NULL    UNIQUE,
-                email   VARCHAR(255)    NOT NULL    UNIQUE,
                 grade   INT             NOT NULL    DEFAULT 1,
                 
                 PRIMARY KEY(userId)
@@ -277,7 +277,7 @@ class DBUpdater():
         return data
     
     def load_post_userId_list(self, userId):
-        sql = f'SELECT * FROM Post WHERE userId={userId};'
+        sql = f'SELECT * FROM Post WHERE userId=\"{userId}\";'
         self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
         self.cursor.execute(sql)
         data = self.cursor.fetchall()
@@ -711,5 +711,5 @@ class DBUpdater():
 if __name__ == "__main__":
     print("\n실행 완료\n")
     x = DBUpdater()
-    print(x.existence_item(45, 1))
+    # print(x.existence_item(45, 1))
     # x.__del__

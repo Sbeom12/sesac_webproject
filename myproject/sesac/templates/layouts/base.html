@@ -11,10 +11,10 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
-    <title>Hello, pybo!</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <title>Login</title>
   </head>
   <body>
-    <p>base.html</p>
     <a href="{{url_for('main')}}">main</a>
     <!-- 기본 템플릿 안에 삽입될 내용 Start -->
     {% block content %} {% endblock %}

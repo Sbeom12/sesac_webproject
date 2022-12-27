@@ -1,34 +1,92 @@
 {% extends '/layouts/base_updown.html' %} {% block content %}
+<script src="{{url_for('static',filename='js/user.post.edit.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+  function enterFunc(event, id, focus) {
+    data = document.querySelector(`#${id}`);
+    next = document.querySelector(`#${focus}`);
+
+    if (event.code == "Enter") {
+      console.log(data.value);
+      if (data.value.length == 0) {
+        event.preventDefault();
+        alert(`${id}은 필수 입력 항목입니다.`);
+      } else {
+        event.preventDefault();
+        document.querySelector(`#${focus}`).focus(); // enter 누르면 다음으로 focus 이동
+      }
+    }
+  }
+  function btnClick() {
+    i = 0;
+    clas = document.querySelectorAll(".clas");
+    for (i = 0; i <= 6; i++) {
+      if (clas[i].value.length == 0) {
+        event.preventDefault();
+      }
+    }
+  }
+</script>
+
+{{board_ls}}
 <section>
   <h2>post.edit.html</h2>
-  {% if post_list %} {% for p in post_list %}
+  {% if post_list %}
   <!-- 기존 게시물 편집하기 -->
+  {% for p in post_list %}
   <form
     method="post"
     action="{{ url_for('post_views.post_save_edit', pstId=p.pstId)}}"
   >
     <div>post.title</div>
-    <input type="text" name="title" id="" value="{{p.title}}" />
+    <input type="text" name="title" id="title" value="{{p.title}}" />
 
     <div>p.brdId</div>
-    <input type="text" name="brdId" id="" value="{{p.brdId}}" />
+    <select name="brdId">
+      {%for name in board_ls %} {%if p.brdId == name.brdId%}
+      <option name="brdId" value="{{name.brdId}}" selected>
+        {{name.brdNm}}
+      </option>
+      {%else%}
+      <option name="brdId" value="{{name.brdId}}">{{name.brdNm}}</option>
+      {%endif%} {%endfor%}
+    </select>
 
     <div>post.pstCntnt</div>
-    <input type="text" name="pstCntnt" id="" value="{{p.pstCntnt}}" />
+    <input type="text" name="pstCntnt" id="pstCntnt" value="{{p.pstCntnt}}" />
     <button type="submit">저장하기</button>
   </form>
   {% endfor %} {% else %}
   <!-- 새로운 게시물 작성하기 -->
   <form method="post" action="{{ url_for('post_views.post_save_new')}}">
     <div>p.title</div>
-    <input type="text" name="title" id="" value="제목을 입력해주세요" />
+    <input
+      type="text"
+      id="title"
+      name="title"
+      class="clas"
+      onkeydown="enterFunc(event,'title','brdId')"
+      placeholder="제목을 입력해주세요"
+    />
 
     <div>p.brdId</div>
-    <input type="text" name="brdId" id="" value="게시판을 선택해주세요" />
+    <select name="brdId">
+      {%for name in board_ls%}
+      <option name="brdId" value="{{name.brdId}}">{{name.brdNm}}</option>
+      {%endfor%}
+    </select>
 
     <div>post.pstCntnt</div>
-    <input type="text" name="pstCntnt" id="" value="내용을 입력해주세요" />
-    <button type="submit">저장하기</button>
+    <input
+      type="text"
+      name="pstCntnt"
+      id="pstCntnt"
+      class="clas"
+      onkeydown="enterFunc(event,'pstCntnt','submit')"
+      placeholder="내용을 입력해주세요"
+    />
+    <input type="submit" id="submit" value="저장하기" onclick="btnClick()" />
   </form>
   {% endif %}
   <a href="{{url_for('board_views.board')}}">취소하기</a>
