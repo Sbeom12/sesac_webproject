@@ -12,7 +12,7 @@ class DBUpdater():
     def __init__(self):
         self.conn = pymysql.connect(
             user='root', 
-            passwd='qhdkscjfwj0!', 
+            passwd='12345', 
             host='127.0.0.1', 
             db='community', 
             charset='utf8'
@@ -434,10 +434,9 @@ class DBUpdater():
         try:
             sql = f"SELECT {field} FROM {table} WHERE {conditon} = \"{value}\""
             self.cursor.execute(sql)
-            data = self.cursor.fetchone()
-            value = list(data.values())[0]
+            data = self.cursor.fetchall()[0][0]
             print("\n존재하는 {}입니다.\n입력한 {}의 {}이(가) 출력되었습니다.\n".format(conditon, conditon, field))
-            return value
+            return data
         except:
             print("\n존재하지 않는 {}입니다.\n".format(conditon))
 

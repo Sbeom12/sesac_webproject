@@ -98,6 +98,7 @@
     </ul>
     <!-- 인디케이터 끝 -->
   </div>
+
   <!-- 게시판 -->
   <div class="bodywrapper">
     <div class="tablewrapper">
@@ -105,6 +106,7 @@
         <ul class="board-list">
           {% for board in board_ls %}
           <li class="board-item">
+
             <!-- 게시판 내부 목록 리스트 -->
             <ul class="list-inner">
               <a
@@ -129,11 +131,11 @@
               </li>
               
               {% for post in post_dict[board.brdId] %}
-                <li class="inner-item">
-                 <!-- 조회수 +1 -->
+              <!-- 조회수 +1 -->
+              <li class="inner-item">
                  <a
                  href="javascript:void(0);" 
-                 onclick="lnkClick({{post.pstId}});"
+                 onclick="lnkClick(event, {{post.pstId}});"
                  > 
                   <div class="articletitle"> {{post.title}} </div>
                   <div class="idname"> {{post.userId}} </div>
@@ -145,6 +147,7 @@
           </li>
           {% endfor %}
         </ul>
+
         <!-- 게시판 리스트 담은 테이블 끝 -->
       </div>
     </div>

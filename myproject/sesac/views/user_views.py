@@ -59,6 +59,8 @@ def user_signup():
 def fetch():
     if request.method == 'POST':
         result = request.get_json()["subNm"]
+        
+        db = DBUpdater()
         newResult = db.extractWhere("subNm", "UserInfo", "subNm", result)
         
         if(result == newResult):
@@ -73,7 +75,8 @@ def fetch():
 def fetch2():
     if request.method == 'POST':
         result = request.get_json()["userId"]
-        print("userId",result)
+        
+        db = DBUpdater()
         newResult = db.extractWhere("userId", "UserInfo", "userId", result)
         
         if(result == newResult):
@@ -102,7 +105,7 @@ def user_login():
         userNm = db.extractWhere("userNm", "UserInfo", "userId", result['userId'])
         userSubNm = db.extractWhere("subNm", "UserInfo", "userId", result['userId'])
         grade = db.extractWhere("grade", "UserInfo", "userId", result['userId'])
-        print("####", userPw, result["userPw"])
+        
             # 정보가 일치하는 경우 userId를 session에 저장 후 page/main.html 반환
         if(check_password_hash(userPw, result["userPw"])):  # check_password_hash()로 복호화해서 확인
             print("정보가 일치합니다. 로그인 성공 !")

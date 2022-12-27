@@ -100,9 +100,11 @@ $(".btn_top").click(function() {
 const articleBtn = document.querySelector('.article-btn');
 const myarticle = document.querySelector('.myarticle-list')
 
-articleBtn.addEventListener('click', () => {
-    myarticle.classList.toggle('active'); 
-});
+if(articleBtn) {
+    articleBtn.addEventListener('click', () => {
+        myarticle.classList.toggle('active'); 
+    });
+}
 
 $('.overlay').on('click', function () {
     $(myarticle).removeClass('active');
@@ -112,10 +114,12 @@ $('.overlay').on('click', function () {
 const commentBtn = document.querySelector('.comment-btn');
 const mycomment = document.querySelector('.mycomment-list')
 
-commentBtn.addEventListener('click', () => {
-    mycomment.classList.toggle('active'); 
-});
-
+if(commentBtn) {
+    commentBtn.addEventListener('click', () => {
+        mycomment.classList.toggle('active'); 
+    });
+    
+}
 $('.overlay').on('click', function () {
     $(mycomment).removeClass('active');
 });

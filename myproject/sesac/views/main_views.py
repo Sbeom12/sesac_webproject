@@ -5,7 +5,6 @@ from ..sqlModule import DBUpdater
 from datetime import datetime
 
 bp = Blueprint('main_views', __name__, url_prefix='/main')
-db = DBUpdater()
 
 # /post/pstId=<int:pstId>
 # 특정 게시물로 이동
@@ -33,8 +32,9 @@ def vwFunc():
         pstId = request.get_json()["pstId"]
         
         # 조회수 +1 한 후 저장
+        db = DBUpdater()
         vwCnt = db.extractWhere("vwCnt", "Post", "pstId", int(pstId))
-        vwCnt = vwCnt+1
+        vwCnt = int(vwCnt)+1
         db.addVwCnt(vwCnt, pstId)
         
         # pstId return

@@ -76,7 +76,6 @@
             {% if board.brdId == boards.brdId %}
               <div class="article-title-bar">
                 <h3>{{board.brdNm}} ({{boards.postCnt['count']}})</h3> 
-                <!-- {{boards.postCnt['count']}}는 전체 게시물의 수 -->
               </div>
             {% endif %}
           {% endfor %}
@@ -84,7 +83,6 @@
         {% else %}
           <div class="article-title-bar">
             <h3>전체 게시판 ({{boards.postCnt['count']}})</h3> 
-            <!-- {{boards.postCnt['count']}}는 전체 게시물의 수 -->
           </div>
         {% endif %}
 
@@ -101,7 +99,7 @@
               <li class="article-item">
                 <a 
                 href="javascript:void(0);" 
-                onclick="lnkClick({{post.pstId}});"
+                onclick="lnkClick(event, {{post.pstId}});"
                 > 
                   <div class = "board-article-num">{{ boards.postCnt['count'] - (boards.page - 1) * boards.number -loop.index0 }}</div>
                   <div class = "board-article-name">{{post.title}}</div>
