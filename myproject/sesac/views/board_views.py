@@ -12,7 +12,7 @@ def board():
     
     number= 5
     page = request.args.get('page', type=int, default=1)
-    paging = db.pageSelect(number ,page)
+    paging = db.pageSelect2(number ,page)
     board_list = db.load_board_list()
     board_ls = db.load_board_list()
     post_list = db.load_post_list()
@@ -33,6 +33,7 @@ def board():
     return render_template('pages/board.html', boards=boards, board_ls=board_ls)
 
 # /board/boardId
+
 @bp.route('/brdId=<int:brdId>/', methods=('GET', 'POST'))
 def board_boardID(brdId):
     number= 5
@@ -47,7 +48,7 @@ def board_boardID(brdId):
     # board_list = 전체 게시판 리스트
     board_list = db.load_board_list()
     # data = 특정 게시판의 게시물 리스트
-    data = db.eachPageSelect(number, page, brdId)
+    data = db.eachPageSelect2(number, page, brdId)
     ## 특정 게시판의 카운트수
     cntAll= db.pageCnt(brdId)
     max_page = (cntAll['count'] -1) // number +1
@@ -59,5 +60,9 @@ def board_boardID(brdId):
     boards['post_list'] = data
     boards['postCnt']= cntAll
     boards['max_page']= list(range(1, max_page+1))
-    # print('--------------------------------------------------\n"',boards)
-    return render_template('pages/board.html', boards=boards, board_ls = board_list)
+    print('-'*20,boards)
+    return render_template('pages/board.html', boards=boards)
+
+@bp.route('/comp/')
+def compInfo():
+    return render_template('pages/competition.html')

@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sesac community</title>
+   
+   <title>Sesac Community</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css"
@@ -17,8 +18,12 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/layout.style_menu.css') }}"
     />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
     <script
@@ -43,6 +48,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script> 
+
     <!--배너 관련 script-->
   </head>
   
@@ -96,38 +102,59 @@
             {% endif %}
           </ul>
         </div>
-        <!-- menu -->
         <div class="menu">
           <ul class="menu-list">
             <li class="menu-item"><a href="{{url_for('main')}}"> 홈</a></li>
-            <li class="menu-item" style="text-align: center;">
-              <div class="dropdown" style=" margin: 0; text-align: center;">
-                <button 
-                class="btn btn-secondary dropdown-toggle" 
-                type="button" 
-                data-toggle="dropdown" 
-                id="dropdownBtn" 
-                data-bs-auto-close="true" 
-                aria-expanded="false"
-                style=" display: flex; 
-                        background-color: white; 
-                        color: black; 
-                        border: 0px; 
-                        font-size: 20px; 
-                        margin: 0px; 
-                        padding: 0px;"
-                >게시판</button>
+            <li class="menu-item" style="text-align: center">
+              <div class="dropdown" style="margin: 0; text-align: center">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-toggle="dropdown"
+                  id="dropdownBtn"
+                  data-bs-auto-close="true"
+                  aria-expanded="false"
+                  style="
+                    display: flex;
+                    background-color: white;
+                    color: black;
+                    border: 0px;
+                    font-size: 20px;
+                    margin: 0px;
+                    padding: 0px;
+                  "
+                >
+                  게시판</button>
 
-                  <div class="dropdown-menu">
-                    {% for board in board_ls%}
-                      <a class="dropdown-item" style="z-index: 101;" href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}">{{board.brdNm}}</a>
-                    {% endfor %}
-                  </div>
+                <div class="dropdown-menu">
+                  {% for board in board_ls%}
+                  <a
+                    class="dropdown-item"
+                    style="z-index: 101"
+                    href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"
+                    >{{board.brdNm}}</a
+                  >
+                  {% endfor %}
+                </div>
               </div>
             </li>
-            <li class="menu-item"><a href="https://sesac.seoul.kr/common/greeting.do">SeSAC</a></li>
-            <li class="menu-item"><a href="https://www.jobkorea.co.kr/"> 채용 정보 </a></li>
-            <li class="menu-item"><a href="https://dacon.io/"> 공모전 정보 </a></li>
+            <li class="menu-item">
+              <a href="https://sesac.seoul.kr/common/greeting.do">SeSAC</a>
+            </li>
+            {% if session['room'] %}
+            <li class="menu-item">
+              <a href="{{url_for('main.chat', tag=session['room'])}}">
+                커뮤니티</a
+              >
+            </li>
+            {% else %}
+            <li class="menu-item">
+              <a href="{{url_for('main.chat', tag='All')}}"> 커뮤니티</a>
+            </li>
+            {% endif %}
+            <li class="menu-item">
+              <a href='{{url_for("board_views.compInfo")}}'> 공모전 정보 </a>
+            </li>
           </ul>
         </div>
       </header>

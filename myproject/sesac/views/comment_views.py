@@ -17,6 +17,8 @@ def comment_add(pstId):
     # session이 있을 경우
     if session :
         userId = session['userId']
+        if request.form['cmtCntnt'].strip() == "":
+            return redirect(url_for('post_views.post', pstId=pstId))
         cmtCntnt = request.form['cmtCntnt']
 
         # 특정 게시물 html 불러오기

@@ -1,24 +1,48 @@
 {% extends '/layouts/base_updown.html' %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/admin.css') }}"
+/>
+
 <section>
   <h2>admin.userinfo.html</h2>
 </section>
 
-{% if userinfo %} {% for user in userinfo %}
-<ul>
-  {% for key, value in user.items() %}
-  <li>{{key}} - {{value}}</li>
-  {% endfor %}
-  <li>
-    <a href="{{url_for('admin_views.userinfo_del', userId=user.userId)}}"
-      >삭제 - {{user.userId}}</a
-    >
-  </li>
-  <li>
-    <a href="{{url_for('admin_views.userinfo_grade', userId=user.userId)}}"
-      >권한 변경 - {{user.grade}}</a
-    >
-  </li>
-</ul>
-{% endfor %} {% else %}
-<li>userinfo가 없음</li>
-{% endif %} {% endblock %}
+<div class="userInfo">
+  <div class="userTable">
+    {% if userinfo %}
+    <div class="userinner">
+      <div class="inner-">ID</div>
+      <div class="inner-">이름</div>
+      <div class="inner-">닉네임</div>
+      <div class="inner-">전화번호</div>
+      <div class="inner-">email</div>
+      <div class="inner-">등급</div>
+      <div class="inner-">삭제</div>
+      <div class="inner-">권한변경</div>
+    </div>
+    {% for user in userinfo %}
+    <div class="useritems">
+      <div class="inner-">{{user.userId}}</div>
+      <div class="inner-">{{user.userNm}}</div>
+      <div class="inner-">{{user.subNm}}</div>
+      <div class="inner-">{{user.tel}}</div>
+      <div class="inner-">{{user.email}}</div>
+      <div class="inner-">{{user.grade}}</div>
+      <div class="inner-">
+        <a href="{{url_for('admin_views.userinfo_del', userId=user.userId)}}"
+          >삭제</a
+        >
+      </div>
+      <div class="inner-">
+        <a href="{{url_for('admin_views.userinfo_grade', userId=user.userId)}}"
+          >권한 변경</a
+        >
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <li>Userinfo가 없음</li>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
