@@ -13,13 +13,13 @@
 
 <script src="{{url_for('static',filename='js/post.js') }}"></script>
 
-{% if post_list %}
 <div class="wrapper">
   <div class="overlay"></div>
 
   <div class="middle">
     <div class="imagecontainer"></div>
   </div>
+
   <div class="bodywrapper">
     <div class="board-bodywrapper">
       <aside class="sidebar">
@@ -56,13 +56,13 @@
                 <li class="post-upper-item">
                   <div class="mod-btn">
                     <a
-                      href="{{url_for('post_views.post_edit', pstId=post.pstId)}}"
+                      href="{{url_for('post_views.post_edit', pstId=post_list[0].pstId)}}"
                       >수정</a
                     >
                   </div>
                   <div class="del-btn">
                     <a
-                      href="{{url_for('post_views.post_del', pstId=post.pstId)}}"
+                      href="{{url_for('post_views.post_del', pstId=post_list[0].pstId)}}"
                       >삭제</a
                     >
                   </div>
@@ -77,50 +77,22 @@
                   {% endfor %}
                 </li>
               </ul>
-              {% endfor %}{% endif %}
+              {% endfor %}
             </div>
 
-            <div class="post-article">{{post_list[0].pstCntnt}}</div>
+            <div class="post-article">{{pstCntnt}}</div>
 
             <div class="post-bottom-list">
               <button type="button" class="like">붐업</button>
               <button type="button" class="hate">붐따</button>
-              <a>{{post_list[0].pstLikeCnt}}</a>
-              <a>{{post_list[0].pstUnlikeCnt}}</a>
-              <a
-                href="{{url_for('post_views.like_unlike_click', pstId=post_list[0].pstId, type='like', post=1)}}"
-                >좋아요</a
-              >
-              <a
-                href="{{url_for('post_views.like_unlike_click', pstId=post_list[0].pstId, type='unlike', post=1)}}"
-                >싫어요</a
-              >
             </div>
+
+            {% if comment_list %} {% for comment in comment_list %}
 
             <div class="post-comment-container">
               <div class="now-comment">댓글 {} 개</div>
-              <form
-                method="post"
-                action="{{url_for('comment_views.comment_add', pstId=post_list[0].pstId)}}"
-              >
-                <input
-                  class="comment-input"
-                  type="text"
-                  name="cmtCntnt"
-                  id="cmtCntnt"
-                  placeholder="댓글을 입력해주세요"
-                  onkeydown="enterFunc(event,'cmtCntnt','submit')"
-                />
-                <input
-                  class="submit-input"
-                  type="submit"
-                  id="submit"
-                  value="추가하기"
-                  onclick="btnClick(event)"
-                />
-              </form>
+              <input class="comment-input" placeholder="댓글을 입력해주세요!" />
 
-              {% if comment_list %} {% for comment in comment_list %}
               <div class="comment-view">
                 <ul class="comment-view-list">
                   <li class="comment-view-item">
@@ -129,20 +101,8 @@
                     <div class="comment-time">{{ comment.cmtCrtDate }}</div>
                     <div class="comment-btn">
                       <ul class="comment-btn-list">
-                        <li class="comment-btn-item">
-                          <a>{{ comment.cmtLikeCnt }}</a>
-                          <a
-                            href="{{url_for('post_views.like_unlike_click', pstId=comment.cmtId, type='like', post=0)}}"
-                            >좋아요</a
-                          >
-                        </li>
-                        <li class="comment-btn-item">
-                          <a>{{ comment.cmtUnlikeCnt }}</a>
-                          <a
-                            href="{{url_for('post_views.like_unlike_click', pstId=comment.cmtId, type='unlike', post=0)}}"
-                            >싫어요</a
-                          >
-                        </li>
+                        <li class="comment-btn-item">좋아요</li>
+                        <li class="comment-btn-item">싫어요</li>
                         <li class="comment-btn-item">
                           <a
                             href="{{url_for('comment_views.comment_del', cmtId=comment.cmtId)}}"
@@ -154,18 +114,15 @@
                   </li>
                 </ul>
               </div>
-              {% endfor %} {% else %}
-              <li>cmt 가 없습니다.</li>
-              {% endif %}
             </div>
 
+            {% endfor %} {% else %}
+            <li>cmt 가 없습니다.</li>
+            {% endif %}
+
             <div class="post-article-under">
-              <button type="button" class="backtomainBtn">
-                <a
-                  href="{{url_for('post_views.post', pstId=post_list[0].pstId)}}"
-                >
-                  목록으로 돌아가기</a
-                >
+              <button type="button" class="backtomainBtn" href="뒤로가기">
+                목록으로 돌아가기
               </button>
             </div>
           </div>
@@ -178,6 +135,8 @@
 <script>
   $(window);
 </script>
+
 {% else %}
 <p>post_list가 없습니다.</p>
-{% endif %}{% endblock %}
+{% endif %} ======= {% extends '/layouts/base_updown.html' %} {% block content
+%}

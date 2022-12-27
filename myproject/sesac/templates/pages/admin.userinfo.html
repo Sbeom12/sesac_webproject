@@ -4,9 +4,20 @@
   href="{{ url_for('static', filename='css/admin.css') }}"
 />
 
-<section>
-  <h2>admin.userinfo.html</h2>
+<section class = "page-upper">
+  <h2 class = "page-title">유저 관리</h2>
 </section>
+
+
+<div class="quickmenu">
+  <ul class = "quicklist">
+    <li class = "quickitem"><a href="{{url_for('admin_views.admin_userinfo')}}">유저 관리</a></li>
+    <li class = "quickitem"><a href="{{url_for('admin_views.admin_boardinfo')}}">게시판 관리</a></li>
+    <li class = "quickitem"><a href="{{url_for('admin_views.admin_postinfo')}}">게시물 관리</a></li>
+    <li class = "quickitem"><a href="{{url_for('admin_views.admin_comminfo')}}">댓글 관리</a></li>
+  </ul>
+</div>
+
 
 <div class="userInfo">
   <div class="userTable">
@@ -16,7 +27,7 @@
       <div class="inner-">이름</div>
       <div class="inner-">닉네임</div>
       <div class="inner-">전화번호</div>
-      <div class="inner-">email</div>
+      <div class="inner-email">email</div>
       <div class="inner-">등급</div>
       <div class="inner-">삭제</div>
       <div class="inner-">권한변경</div>
@@ -27,7 +38,7 @@
       <div class="inner-">{{user.userNm}}</div>
       <div class="inner-">{{user.subNm}}</div>
       <div class="inner-">{{user.tel}}</div>
-      <div class="inner-">{{user.email}}</div>
+      <div class="inner-email">{{user.email}}</div>
       <div class="inner-">{{user.grade}}</div>
       <div class="inner-">
         <a href="{{url_for('admin_views.userinfo_del', userId=user.userId)}}"
