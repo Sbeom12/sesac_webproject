@@ -6,7 +6,6 @@ from datetime import datetime
 
 bp = Blueprint('main_views', __name__, url_prefix='/main')
 
-
 # /post/pstId=<int:pstId>
 # 특정 게시물로 이동
 @bp.route('/')
@@ -14,15 +13,18 @@ def grid():
 
     db = DBUpdater()
     board_ls = db.load_board_list()
+    
     post_dict = {}
     for board in board_ls:
         brdId = board['brdId']
         post_dict[brdId] = db.load_post_brdId_list(brdId)[:5]
-    
 
     # 특정 게시물 html 불러오기
     return render_template('pages/main.html', board_ls=board_ls, post_dict=post_dict)
 
+
+
+# 게시물 클릭하면 조회수 올리기
 @bp.route('/vw', methods=('GET', 'POST'))
 def vwFunc():
     # method = POST
@@ -31,8 +33,10 @@ def vwFunc():
         pstId = request.get_json()["pstId"]
         
         # 조회수 +1 한 후 저장
+
+        db = DBUpdater()
         vwCnt = db.extractWhere("vwCnt", "Post", "pstId", int(pstId))
-        vwCnt = vwCnt+1
+        vwCnt = int(vwCnt)+1
         db.addVwCnt(vwCnt, pstId)
         
         # pstId return
@@ -41,3 +45,4 @@ def vwFunc():
     # method = GET
     else:
         render_template('pages/main.html')
+

@@ -1,0 +1,36 @@
+html, body {
+    height: 100%;
+}
+
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+
+
+footer {
+    background-color: var(--light-gray);
+    height: 3rem;
+}
+
+.test2{
+    display: none;
+}
+.test2.active{
+    display:block;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    gap: 2rem;
+}

@@ -1,3 +1,4 @@
+
 {% extends '/layouts/base_updown.html' %} {% block content %}
 <script src="{{url_for('static',filename='js/post.js') }}"></script>
 
@@ -11,7 +12,7 @@
   >삭제하기</a
 ><br />
 
-{{post_list}} {% if post_list %} {% for post in post_list %}
+{% if post_list %} {% for post in post_list %}
 <ul>
   {% for key, value in post.items() %}
   <li>
@@ -47,6 +48,7 @@
 </form>
 
 <p>댓글들</p>
+
 <table class="table">
   <thead>
     <tr class="table-dark">
@@ -94,6 +96,7 @@
     <tr>
       <td colspan="6">comment_list가 없습니다.</td>
     </tr>
+
     {% endif %}
   </tbody>
 </table>

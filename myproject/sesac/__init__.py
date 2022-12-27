@@ -13,6 +13,7 @@ from flask_socketio import SocketIO
 
 socketio = SocketIO()
 
+
 # Blueprint views 불러오기 
 from .views import (
 	user_views, post_views, board_views, admin_views, comment_views, main_views

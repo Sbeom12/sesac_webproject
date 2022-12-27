@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeSAC Community</title>
+
+    <!-- 메타 태그 설정, 저자, 키워드, 설명 -->
+    <meta name="author" content="codehighway"/>
+    <meta name="keywords" content="새싹, 커뮤니티, sesac, community, it, 개발자, 데이터 분석, 데이터 분석가" />
+    <meta name="description" content="새싹커뮤니티에서 다양한 정보와 사람들 간의 소통을 해보세요." />
+
+    <!-- 파비콘 -->
+    <link rel="icon" href="img/7112640_harmonious_gesture_teamwork_hand_community_icon.ico" />
+    <!-- 아이폰 파비콘 -->
+    <link rel="apple-touch-icon" href="img/7112640_harmonious_gesture_teamwork_hand_community_icon.ico" />
+
+    <!-- font-awesome-icon -->
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" 
+    />
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/signin.css">
+
+    
+</head>
+<body>
+    <header>
+        <div class="inner">
+            <div class="header-container">
+                <div class="title">
+                    <a href="#">SeSACommunity</a>
+                </div>
+                <!-- title -->
+
+                <div class="sign-container">
+                    <div class="unsigned">
+                        <div class="sign-in"><a href="#">로그인</a></div>
+                        <div class="sign-up"><a href="#">회원가입</a></div>
+                    </div>
+                    <!-- unsigned -->
+
+                    <div class="signed hidden">
+                        <div class="dropdown">
+                            <div class="dropdown-button">
+                                안녕하세요. <span id="nickname">새싹</span>님.
+                                <i class="fa-solid fa-caret-down"></i>
+                            </div>
+                            <!-- dropdown-button -->
+                            <div class="dropdown-content">
+                                <button id="sign-out">로그아웃</button>
+                            </div>
+                            <!-- dropdown-content -->
+                        </div>
+                        <!-- dropdown -->
+                    </div>
+                    <!-- signed -->
+                </div>
+            </div>
+            <!-- header-container -->
+        </div>
+    </header>
+    
+    <main>
+            <div class="signin-container">
+                <h1>안녕하세요. <span class="green">새싹커뮤니티</span>입니다.</h1>
+                <div class="signin-form">
+                    <form action="">
+                        <input type="text" placeholder="아이디" id="email"/>
+                        <input type="password" placeholder="비밀번호" id="password" />
+                        <input type="submit" value="로그인" id="signin">
+                    </form>
+                    <div class="signup-container">
+                        <a href="#" id="signup">회원가입</a>
+                    </div>
+                    <!-- signin-container -->
+                </div>
+                <!-- signin-form -->
+            </div>
+            <!-- signin-container -->
+    </main>
+
+    <button type = "button" class = "test" style="font-size: 15px; width: 50px;"> info </button>
+    <footer class = "test2">
+            <div class="footer-container">
+                <div class="project-name">Connecting the SESACKERs</div>
+                <div class="author">발표자: 남성현</div>
+                <div class="author-email">팀원: 강지원, 김택관, 박현석, 오승범, 이송화, 이정섭</div>
+            </div>
+            <!-- footer-container -->
+    </footer>
+    <script src="test.js"></script>
+</body>
+</html>

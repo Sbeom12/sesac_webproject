@@ -36,3 +36,6 @@
   height: 2px;
   background: #91e661;
 }
+.dropdown-toggle::after {
+  visibility: hidden;
+}

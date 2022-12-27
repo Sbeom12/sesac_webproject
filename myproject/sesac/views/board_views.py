@@ -5,26 +5,16 @@ from ..sqlModule import DBUpdater
 bp = Blueprint('board_views', __name__, url_prefix='/board')
 
 # /board
-# 모든 게시글이 있는 게시판으로 이동
-# 필요 없나???????
-# @bp.route('/')
-# def board():
-#     print("board()")
-#     db = DBUpdater()
-#     board_list = db.load_board_list()
-#     post_list = db.load_post_list()
-#     # print(board_list)
-#     # print(post_list)
-#     # 전체 게시판 html 불러오기
-#     return render_template('pages/board.html', board_list=board_list, post_list=post_list)
 @bp.route('/')
 def board():
     print("board()")
     db = DBUpdater()
+    
     number= 5
     page = request.args.get('page', type=int, default=1)
     paging = db.pageSelect2(number ,page)
     board_list = db.load_board_list()
+    board_ls = db.load_board_list()
     post_list = db.load_post_list()
     post_len= len(post_list)
     post_len2={'count' : len(post_list)}
@@ -40,10 +30,10 @@ def board():
 
     print(boards)
     # 전체 게시판 html 불러오기
-    return render_template('pages/board.html', boards=boards)
+    return render_template('pages/board.html', boards=boards, board_ls=board_ls)
 
 # /board/boardId
-# 특정 게시판의 이동
+
 @bp.route('/brdId=<int:brdId>/', methods=('GET', 'POST'))
 def board_boardID(brdId):
     number= 5
@@ -52,7 +42,7 @@ def board_boardID(brdId):
     Args:
         brdId (int): 게시판 ID
     """
-    print('board_boardID(brdId) -', brdId)
+    print('board_boardID(brdId) -', brdId,"\n")
     
     db = DBUpdater()
     # board_list = 전체 게시판 리스트

@@ -15,8 +15,7 @@ class DBUpdater():
             passwd='1111', 
             host='127.0.0.1', 
             db='community', 
-            charset='utf8',
-            # cursorclass=cursors.DictCursor
+            charset='utf8'
             )
         
         self.tableList = ['UserInfo', 'Board', 'Post', 'Comment', 'LikeInfo']
@@ -44,9 +43,6 @@ class DBUpdater():
             
         else:
             print("\nconnect error\n")
-    
-    
-
     
     
     
@@ -286,9 +282,9 @@ class DBUpdater():
     
     def update_post(self, form, pstId):
         date = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
-        brdId = form['brdId']
+        brdId = form['reg_id']
         title = form['title']
-        pstCntnt = form['pstCntnt']
+        pstCntnt = form['content']
         sql = f"""
         UPDATE Post
         SET brdId = {brdId}, title=\'{title}\' , pstCntnt=\'{pstCntnt}\' ,finalDate={date} 
@@ -296,9 +292,9 @@ class DBUpdater():
         # print(sql)
         try:
             date = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
-            brdId = form['brdId']
+            brdId = form['reg_id']
             title = form['title']
-            pstCntnt = form['pstCntnt']
+            pstCntnt = form['content']
             sql = f"""
             UPDATE Post
             SET brdId = {brdId}, title=\'{title}\' , pstCntnt=\'{pstCntnt}\' ,finalDate=\'{date}\' 
@@ -344,7 +340,7 @@ class DBUpdater():
         return data
     
     def load_comm_userId_list(self, userId):
-        sql = f'SELECT * FROM Comment WHERE userId={userId};'
+        sql = f'SELECT * FROM Comment WHERE userId=\"{userId}\";'
         self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
         self.cursor.execute(sql)
         data = self.cursor.fetchall()
@@ -663,8 +659,17 @@ class DBUpdater():
         print("\nupdate_brdNm 완료.\n")
     
     
-    
     # Post
+    def addVwCnt(self, vwCnt, pstId):
+        try:
+            sql = f"UPDATE Post SET vwCnt={vwCnt} WHERE pstId={pstId}"
+            self.cursor.execute(sql)
+            self.conn.commit()
+            print("pst vwCnt += 1")
+        except:
+            print("존재하지 않는 pstId입니다.")
+    
+    
     # comment
     
 
