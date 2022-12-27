@@ -1,5 +1,4 @@
 function enterFunc(event, id, focus){
-
     data = document.querySelector(`#${id}`)
 
     if(event.code=="Enter"){
@@ -7,7 +6,11 @@ function enterFunc(event, id, focus){
     
         if(data.value.length==0){
             event.preventDefault()
-            alert(`${id}은 필수 입력 항목입니다.`)
+            Swal.fire({
+                icon: 'warning',                         // Alert 타입
+                title: '경고',         // Alert 제목
+                text: `${id}은 필수 입력 항목입니다.`  // Alert 내용
+            });
         }
         else{
             event.preventDefault()
@@ -22,7 +25,6 @@ function enterFunc(event, id, focus){
 }
 
 function dropDulp(pwCheckValue){
-
     pwValue = document.querySelector('#userPw').value
     pwCheckValue2 = document.querySelector('#pwcheck')
     check = document.querySelector('#check')
@@ -41,19 +43,21 @@ function dropDulp(pwCheckValue){
 }
 
 function btnClick(event){
-    
     i=0
     clas = document.querySelectorAll(".clas")
     for(i=0; i<=6; i++){
         if(clas[i].value.length==0){
+            Swal.fire({
+                icon: 'error',                         // Alert 타입
+                title: '경고',         // Alert 제목
+                text: "내용 다 채워주세요.",  // Alert 내용
+            });
             event.preventDefault()
         }
     }
 }
 
 function inputClick(){
-
-    //console.log("클릭 클릭")
     p = document.querySelector("#new")
     if(p){
         p.remove()
@@ -62,7 +66,6 @@ function inputClick(){
 
 function duplicate(event){
     subNm = document.querySelector("#subNm").value
-    
     if(subNm.length==0){
         event.preventDefault()
     }
@@ -102,7 +105,6 @@ function duplicate(event){
 
 function duplicate2(event){
     userId = document.querySelector("#userId").value
-
     if(userId.length==0){
         event.preventDefault()
     }

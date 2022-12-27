@@ -1,6 +1,6 @@
-function lnkClick(pstId){
+function lnkClick(event, pstId){
   /* onclick으로 pstId 받아오기 */
-  console.log("pstId:", pstId)
+  console.log("pstId 여기 여기 여기:", pstId)
 
   /* pstId 저장해서 flask("/main/vw")에 비동기로 data(pstId) 보내기 */
   myData={
@@ -28,7 +28,7 @@ function lnkClick(pstId){
   })
   .then(jsonData => {
       pstIdReturn = jsonData['msg']
-      //console.log(pstIdReturn)
+      console.log(pstIdReturn)
   })
   .catch((error) => console.log("error:", error));
   

@@ -9,10 +9,12 @@ bp = Blueprint('board_views', __name__, url_prefix='/board')
 def board():
     print("board()")
     db = DBUpdater()
+    
     number= 5
     page = request.args.get('page', type=int, default=1)
     paging = db.pageSelect(number ,page)
     board_list = db.load_board_list()
+    board_ls = db.load_board_list()
     post_list = db.load_post_list()
     post_len= len(post_list)
     post_len2={'count' : len(post_list)}
@@ -28,7 +30,7 @@ def board():
 
     print(boards)
     # 전체 게시판 html 불러오기
-    return render_template('pages/board.html', boards=boards)
+    return render_template('pages/board.html', boards=boards, board_ls=board_ls)
 
 # /board/boardId
 @bp.route('/brdId=<int:brdId>/', methods=('GET', 'POST'))
@@ -57,9 +59,5 @@ def board_boardID(brdId):
     boards['post_list'] = data
     boards['postCnt']= cntAll
     boards['max_page']= list(range(1, max_page+1))
-    return render_template('pages/board.html', boards=boards)
-
-
-@bp.route('/comp/')
-def compInfo():
-    return render_template('pages/competition.html')
+    # print('--------------------------------------------------\n"',boards)
+    return render_template('pages/board.html', boards=boards, board_ls = board_list)

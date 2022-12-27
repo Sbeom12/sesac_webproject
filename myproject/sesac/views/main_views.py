@@ -5,7 +5,6 @@ from ..sqlModule import DBUpdater
 from datetime import datetime
 
 bp = Blueprint('main_views', __name__, url_prefix='/main')
-db = DBUpdater()
 
 # /post/pstId=<int:pstId>
 # 특정 게시물로 이동
@@ -14,11 +13,9 @@ def grid():
 
     db = DBUpdater()
     board_ls = db.load_board_list()
-    # print(board_ls)
     
     post_dict = {}
     for board in board_ls:
-        # print("erhbfrejhglewkjrberkbl", board)
         brdId = board['brdId']
         post_dict[brdId] = db.load_post_brdId_list(brdId)[:5]
     
@@ -35,8 +32,9 @@ def vwFunc():
         pstId = request.get_json()["pstId"]
         
         # 조회수 +1 한 후 저장
+        db = DBUpdater()
         vwCnt = db.extractWhere("vwCnt", "Post", "pstId", int(pstId))
-        vwCnt = vwCnt+1
+        vwCnt = int(vwCnt)+1
         db.addVwCnt(vwCnt, pstId)
         
         # pstId return

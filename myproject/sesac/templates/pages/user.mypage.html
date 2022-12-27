@@ -1,74 +1,116 @@
 {% extends '/layouts/base_updown.html' %} {% block content %}
-<section>
-  <h2>user.mypage.html</h2>
-  {% if session['grade'] == 0 %}
-  <h4>Admin</h4>
-  <a href="{{url_for('admin_views.admin')}}">admin_views.admin</a>
-  {% endif %}
-  <div>작성한 게시글</div>
-  <table class="table">
-    <thead>
-      <tr class="table-dark">
-        <th>pstId</th>
-        <th>brdId</th>
-        <th>title</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% if post_list %} {% for post in post_list %}
-      <tr>
-        <td>{{ post.pstId }}</td>
-        <td>
-          <a href="{{url_for('post_views.post',pstId=post.pstId)}}"
-            >{{ post.brdId }}</a
-          >
-        </td>
-        <td>
-          <a href="{{url_for('post_views.post',pstId=post.pstId)}}"
-            >{{ post.title }}</a
-          >
-        </td>
-      </tr>
-      {% endfor %} {% else %}
-      <tr>
-        <td colspan="3">post_list가 없습니다.</td>
-      </tr>
-      {% endif %}
-    </tbody>
-  </table>
+{% if session['grade'] == 0 %}
 
-  <div>작성한 댓글</div>
-  <table class="table">
-    <thead>
-      <tr class="table-dark">
-        <th>cmtId</th>
-        <th>pstId</th>
-        <th>brdId</th>
-        <th>cmtCntnt</th>
-        <th>cmtCrtDate</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% if comm_list %} {% for comm in comm_list %}
-      <tr>
-        <td>{{ comm.cmtId }}</td>
-        <td>{{ comm.pstId }}</td>
-        <td>
-          <a>{{ comm.brdId }}</a>
-        </td>
-        <td>
-          <a>{{ comm.cmtCntnt }}</a>
-        </td>
-        <td>
-          <a>{{ comm.cmtCrtDate }}</a>
-        </td>
-      </tr>
-      {% endfor %} {% else %}
-      <tr>
-        <td colspan="5">comm_list가 없습니다.</td>
-      </tr>
-      {% endif %}
-    </tbody>
-  </table>
-</section>
+<div class = "wrapper">
+
+  <div class = "overlay"></div>
+
+  <div class = "middle">
+    <div class = "imagecontainer"></div>
+  </div>
+  
+  <div class="quickmenu">
+    <ul class = "quicklist">
+      <li class = "quickitem"><a href="{{url_for('admin_views.admin_userinfo')}}">유저 관리</a></li>
+      <li class = "quickitem"><a href="{{url_for('admin_views.admin_boardinfo')}}">게시판 관리</a></li>
+      <li class = "quickitem"><a href="{{url_for('admin_views.admin_postinfo')}}">게시물 관리</a></li>
+      <li class = "quickitem"><a href="{{url_for('admin_views.admin_comminfo')}}">댓글 관리</a></li>
+    </ul>
+  </div>
+  
+  <div class = "bodywrapper">
+
+    <div class = "mypage-upper">
+      <img src = "https://sesac.seoul.kr/static/common/images/www/common/logo.png" style="width: 90px;">
+      <p class = "line-1">안녕하세요, 강지원님</p>
+      <p class = "line-2">오늘도 좋은 하루 되세요!</p>
+    </div>
+
+    <div class="adminmenu">
+      <ul class = "adminmenulist">
+          <li class = "adminmenuitem"><a href="#">유저 관리</a></li>
+          <li class = "adminmenuitem"><a href="#">게시판 관리</a></li>
+          <li class = "adminmenuitem"><a href="#">게시물 관리</a></li>
+          <li class = "adminmenuitem"><a href="#">댓글 관리</a></li>
+      </ul>
+    </div>
+{% else %}
+<div class = "wrapper">
+  <div class = "overlay"></div>
+  <div class = "middle">
+    <div class = "imagecontainer"></div>
+  </div>
+  
+  <div class = "bodywrapper">
+    <div class = "mypage-upper">
+      <img src = "https://sesac.seoul.kr/static/common/images/www/common/logo.png" style="width: 90px;">
+      <p class = "line-1">안녕하세요, 강지원님</p>
+      <p class = "line-2">오늘도 좋은 하루 되세요!</p>
+    </div>
+    
+{% endif %}
+    <div class = "myarticle">
+      <a class = "article-btn" href = "javascript:void(0);">
+        <h3 class = "myarticle-bar">내 작성 글</h3>
+      </a>
+
+      <ul class = "myarticle-list">
+        <li class = "myarticle-index">
+            <div class = "index-board"> 게시물 분류</div>
+            <div class = "index-title"> 게시물 제목</div>
+            <div class = "index-hits"> 조회 </div>
+            <div class = "index-time"> 작성일 </div>
+        </li>
+        {% if post_list %} 
+        {% for post in post_list %}
+        <li class = "myarticle-item">
+            <div class = "myarticle-board"> {{ post.pstId }} </div>
+            <div class = "myarticle-title"> 
+              <a href="{{url_for('post_views.post',pstId=post.pstId)}}">{{ post.title }}</a>
+            </div>
+            <div> 
+              <a href="{{url_for('post_views.post',pstId=post.pstId)}}">
+              {{ post.brdId }}
+              </a>
+            </div>
+            <div class = "myarticle-hits"> 조회수 </div>
+            <div class = "myarticle-time"> 작성일 </div>
+        </li>
+        {% endfor %}
+        {% else %}
+        <li>작성한 게시물이 없습니다.</li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class = "mycomment">
+      <a class = "comment-btn" href = "javascript:void(0);">
+        <h3 class = "mycomment-bar">내 작성 댓글</h3>
+      </a>
+      <ul class = "mycomment-list">
+        <li class = "mycomment-index">
+          <div class = "comment-cmt">게시판 분류</div>
+          <div class = "comment-cmt">게시물 분류</div>
+          <div class = "comment-cmt">댓글 분류</div>
+          <div class = "comment-title"> 댓글 내용</div>
+          <div class = "comment-time"> 작성시간</div>
+        </li>
+        
+        {% if comm_list %} 
+        {% for comm in comm_list %}
+        <li class = "mycomment-item">
+          <div class = "mycomment-cmt">{{ comm.brdId }}</div>
+          <div class = "mycomment-cmt">{{ comm.pstId }}</div>
+          <div class = "mycomment-cmt">{{ comm.cmtId }}</div>
+          <div class = "mycomment-title"> {{ comm.cmtCntnt }}</div>
+          <div class = "mycomment-time">{{ comm.cmtCrtDate }}</div>
+        </li>
+        {% endfor %}
+        {% else %}
+        <li>작성한 댓글이 없습니다.</li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
 {% endblock %}

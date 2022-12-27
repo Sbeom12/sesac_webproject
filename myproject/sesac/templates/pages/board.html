@@ -71,58 +71,56 @@
         </div>
 <!-- ######################################################################################## -->
 
-
         {% if boards.brdId %} 
           {% for board in boards.board_list %} 
             {% if board.brdId == boards.brdId %}
               <div class="article-title-bar">
                 <h3>{{board.brdNm}} ({{boards.postCnt['count']}})</h3> 
-                <!-- {{boards.postCnt['count']}}는 전체 게시물의 수 -->
               </div>
             {% endif %}
           {% endfor %}
+
         {% else %}
           <div class="article-title-bar">
             <h3>전체 게시판 ({{boards.postCnt['count']}})</h3> 
-            <!-- {{boards.postCnt['count']}}는 전체 게시물의 수 -->
           </div>
         {% endif %}
 
         <ul class="article-list">
+          <li class = "article-list-index">
+            <div class = "board-index-num"> 번호 </div>
+            <div class = "board-index-name">제목</div>
+            <div class = "board-index-user">작성자</div>
+            <div class = "board-index-time">작성시간</div>
+            <div class = "board-index-hits">조회</div>
+          </li>
           {% if boards.post_list %}
             {% for post in boards.post_list %}
               <li class="article-item">
                 <a 
                 href="javascript:void(0);" 
-                onclick="lnkClick({{post.pstId}});"
+                onclick="lnkClick(event, {{post.pstId}});"
                 > 
-                [?]               {{ boards.postCnt['count'] - (boards.page - 1) * boards.number -loop.index0 }}
-                [작성자(userId)]    {{post.userId}} 
-                [제목]             {{post.title}} 
-                [조회수]            {{post.vwCnt}}
+                  <div class = "board-article-num">{{ boards.postCnt['count'] - (boards.page - 1) * boards.number -loop.index0 }}</div>
+                  <div class = "board-article-name">{{post.title}}</div>
+                  <div class = "board-article-user">{{post.userId}}</div>
+                  <!--<div class = "board-article-time">{{post.pstCrtDate}}</div>-->
+                  <div class = "board-article-time">2022/12/27</div>
+                  <div class = "board-article-hits">{{post.vwCnt}}</div>
                 </a>
               </li>
             {% endfor %} 
           {% else %}
           <li class="article-item"> 게시물이 존재하지 않습니다 </li>
-
           {% endif %}
         </ul>
 
         {% for page_num in boards.max_page%}
-
-        <li class="page-item">
-          <a class="page-link" href="?page={{ page_num }}">{{page_num}} </a>
-        </li>
+          <!--<li class="page-item">
+            <a class="page-link" href="?page={{page_num}}">{{page_num}}</a>
+          </li>-->
+          <a href="?page={{page_num}}">{{page_num}}</a>
         {%endfor%}
-        {%if boards.brdId%}
-        {% for board in boards.board_list %} {% if board.brdId == boards.brdId %}
-        <a href="{{url_for('post_views.post_write', brdId=board.brdId)}}">작성하기</a>
-        {%endif%}
-        {%endfor%}
-        {%else%}
-        <a href="{{url_for('post_views.post_write', brdId=9999)}}">작성하기</a>
-        {%endif%}
       </div>
       <a href="{{url_for('post_views.post_write')}}">작성하기</a>
     </section>
