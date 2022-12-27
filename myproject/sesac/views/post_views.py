@@ -49,12 +49,12 @@ def post_del(pstId):
 			
 			db.del_post(pstId)
 			# 특정 게시물 편집 html 불러오기
-			return redirect(url_for('board_views.board'), board_ls=board_ls)
+			return redirect(url_for('board_views.board'))
 
 		else:
 			print('id가 다름')
 			# 특정 게시물 html 불러오기
-			return redirect(url_for('post_views.post', pstId=pstId), board_ls=board_ls)
+			return redirect(url_for('post_views.post', pstId=pstId))
 	else:
 		# 세션이 없는 경우
 		print('First Login')
@@ -117,7 +117,7 @@ def post_write():
 # 편집 저장하기 버튼 클릭
 @bp.route('/save/<int:pstId>/', methods=('GET', 'POST'))
 def post_save_edit(pstId):
-    brdId = request.form['reg_id']
+    brdId = request.form['brdId']
     db = DBUpdater()
     board_ls = db.load_board_list()
     print(request.form)
@@ -128,10 +128,10 @@ def post_save_edit(pstId):
 # 작성 저장하기 버튼 클릭
 @bp.route('/save/', methods=('GET', 'POST'))
 def post_save_new():
-	brdId = request.form['reg_id']
+	brdId = request.form['brdId']
 	userId = session["username"]
 	title = request.form['title']
-	pstCntnt = request.form['content']
+	pstCntnt = request.form['pstCntnt']
 
 	db = DBUpdater()
 	db.insertPost(brdId, userId, title, pstCntnt)

@@ -282,9 +282,9 @@ class DBUpdater():
     
     def update_post(self, form, pstId):
         date = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
-        brdId = form['reg_id']
+        brdId = form['brdId']
         title = form['title']
-        pstCntnt = form['content']
+        pstCntnt = form['pstCntnt']
         sql = f"""
         UPDATE Post
         SET brdId = {brdId}, title=\'{title}\' , pstCntnt=\'{pstCntnt}\' ,finalDate={date} 
@@ -292,9 +292,9 @@ class DBUpdater():
         # print(sql)
         try:
             date = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
-            brdId = form['reg_id']
+            brdId = form['brdId']
             title = form['title']
-            pstCntnt = form['content']
+            pstCntnt = form['pstCntnt']
             sql = f"""
             UPDATE Post
             SET brdId = {brdId}, title=\'{title}\' , pstCntnt=\'{pstCntnt}\' ,finalDate=\'{date}\' 
