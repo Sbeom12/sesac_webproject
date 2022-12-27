@@ -34,17 +34,14 @@
           <div class="mb-3">
             <label for="content">내용</label>
             <textarea rows="10"
-            class = "form-control" name="content" id="content"
-            onkeypress="onkeyenter()"
-            onkeydown="enterFunc(event,'content','btnSave')"
-            placeholder="내용을 입력해 주세요">{{p.pstCntnt}}</textarea>
+            class = "form-control" name="content" id="content" placeholder="내용을 입력해 주세요">{{p.pstCntnt}}</textarea>
           </div>
 
           <br><br>
 
           <div>
-            <button type="submit" class="btn btn-sm btn-primary" id="btnSave" onclick="btnClick(event)">저장하기</button>
-            <a class="btn btn-sm btn-primary" id="btnSave" href="{{url_for('board_views.board')}}">취소하기</a>
+            <button type="submit" class="btn btn-sm btn-success" id="btnSave" onclick="btnClick(event)">저장하기</button>
+            <a class="btn btn-sm btn-success" id="btnSave" href="{{url_for('board_views.board')}}">취소하기</a>
           </div>
 
       </form>
@@ -81,15 +78,12 @@
       <div class="mb-3">
         <label for="content">내용</label>
         <textarea rows="10"
-        class = "form-control" name="content" id="content"
-        onkeypress="onkeyenter()"
-        onkeydown="enterFunc(event,'content','btnSave')"
-        placeholder="내용을 입력해 주세요"></textarea>
+        class = "form-control" name="content" id="content" placeholder="내용을 입력해 주세요"></textarea>
       </div>
       <br><br>
       <div>
-        <button type="submit" class="btn btn-sm btn-primary" id="btnSave" onclick="btnClick(event)">저장하기</button>
-        <a class="btn btn-sm btn-primary" id="btnSave" href="{{url_for('board_views.board')}}">취소하기</a>
+        <button type="submit" class="btn btn-sm btn-success" id="btnSave" onclick="btnClick(event)">저장하기</button>
+        <a class="btn btn-sm btn-success" id="btnSave" href="{{url_for('board_views.board')}}">취소하기</a>
       </div>
 
     </form>

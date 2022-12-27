@@ -23,15 +23,3 @@ function btnClick(event){
         }
     }
 }
-<textarea id="txtArea" onkeypress="onTestChange();"></textarea>
-function onkeyenter() {
-    var key = window.event.keyCode;
-    // If the user has pressed enter
-    if (key === 13) {
-        document.getElementById("content").value = document.getElementById("content").value + "\n*";
-        return false;
-    }
-    else {
-        return true;
-    }
-}
