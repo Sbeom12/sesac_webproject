@@ -18,14 +18,18 @@
 <body>
     <div class = "wrapper">
 
-        <header class = "menucontainer">
+        <header class = "menucontainer" style="z-index: 999;">
         
             <div class = "loginbar">
                 <ul class = "loginbar-list">
-                    <!-- 드롭다운 애니메이션, 햄버거 버튼 아이콘 수정 예정 -->
+                
+                
                     <a class="navbar-togglebtn" href="#">
-                        햄버거버튼
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </a>
+
                     <!-- 로그인바 아이템 내부 로그인 시 로그인/로그아웃, 회원가입/마이페이지로 변경되는 기능 구현해야 함 -->
                     <li class = "loginbar-item">
                         <button class = "btn-login" onclick="location.href='로그인페이지'" type="button">로그인</button>
@@ -40,108 +44,168 @@
                 <ul class = "menu-list">
                     <li class = "menu-item">홈</li>
                     <li class = "menu-item">새싹 홈페이지</li>
-                    <li class = "menu-item">취·창업 게시판</li>
+                    <li class = "menu-item">게시판</li>
+                    <li class = "menu-item">구인 정보</li>
                     <li class = "menu-item">강의 정보</li>
                     <li class = "menu-item">공모전 정보</li>
                 </ul>
             </div>
         </header>
 
-        <div class = "middle">
-            <div class = "imagecontainer">
-                
+        <div class = "overlay"> </div>
+            <div class = "middle">
+                <div class = "imagecontainer">
+                    
+                </div>
             </div>
-        </div>
 
 
-        <div class = "bodywrapper">
+            <div class = "bodywrapper">
 
-            <div class = "board-bodywrapper">
+                <div class = "board-bodywrapper">
 
-                <aside class = "sidebar">
-                    <div class = "sidebar-title"><h3>title(생략가능)</h3></div>
-                    <ul class = "sidebar-list">
-                        <li class = "sidebar-item">
-                            자유 게시판
-                        </li>
-                        <li class = "sidebar-item">
-                            익명 게시판
-                        </li>
-                        <li class = "sidebar-item">
-                            스터디 게시판
-                        </li>
-                        <li class = "sidebar-item">
-                            정보 게시판
-                        </li>
-                        <li class = "sidebar-item">
-                            취업 게시판
-                        </li>
-                        <li class = "sidebar-item">
-                            창업 게시판
-                        </li>
-                    </ul>
-                </aside>
-
-            
-                <section class = "main">
+                    <aside class = "sidebar">
+                        <div class = "sidebar-title"><h3>title(생략가능)</h3></div>
+                        <ul class = "sidebar-list">
+                            <li class = "sidebar-item">
+                                자유 게시판
+                            </li>
+                            <li class = "sidebar-item">
+                                익명 게시판
+                            </li>
+                            <li class = "sidebar-item">
+                                스터디 게시판
+                            </li>
+                            <li class = "sidebar-item">
+                                정보 게시판
+                            </li>
+                            <li class = "sidebar-item">
+                                취업 게시판
+                            </li>
+                            <li class = "sidebar-item">
+                                창업 게시판
+                            </li>
+                        </ul>
+                    </aside>
 
                 
-                    <div class ="articlecontainer">
+                    <section class = "main">
 
-                        <div class = "board-list-bar">
+                    
+                        <div class ="articlecontainer">
 
-                            <div class="swiper-container snbSwiper" style="max-width:inherit; height: max-content; margin-bottom: 20px;">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide"><a href="#"><span class="text">전체 보기</span></a></div>
-                                    <div class="swiper-slide"><a href="#"><span class="text">자유 게시판</span></a></div>
-                                    <div class="swiper-slide"><a href="#"><span class="text">익명 게시판</span></a></div>
-                                    <div class="swiper-slide"><a href="#"><span class="text">스터디 게시판</span></a></div>
-                                    <div class="swiper-slide"><a href="#"><span class="text">정보 게시판</span></a></div>
-                                    <div class="swiper-slide"><a href="#"><span class="text">취업 게시판</span></a></div>
-                                    <div class="swiper-slide"><a href="#"><span class="text">창업 게시판</span></a></div>
+                            <div class = "board-list-bar">
+
+                                <div class="swiper-container snbSwiper" style="max-width:inherit; height: max-content; margin-bottom: 20px;">
+                                    <div class="swiper-wrapper" style="position: relative; z-index: 1;">
+                                        <div class="swiper-slide"><a href="#"><span class="text">전체 보기</span></a></div>
+                                        <div class="swiper-slide"><a href="#"><span class="text">자유 게시판</span></a></div>
+                                        <div class="swiper-slide"><a href="#"><span class="text">익명 게시판</span></a></div>
+                                        <div class="swiper-slide"><a href="#"><span class="text">스터디 게시판</span></a></div>
+                                        <div class="swiper-slide"><a href="#"><span class="text">정보 공유 게시판</span></a></div>
+                                        <div class="swiper-slide"><a href="#"><span class="text">취업 게시판</span></a></div>
+                                        <div class="swiper-slide"><a href="#"><span class="text">공모전 게시판</span></a></div>
+                                    </div>
                                 </div>
+
                             </div>
 
-                        </div>
+                            <div class = "article-title-bar"><h3>게시판 이름</h3></div>
+                                <ul class = "article-list">
 
-                        <div class = "article-title-bar"><h3>게시판 이름</h3></div>
-                            <ul class = "article-list">
-                                <li class = "article-item">
-                                    게시물 1
-                                </li>
-                                <li class = "article-item">
-                                    게시물 1
-                                </li>
-                                <li class = "article-item">
-                                    게시물 1
-                                </li>
-                                <li class = "article-item">
-                                    게시물 1
-                                </li>
-                                <li class = "article-item">
-                                    게시물 1
-                                </li>
-                                <li class = "article-item">
-                                    게시물 1
-                                </li>
-                                <li class = "article-item">
-                                    게시물 1
-                                </li>
-                                <li class = "article-item">
-                                    게시물 1
-                                </li>
-                                <li class = "article-item">
-                                    게시물 1
-                                </li>
-                                <li class = "article-item">
-                                    게시물 1
-                                </li>
-                            </ul>
-                        <p style="text-align: end; font-size: 14px;">1 2 3 4 5 6 7 8 9 10</p>
-                    </div>
-                </section>
+                                    <li class = "article-list-index">
+                                        <div class = "board-index-num"> 번호 </div>
+                                        <div class = "board-index-name">제목</div>
+                                        <div class = "board-index-user">작성자</div>
+                                        <div class = "board-index-time">작성시간</div>
+                                        <div class = "board-index-hits">조회</div>
+                                    </li>
+
+                                    <li class = "article-item">
+                                        <div class = "board-article-num"> 1 </div>
+                                        <div class = "board-article-name">게시물 제목입니다</div>
+                                        <div class = "board-article-user">작성자입니다</div>
+                                        <div class = "board-article-time">2022-12-26 19:00</div>
+                                        <div class = "board-article-hits">12312</div>
+                                    </li>
+
+                                    <li class = "article-item">
+                                        <div class = "board-article-num"> 1 </div>
+                                        <div class = "board-article-name">게시물 제목 긴 제목 테스트12312312312312313</div>
+                                        <div class = "board-article-user">작성자</div>
+                                        <div class = "board-article-time">2022-12-26 19:00</div>
+                                        <div class = "board-article-hits">12312</div>
+                                    </li>
+
+                                    <li class = "article-item">
+                                        <div class = "board-article-num"> 1 </div>
+                                        <div class = "board-article-name">게시물 제목입니다</div>
+                                        <div class = "board-article-user">작성자입니다</div>
+                                        <div class = "board-article-time">2022-12-26 19:00</div>
+                                        <div class = "board-article-hits">12312</div>
+                                    </li>
+
+                                    <li class = "article-item">
+                                        <div class = "board-article-num"> 1 </div>
+                                        <div class = "board-article-name">게시물 제목입니다</div>
+                                        <div class = "board-article-user">작성자입니다</div>
+                                        <div class = "board-article-time">2022-12-26 19:00</div>
+                                        <div class = "board-article-hits">12312</div>
+                                    </li>
+
+                                    <li class = "article-item">
+                                        <div class = "board-article-num"> 1 </div>
+                                        <div class = "board-article-name">게시물 제목입니다</div>
+                                        <div class = "board-article-user">작성자입니다</div>
+                                        <div class = "board-article-time">2022-12-26 19:00</div>
+                                        <div class = "board-article-hits">12312</div>
+                                    </li>
+
+                                    <li class = "article-item">
+                                        <div class = "board-article-num"> 1 </div>
+                                        <div class = "board-article-name">게시물 제목입니다</div>
+                                        <div class = "board-article-user">작성자입니다</div>
+                                        <div class = "board-article-time">2022-12-26 19:00</div>
+                                        <div class = "board-article-hits">12312</div>
+                                    </li> 
+
+                                    <li class = "article-item">
+                                        <div class = "board-article-num"> 1 </div>
+                                        <div class = "board-article-name">게시물 제목입니다</div>
+                                        <div class = "board-article-user">작성자입니다</div>
+                                        <div class = "board-article-time">2022-12-26 19:00</div>
+                                        <div class = "board-article-hits">12312</div>
+                                    </li>
+
+                                    <li class = "article-item">
+                                        <div class = "board-article-num"> 1 </div>
+                                        <div class = "board-article-name">게시물 제목입니다</div>
+                                        <div class = "board-article-user">작성자입니다</div>
+                                        <div class = "board-article-time">2022-12-26 19:00</div>
+                                        <div class = "board-article-hits">12312</div>
+                                    </li>
+
+                                    <li class = "article-item">
+                                        <div class = "board-article-num"> 1 </div>
+                                        <div class = "board-article-name">게시물 제목입니다</div>
+                                        <div class = "board-article-user">작성자입니다</div>
+                                        <div class = "board-article-time">2022-12-26 19:00</div>
+                                        <div class = "board-article-hits">12312</div>
+                                    </li>
+
+                                    <li class = "article-item">
+                                        <div class = "board-article-num"> 1 </div>
+                                        <div class = "board-article-name">게시물 제목입니다</div>
+                                        <div class = "board-article-user">작성자입니다</div>
+                                        <div class = "board-article-time">2022-12-26 19:00</div>
+                                        <div class = "board-article-hits">12312</div>
+                                    </li>
+                                </ul>
+                            <p style="text-align: end; font-size: 14px;">1 2 3 4 5 6 7 8 9 10</p>
+                        </div>
+                    </section>
+                </div>
             </div>
-        </div>
     </div>
 
     <footer class = "bottom">

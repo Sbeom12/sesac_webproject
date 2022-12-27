@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Sesac community</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css"
@@ -19,7 +19,6 @@
     />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
     <script
@@ -31,9 +30,8 @@
       type="text/javascript"
       defer
       src="{{ url_for('static', filename='js/menu.js') }}"
-
     ></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!-- 배너 관련 script-->
     <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
     <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -46,11 +44,9 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script> 
     <!--배너 관련 script-->
-
   </head>
-
+  
   <body>
-
     <div class="wrapper">
       <header class="menucontainer">
         <div class="loginbar">
@@ -97,16 +93,13 @@
                 회원가입
               </button>
             </li>
-
             {% endif %}
           </ul>
         </div>
         <!-- menu -->
         <div class="menu">
-          <ul class="menu-list" style="vertical-align: center;">
-
+          <ul class="menu-list">
             <li class="menu-item"><a href="{{url_for('main')}}"> 홈</a></li>
-
             <li class="menu-item" style="text-align: center;">
               <div class="dropdown" style=" margin: 0; text-align: center;">
                 <button 
@@ -127,19 +120,14 @@
 
                   <div class="dropdown-menu">
                     {% for board in board_ls%}
-                    <!-- main에서는 왜 href가 자유게시판만? -->
-                    <!-- logout 했을 때 list 안뜸 -->
-                    <!-- ㅠㅠ -->
-                      <a class="dropdown-item" href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}">{{board.brdNm}}</a>
+                      <a class="dropdown-item" style="z-index: 101;" href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}">{{board.brdNm}}</a>
                     {% endfor %}
                   </div>
               </div>
             </li>
-
             <li class="menu-item"><a href="https://sesac.seoul.kr/common/greeting.do">SeSAC</a></li>
             <li class="menu-item"><a href="https://www.jobkorea.co.kr/"> 채용 정보 </a></li>
             <li class="menu-item"><a href="https://dacon.io/"> 공모전 정보 </a></li>
-          
           </ul>
         </div>
       </header>
@@ -150,10 +138,9 @@
     <!--<footer class="bottom">
       <p>footer test</p>
       <a href="#" class="btn_top"> top button(위치 바꿀거임) </a>
-    </footer>
+    </footer>-->
     <script>
       $(window);
     </script>
-
   </body>
 </html>

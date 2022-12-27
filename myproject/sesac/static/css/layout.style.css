@@ -11,6 +11,15 @@ a:link{
 a:visited{
     text-decoration:none;
     color: black;
+.menu-item  a:hover{
+    color: #76b355;
+}
+
+.board-table a:hover{
+    color: #76b355;
+}
+.board-bodywrapper a:hover{
+    color: #76b355;
 }
 
 .wrapper{
@@ -22,6 +31,7 @@ a:visited{
 
 header{
     position: fixed;
+    z-index: 101;
     top:0;
     left:0;
     width: 100%;
@@ -119,7 +129,6 @@ header{
     background-size:cover;
     background-repeat: no-repeat;    
 }
-
 
 .bodywrapper{
     padding-left: 10vw;
@@ -312,7 +321,6 @@ header{
     }
     .menu-item{
         text-align: center;
-
         padding: 10px;
         font-size: 17px;
         width: 100%;
@@ -321,9 +329,6 @@ header{
         z-index: 999;
         position:relative;
         
-    }
-    .menu-item:hover{
-        background-color: #91E661;
     }
 
     .navbar-togglebtn{
@@ -743,6 +748,7 @@ header{
     text-decoration: none;
     color: #91E661;
     font-size:9.5pt;}
+    
 .quickitem a:hover {
     color:white;
     background-color: #91E661;
@@ -750,7 +756,6 @@ header{
 .quicklist li:last-child {
     border-bottom:0;
 }
-
 .adminmenu{
     display:none;
 }

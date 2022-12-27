@@ -24,7 +24,6 @@ def post(pstId):
 	db = DBUpdater()
 	data = db.load_post_pstId_list(pstId)
 	comment_list = db.load_comm_pstId_list(pstId)
- 
 	board_ls = db.load_board_list()
 
 	# 특정 게시물 html 불러오기
@@ -41,7 +40,6 @@ def post_del(pstId):
 	db = DBUpdater()
 	data = db.load_post_pstId_list(pstId)
 	board_ls = db.load_board_list()
- 
 	print(data)
     # session의 'username'이 있으면 로그인
 	if "username" in session:
@@ -94,7 +92,6 @@ def post_edit(pstId):
 		return "로그인 해주세요. <br><a href = '/user/login'> 로그인 하러가기! </a>"
 
 
-
 # /post/write
 # 작성하기 버튼 클릭
 # 게시물 새로 작성하기
@@ -106,7 +103,6 @@ def post_write():
 	# session의 'username'이 있으면 로그인
 	if "username" in session: 	
 		# 세션이 있는 경우
-
 		# 특정 게시물 편집 html 불러오기
 		return render_template('pages/post.edit.html', board_ls=board_ls)
 	else:
