@@ -1,0 +1,116 @@
+/* >>>>>>>>>>>>>>>>>>>>>> admin - borderinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - borderinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - borderinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - borderinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - borderinfo <<<<<<<<<<<<<<<<<<<<<<*/
+.brdInfo {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+}
+.brdTable {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  /* align-items: center; */
+  align-content: space-between;
+}
+
+.brdTable > * {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+  /* align-content: space-around; */
+}
+.brdinner > *,
+.brditems > * {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+  /* align-content: space-around; */
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>> admin - userinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - userinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - userinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - userinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - userinfo <<<<<<<<<<<<<<<<<<<<<<*/
+.userInfo {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+}
+.userTable {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  /* align-items: center; */
+  align-content: space-between;
+}
+
+.userTable > * {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+  /* align-content: space-around; */
+}
+.userinner > *,
+.useritems > * {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+  /* align-content: space-around; */
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>> admin - postinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - postinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - postinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - postinfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - postinfo <<<<<<<<<<<<<<<<<<<<<<*/
+.commInfo {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+}
+.commTable {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  /* align-items: center; */
+  align-content: space-between;
+}
+
+.commTable > * {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+  /* align-content: space-around; */
+}
+.comminner > *,
+.commitems > * {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+  /* align-content: space-around; */
+}

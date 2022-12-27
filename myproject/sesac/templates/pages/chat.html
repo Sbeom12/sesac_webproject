@@ -49,28 +49,117 @@
     });
   }
 </script>
-
-<div class="tagitems">
-  <div class="tagitem">
-    <a href="{{url_for('main.chat', tag='All')}}">All</a>
-    <a href="{{url_for('main.chat', tag='PA')}}">PA</a>
-    <a href="{{url_for('main.chat', tag='PM')}}">PM</a>
-    <a href="{{url_for('main.chat', tag='ML')}}">ML</a>
-    <a href="{{url_for('main.chat', tag='DE')}}">DE</a>
-    <a href="{{url_for('main.chat', tag='etc')}}">etc</a>
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+  "
+>
+  <h1 style="text-align: center; margin-top: 20px">
+    SESAC Community : <span style="color: yellowgreen">#{{ room }}</span>
+  </h1>
+  <div class="tagitems">
+    <div style="margin-bottom: 16px" class="tagitem">
+      <a
+        style="
+          background-color: yellowgreen;
+          padding: 3px;
+          margin: 0px 4px;
+          border-radius: 5px;
+        "
+        href="{{url_for('main.chat', tag='All')}}"
+        >All</a
+      >
+      <a
+        style="
+          background-color: yellowgreen;
+          padding: 3px;
+          margin: 0px 4px;
+          border-radius: 5px;
+        "
+        href="{{url_for('main.chat', tag='PA')}}"
+        >PA</a
+      >
+      <a
+        style="
+          background-color: yellowgreen;
+          padding: 3px;
+          margin: 0px 4px;
+          border-radius: 5px;
+        "
+        href="{{url_for('main.chat', tag='PM')}}"
+        >PM</a
+      >
+      <a
+        style="
+          background-color: yellowgreen;
+          padding: 3px;
+          margin: 0px 4px;
+          border-radius: 5px;
+        "
+        href="{{url_for('main.chat', tag='ML')}}"
+        >ML</a
+      >
+      <a
+        style="
+          background-color: yellowgreen;
+          padding: 3px;
+          margin: 0px 4px;
+          border-radius: 5px;
+        "
+        href="{{url_for('main.chat', tag='DE')}}"
+        >DE</a
+      >
+      <a
+        style="
+          background-color: yellowgreen;
+          padding: 3px;
+          margin: 0px 4px;
+          border-radius: 5px;
+        "
+        href="{{url_for('main.chat', tag='etc')}}"
+        >etc</a
+      >
+    </div>
   </div>
-</div>
 
-<div>
   <div>
-    <h1>SESAC Community : #{{ room }}</h1>
-    <textarea id="chat" cols="80" rows="20"></textarea><br /><br />
-    <input
-      id="text"
-      size="80"
-      placeholder="Enter your message here"
-    /><br /><br />
-    <a href="#" onclick="leave_room();">Leave this room</a>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-items: center;
+      "
+    >
+      <textarea
+        disabled
+        style="padding: 10px; background-color: rgb(179, 214, 179)"
+        id="chat"
+        cols="80"
+        rows="20"
+      ></textarea
+      ><br /><br />
+      <input
+        style="padding: 10px"
+        id="text"
+        size="80"
+        placeholder="Enter your message here"
+      /><br /><br />
+      <a
+        style="
+          background-color: white;
+          border: 2px solid yellowgreen;
+          padding: 10px;
+          border-radius: 20px;
+        "
+        href="#"
+        onclick="leave_room();"
+        >Leave this room</a
+      >
+    </div>
   </div>
 </div>
 {% endblock %}
