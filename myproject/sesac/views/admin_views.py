@@ -152,7 +152,7 @@ def admin_postinfo():
     
     return "로그인 해주세요. <br><a href = '/user/login'> 로그인 하러가기 </a>"
 	# return 'admin_views.bp - /admin/postinfo'
- 
+
 
 @bp.route('/postinfo/del/<pstId>', methods=('GET','POST'))
 def postinfo_del(pstId):

@@ -1,18 +1,44 @@
 {% extends '/layouts/base_updown.html' %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/admin.css') }}"
+/>
+
 <section>
   <h2>admin.admin.comminfo.html.html</h2>
 </section>
-{% if CommentInfo %} {% for comm in CommentInfo %}
-<ul>
-  {% for key, value in comm.items() %}
-  <li>{{key}} - {{value}}</li>
-  {% endfor %}
-  <li>
-    <a href="{{url_for('admin_views.comminfo_del', cmtId=comm.cmtId)}}"
-      >삭제 - {{comm.cmtId}}</a
-    >
-  </li>
-</ul>
-{% endfor %} {% else %}
-<li>CommentInfo가 없음</li>
-{% endif %} {% endblock %}
+
+<div class="commInfo">
+  <div class="commTable">
+    {% if CommentInfo %}
+    <div class="comminner">
+      <div class="inner-">ID</div>
+      <div class="inner-">게시판ID</div>
+      <div class="inner-">유저ID</div>
+      <div class="inner-">제목</div>
+      <div class="inner-">작성일</div>
+      <!-- <div class="inner-">좋아요 갯수</div> -->
+      <!-- <div class="inner-">싫어요 갯수</div> -->
+      <div class="inner-">삭제</div>
+    </div>
+    {% for comm in CommentInfo %}
+    <div class="commitems">
+      <div class="inner-">{{comm.cmtId}}</div>
+      <div class="inner-">{{comm.pstId}}</div>
+      <div class="inner-">{{comm.userId}}</div>
+      <div class="inner-">{{comm.cmtCntnt}}</div>
+      <div class="inner-">{{comm.cmtCrtDate}}</div>
+      <!-- <div class="inner-">{{comm.cmtLikeCnt}}</div> -->
+      <!-- <div class="inner-">{{comm.cmtUnlikeCnt}}</div> -->
+      <div class="inner-">
+        <a href="{{url_for('admin_views.comminfo_del', cmtId=comm.cmtId)}}"
+          >삭제 - {{comm.cmtId}}</a
+        >
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <li>PostInfo가 없음</li>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -24,17 +24,25 @@
         >
           <div class="mb-3">
             <label for="title">제목</label>
-            <input type="text" class="form-control" name="title" id="title" value="{{p.title}}" onkeydown="enterFunc(event,'title','reg_id')"/>
+            <input type="text" class="form-control" name="title" id="title" value="{{p.title}}"/>
           </div>
 
           <div class="mb-3">
-            <label for="reg_id">게시판 종류</label>
-            <input type="text" class="form-control" name="reg_id" id="reg_id"  value="{{p.brdId}}" onkeydown="enterFunc(event,'reg_id','content')"/>
+            <select name="brdId">
+              {%for name in board_ls %} {%if p.brdId == name.brdId%}
+              <option name="brdId" value="{{name.brdId}}" selected>
+                {{name.brdNm}}
+              </option>
+              {%else%}
+              <option name="brdId" value="{{name.brdId}}">{{name.brdNm}}</option>
+              {%endif%} {%endfor%}
+            </select>
+            
           </div>
           <div class="mb-3">
             <label for="content">내용</label>
             <textarea rows="10" style="resize: none;"
-            class = "form-control" name="content" id="content" placeholder="내용을 입력해 주세요">{{p.pstCntnt}}</textarea>
+            class = "form-control" name="pstCntnt" id="pstCntnt" placeholder="내용을 입력해 주세요">{{p.pstCntnt}}</textarea>
           </div>
           <br><br>
           <div>
@@ -65,18 +73,21 @@
 
       <div class="mb-3">
         <label for="title">제목</label>
-        <input type="text" class="form-control" name="title" id="title" onkeydown="enterFunc(event,'title','reg_id')" placeholder="제목을 입력해 주세요">
+        <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
       </div>
 
       <div class="mb-3">
-        <label for="reg_id">게시판 종류</label>
-        <input type="text" class="form-control" name="reg_id" id="reg_id" onkeydown="enterFunc(event,'reg_id','content')" placeholder="게시판 종류를 입력해 주세요">
+        <select name="brdId">
+          {%for name in board_ls%}
+          <option name="brdId" value="{{name.brdId}}">{{name.brdNm}}</option>
+          {%endfor%}
+        </select>
       </div>
 
       <div class="mb-3">
         <label for="content">내용</label>
         <textarea rows="10"
-        class = "form-control" name="content" id="content" style="resize: none;" placeholder="내용을 입력해 주세요"></textarea>
+        class = "form-control" name="pstCntnt" id="content" style="resize: none;" placeholder="내용을 입력해 주세요"></textarea>
       </div>
       <br><br>
       <div>
@@ -87,7 +98,6 @@
     </form>
   </div>
 </article>
-
 
 {% endif %}
 {% endblock %}

@@ -18,9 +18,10 @@ def grid():
     for board in board_ls:
         brdId = board['brdId']
         post_dict[brdId] = db.load_post_brdId_list(brdId)[:5]
-    
+
     # 특정 게시물 html 불러오기
     return render_template('pages/main.html', board_ls=board_ls, post_dict=post_dict)
+
 
 
 # 게시물 클릭하면 조회수 올리기
@@ -32,6 +33,7 @@ def vwFunc():
         pstId = request.get_json()["pstId"]
         
         # 조회수 +1 한 후 저장
+
         db = DBUpdater()
         vwCnt = db.extractWhere("vwCnt", "Post", "pstId", int(pstId))
         vwCnt = int(vwCnt)+1
@@ -43,3 +45,4 @@ def vwFunc():
     # method = GET
     else:
         render_template('pages/main.html')
+
