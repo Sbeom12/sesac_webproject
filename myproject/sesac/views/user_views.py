@@ -61,8 +61,7 @@ def user_signup():
 @bp.route('/respones', methods=('GET', 'POST'))
 def fetch():
     if request.method == 'POST':
-        result = request.get_json()["subNm"]
-        print(result)
+        result = request.get_json()["subNm"]c
         newResult = db.extractWhere("subNm", "UserInfo", "subNm", result)
         
         if(result == newResult):
