@@ -58,13 +58,7 @@ href="{{ url_for('static', filename='css/header.css') }}"
 
                       {% if data=="tel"%}
                           {% for message in get_flashed_messages() %}
-                              <p><script>
-                                Swal.fire({
-                                icon: 'error',                         // Alert 타입
-                                title: '경고',         // Alert 제목
-                                text: `{{ message }}`,  // Alert 내용
-                              });
-                              </script></p>
+                              <p>{{ message }}</p>
                           {% endfor %}
                       {% endif %}
   

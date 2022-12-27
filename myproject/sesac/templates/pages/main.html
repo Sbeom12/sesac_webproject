@@ -12,7 +12,7 @@
         class="d-block w-100"
         src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd6GmZ0%2FbtrUrUrJYlY%2F3Je1z9FBgBlhoqnGTA4afk%2Fimg.png"
         alt="First slide"
-        style="max-height: 360px; margin: auto; max-width: 1334px"
+        style="height: 360px; margin: auto; max-width: 1334px"
       />
       <div class="carousel-caption d-none d-md-block"></div>
     </div>
@@ -21,7 +21,7 @@
         class="d-block w-100"
         src="https://sesac.seoul.kr/storage/image/temp/2022/10/24/I5tKJLpuxbyDvAF26DwA.jpg"
         alt="Second slide"
-        style="max-height: 360px; margin: auto; max-width: 1334px"
+        style="height: 360px; margin: auto; max-width: 1334px"
       />
     </div>
     <div class="carousel-item" data-interval="2000">
@@ -29,7 +29,7 @@
         class="d-block w-100"
         src="https://www.mkgsa.org/zbxe/files/attach/images/88/464/245/001/79dad2bf67f11631cc33d0dfcaf6bf9a.jpg"
         alt="Third slide"
-        style="max-height: 360px; margin: auto; max-width: 1334px"
+        style="height: 360px; margin: auto; max-width: 1334px"
       />
     </div>
     <div class="carousel-item" data-interval="2000">
@@ -37,7 +37,7 @@
         class="d-block w-100"
         src="https://sesac.seoul.kr/storage/image/temp/2022/10/05/67lEomjeTpe2GqteIfzB.gif"
         alt="Fourth slide"
-        style="max-height: 360px; margin: auto; max-width: 1334px"
+        style="height: 360px; margin: auto; max-width: 1334px"
       />
     </div>
     <div class="carousel-item" data-interval="2000">
@@ -45,7 +45,7 @@
         class="d-block w-100"
         src="https://cdn.imweb.me/upload/S20200211c0ce72cb6a932/cd9fb1e59d1cc.png"
         alt="Fifth slide"
-        style="max-height: 360px; margin: auto; max-width: 1334px"
+        style="height: 360px; margin: auto; max-width: 1334px"
       />
     </div>
     <!-- / 슬라이드 쇼 끝 -->
@@ -130,17 +130,17 @@
               </li>
               
               {% for post in post_dict[board.brdId] %}
-                <li class="inner-item">
-                 <!-- 조회수 +1 -->
-                 <a
-                 href="javascript:void(0);" 
-                 onclick="lnkClick({{post.pstId}});"
-                 > 
+              <li class="inner-item">
+                <!-- 조회수 +1 -->
+                <a
+                  href="javascript:void(0);" 
+                  onclick="lnkClick({{post.pstId}});"
+                > 
                   <div class="articletitle"> {{post.title}} </div>
                   <div class="idname"> {{post.userId}} </div>
                   <div class="hits"> {{post.vwCnt}} </div>
-                 </a>
-               </li>
+                </a>
+              </li>
               {% endfor %}
             </ul>
           </li>

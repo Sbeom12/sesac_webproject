@@ -31,7 +31,6 @@ function dropDulp(pwCheckValue){
 
     if(pwValue!=pwCheckValue){
         console.log("pw 와 pwCheck의 값이 다릅니다.")
-
         Swal.fire({
             icon: 'error',                         // Alert 타입
             title: '경고',         // Alert 제목
