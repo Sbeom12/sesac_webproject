@@ -33,6 +33,7 @@
       src="{{ url_for('static', filename='js/menu.js') }}"
 
     ></script>
+
     <!-- 배너 관련 script-->
     <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -45,9 +46,11 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
     <!--배너 관련 script-->
+
   </head>
 
   <body>
+
     <div class="wrapper">
       <header class="menucontainer">
         <div class="loginbar">
@@ -98,14 +101,45 @@
             {% endif %}
           </ul>
         </div>
-
+        <!-- menu -->
         <div class="menu">
-          <ul class="menu-list">
+          <ul class="menu-list" style="vertical-align: center;">
+
             <li class="menu-item"><a href="{{url_for('main')}}"> 홈</a></li>
-            <li class="menu-item"><a> 게시판  </a></li>
+
+            <li class="menu-item" style="text-align: center;">
+              <div class="dropdown" style=" margin: 0; text-align: center;">
+                <button 
+                class="btn btn-secondary dropdown-toggle" 
+                type="button" 
+                data-toggle="dropdown" 
+                id="dropdownBtn" 
+                data-bs-auto-close="true" 
+                aria-expanded="false"
+                style=" display: flex; 
+                        background-color: white; 
+                        color: black; 
+                        border: 0px; 
+                        font-size: 20px; 
+                        margin: 0px; 
+                        padding: 0px;"
+                >게시판</button>
+
+                  <div class="dropdown-menu">
+                    {% for board in board_ls%}
+                    <!-- main에서는 왜 href가 자유게시판만? -->
+                    <!-- logout 했을 때 list 안뜸 -->
+                    <!-- ㅠㅠ -->
+                      <a class="dropdown-item" href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}">{{board.brdNm}}</a>
+                    {% endfor %}
+                  </div>
+              </div>
+            </li>
+
             <li class="menu-item"><a href="https://sesac.seoul.kr/common/greeting.do">SeSAC</a></li>
             <li class="menu-item"><a href="https://www.jobkorea.co.kr/"> 채용 정보 </a></li>
-            <li class="menu-item"><a> 공모전 정보 </a></li>
+            <li class="menu-item"><a href="https://dacon.io/"> 공모전 정보 </a></li>
+          
           </ul>
         </div>
       </header>
@@ -113,12 +147,13 @@
       {% block content %} {% endblock %}
       <!-- 기본 템플릿 안에 삽입될 내용 End -->
     </div>
-    <footer class="bottom">
+    <!--<footer class="bottom">
       <p>footer test</p>
       <a href="#" class="btn_top"> top button(위치 바꿀거임) </a>
-    </footer>
+    </footer>-->
     <script>
       $(window);
     </script>
+
   </body>
 </html>

@@ -1,113 +1,169 @@
 {% extends '/layouts/base.html' %}
-
 {% block content %}
-<!DOCTYPE html>
-<head>
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script src="{{url_for('static',filename='js/user.signup.js') }}"></script>
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/signup.css') }}"
+    />
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/footer.css') }}"
+    />
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/header.css') }}"
+    />
+    
+{% if data=="user"%}
+    {% for message in get_flashed_messages() %}
     <script>
-        function enterFunc(event, id, focus){
-            next = document.querySelector(`#${focus}`)
-            data = document.querySelector(`#${id}`)
-      
-            if(event.code=="Enter"){
-                console.log(data.value)
-      
-                if(data.value.length==0){
-                    event.preventDefault()
-                    alert(`${id}은 필수 입력 항목입니다.`)
-                }
-                else{
-                    event.preventDefault()
-                    document.querySelector(`#${focus}`).focus() // enter 누르면 다음으로 focus 이동
-                    
-                    if(id=="pwcheck"){
-                        pwCheckValue = data.value
-                        dropDulp(pwCheckValue)
-                        }
-                    }
-                }
-            }
-      
-        function dropDulp(pwCheckValue){
-            pwValue = document.querySelector('#userPw').value
-            if(pwValue!=pwCheckValue){
-                console.log("pw 와 pwCheck의 값이 다릅니다.")
-                p = document.createElement('p')
-                p.setAttribute("id" ,"remv")
-                p.innerText = "비밀번호와 일치하지 않습니다. 다시 입력해주세요."
-                ul.appendChild(p)
-                pwCheckValue.value=""
-               // pwValue.setAttribute("onclick", "inputClick()")
-            }
-            else{
-                console.log("pw 와 pwCheck의 값이 같습니다.")
-            }
-        }
-      
-        function btnClick(){
-            i=0
-            clas = document.querySelectorAll(".clas")
-            for(i=0; i<=6; i++){
-                if(clas[i].value.length==0){
-                    event.preventDefault()
-                }
-            }
-        }
-      
-        function inputClick(){
-            console.log("클릭 클릭")
-            p = document.querySelector("#remv")
-            console.log(p)
-            p.remove()
-        }
+        alert("{{message}}")
     </script>
-</head>
+    {% endfor %}
+{% endif %}
+
 <body>
+    <main>
+      <div class="inner">
+          <div class="signup-container">
+              <h1><span class="green">Sign Up</span></h1>
+              <div class="signup-form">
+                  <form action="{{url_for('user_views.user_signup')}}" method="POST">
+                      <input 
+                        type="text" 
+                        placeholder="이름" 
+                        id="userNm" 
+                        name="userNm" 
+                        class="clas" 
+                        onkeydown="enterFunc(event,'userNm','tel')"
+                      />
 
-  <section>
+                      <div class="userNm-message message">
+                          이름 형식으로 입력해주세요.
+                      </div>
+  
+                      <input 
+                        type="text"
+                        placeholder="010-0000-0000" 
+                        id="tel"
+                        name="tel" 
+                        class="clas"
+                        onkeydown="enterFunc(event,'tel','email')"
+                      />
+                      
+                      <div class="tel-message message">
+                          전화번호 형식으로 입력해주세요.
+                      </div>
 
-    <h2>user.signup.html</h2>
+                      {% if data=="tel"%}
+                          {% for message in get_flashed_messages() %}
+                              <p>{{ message }}</p>
+                          {% endfor %}
+                      {% endif %}
+  
+                      <input
+                        type="email" 
+                        placeholder="address@mail.com" 
+                        id="email" 
+                        name="email" 
+                        class="clas"
+                        onkeydown="enterFunc(event,'email','subNm')"
+                        />
 
-    <form action="{{url_for('user_views.user_signup')}}" method="POST">
-        <p> Login Form </p>
-        <ul id="ul" style="list-style:none;">
-            <li> 이름 <input type="text" id="userNm" name="userNm" class="clas" onkeydown="enterFunc(event,'userNm','tel')"/></li><br> 
+                      <div class="email-message message">
+                          이메일 형식으로 입력해주세요.
+                      </div>
 
-            <li> 전화번호 <input type="text" id="tel" name="tel"  class="clas" onkeydown="enterFunc(event,'tel','email')" placeholder="010-1234-5678"/></li><br>
-            {% if data=="tel"%}
-              {% for message in get_flashed_messages() %}
-                  <p>{{ message }}</p>
-              {% endfor %}
-            {% endif %}
+                    <li id="nick" style="list-style:none">
+                      <input 
+                        type="text"
+                        placeholder="닉네임" 
+                        id="subNm" 
+                        name="subNm" 
+                        class="clas" 
+                        onclick="inputClick()"
+                        onkeydown="enterFunc(event,'subNm','userId')"
+                        />
+                      <input
+                        type="button" 
+                        value="중복확인" 
+                        id="dup1" 
+                        onclick="duplicate()" 
+                        />
+                    </li>  
+                    
+                      <div class="subNm-message message">
+                          한글 또는 영어 2 ~ 10자로 설정해주세요.
+                      </div>
 
-            <li> 이메일 <input type="email" id="email" name="email" class="clas" onkeydown="enterFunc(event,'email','subNm')" placeholder="address@mail.com"/></li><br>
+                    <li id="id" style="list-style:none">
+                      <input
+                        type="text"
+                        placeholder="아이디" 
+                        id="userId" 
+                        name="userId" 
+                        class="clas" 
+                        onclick="inputClick()"
+                        onkeydown="enterFunc(event,'userId','userPw')"
+                        />
 
-            <li> 닉네임 <input type="text" id="subNm" name="subNm" class="clas" onkeydown="enterFunc(event,'subNm','userId')"/>
-              <!--<input type="button" value="중복확인" id="dup1" onclick="btnClick()" />--></li><br>
-              {% if data=="subNm"%}
-                  {% for message in get_flashed_messages() %}
-                      <p>{{ message }}</p>
-                  {% endfor %}
-              {% endif %}
+                      <input
+                        type="button" 
+                        value="중복확인"
+                        id="dup2" 
+                        onclick="duplicate2()"
+                        />
+                    </li>  
 
-            <li> 아이디 <input type="text" id="userId" name="userId" class="clas" onkeydown="enterFunc(event,'userId','userPw')"/>
-              <!--<input type="button" value="중복확인"id="dup2" onclick="btnClick()"/>--></li><br>
-              {% if data=="userId"%}
-                  {% for message in get_flashed_messages() %}
-                      <p>{{ message }}</p>
-                  {% endfor %}
-              {% endif %}
+                      <div class="userId-message message">
+                          아이디 형식으로 입력해주세요.
+                      </div>
+  
+                      <input 
+                        type="password" 
+                        placeholder="비밀번호" 
+                        id="userPw" 
+                        name="userPw" 
+                        class="clas" 
+                        onkeydown="enterFunc(event,'userPw','pwcheck')"
+                        onclick="inputClick()"
+                        />
 
-            <li> 비밀번호 <input type="password" id="userPw" name="userPw" class="clas" onkeydown="enterFunc(event,'userPw','pwcheck')" onclick="inputClick()"/></li><br>
+                      <div class="password-message message">
+                          영문, 숫자, 특수문자(!@$%^&*)조합 8자 이상 입력
+                      </div>
 
-            <li> 비밀번호 확인 <input type="password" id="pwcheck" name="pwcheck" class="clas" onkeydown="enterFunc(event,'pwcheck','submit')" onclick="inputClick()"/></li><br>
-        </ul>
+                    <li id="check" style="list-style:none">
+                      <input
+                        type="password" 
+                        placeholder="비밀번호 확인" 
+                        id="pwcheck" 
+                        name="pwcheck" 
+                        class="clas" 
+                        onkeydown="enterFunc(event,'pwcheck','submit')" 
+                        onclick="inputClick()"
+                        />
+                    </li>
 
-        <p><input type="submit" id="submit" value="제출" onclick="btnClick()"/></p>
-    </form>
-  </section> 
-</body>
-{% endblock %}
-</html>
- 
+                      <div class="password-confirm-message message">
+                          비밀번호가 일치하지 않습니다.
+                      </div>
+  
+                    <p>
+                    <input
+                        type="submit"
+                        id="submit" 
+                        value="제출" 
+                        onclick="btnClick(event)"
+                        />
+                    </p>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </main>
+  </body>
+  {% endblock %}
+  
+  

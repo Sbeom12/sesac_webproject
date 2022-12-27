@@ -11,11 +11,12 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
+    
     <title>Hello, pybo!</title>
   </head>
   <body>
-    <p>base.html</p>
-    <a href="{{url_for('main')}}">main</a>
+    <!--<p>base.html</p>
+    <a href="{{url_for('main')}}">main</a>-->
     <!-- 기본 템플릿 안에 삽입될 내용 Start -->
     {% block content %} {% endblock %}
     <!-- 기본 템플릿 안에 삽입될 내용 End -->

@@ -9,6 +9,9 @@ from ..sqlModule import DBUpdater
 
 bp = Blueprint('admin_views', __name__, url_prefix='/admin')
 
+db = DBUpdater()
+board_ls = db.load_board_list()
+
 # /admin
 @bp.route('/')
 def admin():
@@ -17,7 +20,7 @@ def admin():
     if session :
         # 관리자일 경우에 만
         if session['grade'] == 0:
-            return render_template('pages/admin.html')
+            return render_template('pages/admin.html', board_ls=board_ls)
         else:
             return '관리자 권한이 없어요'
     
@@ -33,7 +36,7 @@ def admin_userinfo():
         if session['grade'] == 0:
             db = DBUpdater()
             userinfo = db.exetractJson('UserInfo')
-            return render_template('pages/admin.userinfo.html', userinfo=userinfo)
+            return render_template('pages/admin.userinfo.html', userinfo=userinfo, board_ls=board_ls)
         else:
             return '관리자 권한이 없어요'
     
@@ -48,7 +51,7 @@ def userinfo_del(userId):
         if session['grade'] == 0:
             db = DBUpdater()
             userinfo = db.deleteUserInfo(userId)
-            return redirect(url_for('admin_views.admin_userinfo'))
+            return redirect(url_for('admin_views.admin_userinfo', board_ls=board_ls))
         else:
             return '관리자 권한이 없어요'
     
@@ -62,7 +65,7 @@ def userinfo_grade(userId):
         if session['grade'] == 0:
             db = DBUpdater()
             db.update_grade(userId)
-            return redirect(url_for('admin_views.admin_userinfo'))
+            return redirect(url_for('admin_views.admin_userinfo', board_ls=board_ls))
         else:
             return '관리자 권한이 없어요'
     
@@ -80,7 +83,7 @@ def admin_boardinfo():
             
             db = DBUpdater()
             BoardInfo = db.exetractJson('Board')
-            return render_template('pages/admin.boardinfo.html', BoardInfo=BoardInfo)
+            return render_template('pages/admin.boardinfo.html', BoardInfo=BoardInfo, board_ls=board_ls)
         else:
             return '관리자 권한이 없어요'
     
@@ -95,7 +98,7 @@ def boardinfo_del(brdId):
         if session['grade'] == 0:
             db = DBUpdater()
             userinfo = db.deleteBoard(brdId)
-            return redirect(url_for('admin_views.admin_boardinfo'))
+            return redirect(url_for('admin_views.admin_boardinfo', board_ls=board_ls))
         else:
             return '관리자 권한이 없어요'
     
@@ -111,7 +114,7 @@ def boardinfo_add():
             
             db = DBUpdater()
             db.insertBoard(brdNm, 0)
-            return redirect(url_for('admin_views.admin_boardinfo'))
+            return redirect(url_for('admin_views.admin_boardinfo', board_ls=board_ls))
         else:
             return '관리자 권한이 없어요'
     
@@ -126,7 +129,7 @@ def boardinfo_edit(brdId):
             brdNm = request.form['brdNm']
             db = DBUpdater()
             db.update_brdNm(brdId, brdNm)
-            return redirect(url_for('admin_views.admin_boardinfo'))
+            return redirect(url_for('admin_views.admin_boardinfo', board_ls=board_ls))
         else:
             return '관리자 권한이 없어요'
     
@@ -143,7 +146,7 @@ def admin_postinfo():
         if session['grade'] == 0:
             db = DBUpdater()
             PostInfo = db.exetractJson('Post')
-            return render_template('pages/admin.postinfo.html', PostInfo=PostInfo)
+            return render_template('pages/admin.postinfo.html', PostInfo=PostInfo, board_ls=board_ls)
         else:
             return '관리자 권한이 없어요'
     
@@ -159,7 +162,7 @@ def postinfo_del(pstId):
         if session['grade'] == 0:
             db = DBUpdater()
             db.deletePost(pstId)
-            return redirect(url_for('admin_views.admin_postinfo'))
+            return redirect(url_for('admin_views.admin_postinfo', board_ls=board_ls))
         else:
             return '관리자 권한이 없어요'
     
@@ -175,7 +178,7 @@ def admin_comminfo():
         if session['grade'] == 0:
             db = DBUpdater()
             CommentInfo = db.exetractJson('Comment')
-            return render_template('pages/admin.comminfo.html', CommentInfo=CommentInfo)
+            return render_template('pages/admin.comminfo.html', CommentInfo=CommentInfo, board_ls=board_ls)
         else:
             return '관리자 권한이 없어요'
     
@@ -190,7 +193,7 @@ def comminfo_del(cmtId):
         if session['grade'] == 0:
             db = DBUpdater()
             db.deleteComment(cmtId)
-            return redirect(url_for('admin_views.admin_comminfo'))
+            return redirect(url_for('admin_views.admin_comminfo', board_ls=board_ls))
         else:
             return '관리자 권한이 없어요'
     
