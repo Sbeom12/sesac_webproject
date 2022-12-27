@@ -11,6 +11,8 @@ a:link{
 a:visited{
     text-decoration:none;
     color: black;
+}
+
 .menu-item  a:hover{
     color: #76b355;
 }
@@ -116,8 +118,6 @@ header{
     padding-right: 25px;
 
 }
-
-
 
 /* 배너 */
 .middle{
@@ -644,6 +644,7 @@ header{
 .comment-title{
     width: 50%;
 }
+
 .comment-time{
     width: 20%;
 }
