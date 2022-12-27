@@ -32,7 +32,6 @@
           {% endfor %} 
         {% else %}
         <p>board_list가 없습니다.</p>
-        
         {% endif %}
 
       </ul>
@@ -96,7 +95,6 @@
             <div class = "board-index-time">작성시간</div>
             <div class = "board-index-hits">조회</div>
           </li>
-
           {% if boards.post_list %}
             {% for post in boards.post_list %}
               <li class="article-item">
@@ -115,17 +113,14 @@
             {% endfor %} 
           {% else %}
           <li class="article-item"> 게시물이 존재하지 않습니다 </li>
-
           {% endif %}
         </ul>
-
         {% for page_num in boards.max_page%}
           <!--<li class="page-item">
             <a class="page-link" href="?page={{page_num}}">{{page_num}}</a>
           </li>-->
           <a href="?page={{page_num}}">{{page_num}}</a>
         {%endfor%}
-
       </div>
       <a href="{{url_for('post_views.post_write')}}">작성하기</a>
     </section>

@@ -1,6 +1,4 @@
 function enterFunc(event, id, focus){
-
-    console.log("여기 여기 여기 여기 여기 보세요")
     data = document.querySelector(`#${id}`)
 
     if(event.code=="Enter"){
@@ -8,7 +6,11 @@ function enterFunc(event, id, focus){
     
         if(data.value.length==0){
             event.preventDefault()
-            alert(`${id}은 필수 입력 항목입니다.`)
+            Swal.fire({
+                icon: 'warning',                         // Alert 타입
+                title: '경고',         // Alert 제목
+                text: `${id}은 필수 입력 항목입니다.`  // Alert 내용
+            });
         }
         else{
             event.preventDefault()
@@ -23,17 +25,18 @@ function enterFunc(event, id, focus){
 }
 
 function dropDulp(pwCheckValue){
-
     pwValue = document.querySelector('#userPw').value
     pwCheckValue2 = document.querySelector('#pwcheck')
     check = document.querySelector('#check')
 
     if(pwValue!=pwCheckValue){
         console.log("pw 와 pwCheck의 값이 다릅니다.")
-        li = document.createElement('li')
-        li.setAttribute("id" ,"new")
-        li.innerText = "비밀번호와 일치하지 않습니다. 다시 입력해주세요."
-        check.appendChild(li)
+
+        Swal.fire({
+            icon: 'error',                         // Alert 타입
+            title: '경고',         // Alert 제목
+            text: '비밀번호와 일치하지 않습니다. 다시 입력해주세요.',  // Alert 내용
+        });
         pwCheckValue2.value=""
     }
     else{
@@ -46,6 +49,11 @@ function btnClick(event){
     clas = document.querySelectorAll(".clas")
     for(i=0; i<=6; i++){
         if(clas[i].value.length==0){
+            Swal.fire({
+                icon: 'error',                         // Alert 타입
+                title: '경고',         // Alert 제목
+                text: "내용 다 채워주세요.",  // Alert 내용
+            });
             event.preventDefault()
         }
     }

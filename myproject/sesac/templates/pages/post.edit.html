@@ -1,11 +1,11 @@
 {% extends '/layouts/base_updown.html' %} {% block content %}
-
 <script src="{{url_for('static',filename='js/user.post.edit.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <!-- 
       brdId => reg_id 
       pstCntnt = > content
 -->
-
 <!-- 기존 게시물 편집하기 -->
 {% if post_list %} 
 <article>
@@ -33,14 +33,14 @@
 
           <div class="mb-3">
             <label for="content">내용</label>
-            <textarea rows="10"
+            <textarea rows="10" style="resize: none;"
             class = "form-control" name="content" id="content" placeholder="내용을 입력해 주세요">{{p.pstCntnt}}</textarea>
           </div>
 
           <br><br>
 
           <div>
-            <button type="submit" class="btn btn-sm btn-success" id="btnSave" onclick="btnClick(event)">저장하기</button>
+            <button type="submit" class="btn btn-sm btn-success"  id="btnSave" onclick="btnClick(event)">저장하기</button>
             <a class="btn btn-sm btn-success" id="btnSave" href="{{url_for('board_views.board')}}">취소하기</a>
           </div>
 
@@ -78,7 +78,7 @@
       <div class="mb-3">
         <label for="content">내용</label>
         <textarea rows="10"
-        class = "form-control" name="content" id="content" placeholder="내용을 입력해 주세요"></textarea>
+        class = "form-control" name="content" id="content" style="resize: none;" placeholder="내용을 입력해 주세요"></textarea>
       </div>
       <br><br>
       <div>

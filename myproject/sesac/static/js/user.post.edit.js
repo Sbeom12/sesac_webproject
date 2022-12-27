@@ -6,7 +6,14 @@ function enterFunc(event, id, focus){
         console.log(data.value)
         if(data.value.length==0){
             event.preventDefault()
-            alert(`${id}은 필수 입력 항목입니다.`)
+            //alert(`${id}은 필수 입력 항목입니다.`)
+            Swal.fire({
+                icon: 'waring',                         // Alert 타입
+                title: '경고',         // Alert 제목
+                text: `${id}은 필수 입력 항목입니다.`,  // Alert 내용
+            });
+            
+            
         }
         else{
             event.preventDefault()
@@ -19,6 +26,11 @@ function btnClick(event){
     clas = document.querySelectorAll(".form-control")
     for(i=0; i<=6; i++){
     if(clas[i].value.length==0){
+        Swal.fire({
+            icon: 'error',                         // Alert 타입
+            title: '경고',         // Alert 제목
+            text: "내용 다 채워주세요",  // Alert 내용
+        });
         event.preventDefault()
         }
     }
