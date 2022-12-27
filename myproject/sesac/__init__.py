@@ -8,13 +8,19 @@ from datetime import timedelta
 # from flask_admin.contrib.sqla import ModelView
 # from flask_sqlalchemy import SQLAlchemy
 
+# flask_socketio 추가
+from flask_socketio import SocketIO
+
+socketio = SocketIO()
+
 
 # Blueprint views 불러오기 
 from .views import (
 	user_views, post_views, board_views, admin_views, comment_views, main_views
 )
 # flask의 create_app - Flask Application Factory
-def create_app():
+# debug / 
+def create_app(debug=False):
 	print('----------create_app----------')	
 	app = Flask(__name__, template_folder='templates')
 	app.secret_key = 'secretkey'  # secret_key는 서버상에 동작하는 어플리케이션 구분하기 위해 사용하고 복잡하게 만들어야 합니다.
@@ -27,6 +33,8 @@ def create_app():
 		return redirect(url_for('main_views.grid'))
 		# return '/ - /'
 
+	from .main import main as main_blueprint
+	app.register_blueprint(main_blueprint)
 
 	# Blueprint views를 app에 등록
 	app.register_blueprint(user_views.bp)
@@ -35,6 +43,9 @@ def create_app():
 	app.register_blueprint(admin_views.bp)
 	app.register_blueprint(comment_views.bp)
 	app.register_blueprint(main_views.bp)
+
+	# socketio.init_app(app) 추가
+	socketio.init_app(app)
 
 	return app
 

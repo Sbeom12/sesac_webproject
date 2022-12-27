@@ -1,6 +1,5 @@
 {% extends '/layouts/base.html' %}
 {% block content %}
-
 <script src="{{url_for('static',filename='js/user.signup.js') }}"></script>
 <link
     rel="stylesheet"
@@ -14,7 +13,6 @@ href="{{ url_for('static', filename='css/footer.css') }}"
 rel="stylesheet"
 href="{{ url_for('static', filename='css/header.css') }}"
     />
-    
 {% if data=="user"%}
     {% for message in get_flashed_messages() %}
     <script>
