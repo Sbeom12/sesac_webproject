@@ -1,5 +1,5 @@
 # myproject/sesac/views/post_views.py
-from flask import Flask, url_for, request, session, redirect, app
+from flask import Flask, url_for, request, session, redirect, app, flash
 from flask import Blueprint, render_template
 from ..sqlModule import DBUpdater
 from datetime import datetime
@@ -53,8 +53,9 @@ def post_del(pstId):
 
 		else:
 			print('id가 다름')
+			flash("삭제 권한이 없습니다.")
 			# 특정 게시물 html 불러오기
-			return redirect(url_for('post_views.post', pstId=pstId), board_ls=board_ls)
+			return redirect(url_for('post_views.post', pstId=pstId, board_ls=board_ls))
 	else:
 		# 세션이 없는 경우
 		print('First Login')
@@ -83,9 +84,9 @@ def post_edit(pstId):
 
 		else:
 			print('id가 다름')
+			flash("편집 권한이 없습니다.")
 			# 특정 게시물 html 불러오기
-			return redirect(url_for('post_views.post', pstId=pstId), board_ls=board_ls)
-			# return render_template('pages/post.html', post_list=data)
+			return redirect(url_for('post_views.post', pstId=pstId, board_ls=board_ls))
 	else:
 		# 세션이 없는 경우
 		print('First Login')

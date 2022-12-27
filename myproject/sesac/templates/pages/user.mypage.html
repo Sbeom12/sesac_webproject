@@ -22,16 +22,16 @@
 
     <div class = "mypage-upper">
       <img src = "https://sesac.seoul.kr/static/common/images/www/common/logo.png" style="width: 90px;">
-      <p class = "line-1">안녕하세요, 강지원님</p>
+      <p class = "line-1">안녕하세요, {{session['userNm']}}님</p>
       <p class = "line-2">오늘도 좋은 하루 되세요!</p>
     </div>
 
     <div class="adminmenu">
       <ul class = "adminmenulist">
-          <li class = "adminmenuitem"><a href="#">유저 관리</a></li>
-          <li class = "adminmenuitem"><a href="#">게시판 관리</a></li>
-          <li class = "adminmenuitem"><a href="#">게시물 관리</a></li>
-          <li class = "adminmenuitem"><a href="#">댓글 관리</a></li>
+          <li class = "adminmenuitem"><a href="{{url_for('admin_views.admin_userinfo')}}">유저 관리</a></li>
+          <li class = "adminmenuitem"><a href="{{url_for('admin_views.admin_boardinfo')}}">게시판 관리</a></li>
+          <li class = "adminmenuitem"><a href="{{url_for('admin_views.admin_postinfo')}}">게시물 관리</a></li>
+          <li class = "adminmenuitem"><a href="{{url_for('admin_views.admin_comminfo')}}">댓글 관리</a></li>
       </ul>
     </div>
 {% else %}
@@ -44,7 +44,7 @@
   <div class = "bodywrapper">
     <div class = "mypage-upper">
       <img src = "https://sesac.seoul.kr/static/common/images/www/common/logo.png" style="width: 90px;">
-      <p class = "line-1">안녕하세요, 강지원님</p>
+      <p class = "line-1">안녕하세요, {{session['userNm']}}님</p>
       <p class = "line-2">오늘도 좋은 하루 되세요!</p>
     </div>
     
@@ -73,8 +73,8 @@
               {{ post.brdId }}
               </a>
             </div>
-            <div class = "myarticle-hits"> 조회수 </div>
-            <div class = "myarticle-time"> 작성일 </div>
+            <div class = "myarticle-hits"> {{post.vwCnt}} </div>
+            <div class = "myarticle-time"> {{post.pstCrtDate.strftime('%Y-%m-%d')}} </div>
         </li>
         {% endfor %}
         {% else %}

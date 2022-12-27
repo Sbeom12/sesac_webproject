@@ -1,89 +1,127 @@
 {% extends '/layouts/base_updown.html' %}{% block content %}
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+<link rel = 'stylesheet' href='style.css'>
+<link rel="stylesheet" href="style_menu.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
+<script type="text/javascript" defer src="main.js"></script>
+<script type="text/javascript" defer src="menu.js"></script>
+
 <script src="{{url_for('static',filename='js/post.js') }}"></script>
 
-<h2>post.html</h2>
+<div class = "wrapper">
+  <div class = "overlay"></div>
 
-<p>post</p>
+  <div class = "middle">
+    <div class = "imagecontainer"></div>
+  </div>
 
-<a href="{{url_for('post_views.post_edit', pstId=post_list[0].pstId)}}">편집하기</a>
-<a href="{{url_for('post_views.post_del', pstId=post_list[0].pstId)}}">삭제하기</a>
-<br>
+  <div class = "bodywrapper">
+    <div class = "board-bodywrapper">
+          <aside class = "sidebar">
+            <div class = "sidebar-title"><h3 class = "sidebar-name">📋</h3></div>
+            <ul class = "sidebar-list">
+              <li class="sidebar-item">
+                <a href="{{url_for('board_views.board')}}">전체 게시판</a>
+              </li>
+              {% if board_ls %}
+              {% for board in board_ls %}
+                <li class = "sidebar-item">
+                  <a href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}">{{board.brdNm}}</a>
+                </li>
+              {% endfor %}
+              {% endif %}
+            </ul>
+          </aside>
 
-{% if post_list %} 
+      <section class = "main">
+        
+        <div class ="articlecontainer">
+          <div class = "postcontainer">
+            <div class = "post-upper">
+              {% if post_list %} 
+              {% for post in post_list %}
+                <div class = "post-position">{{post.brdId}}</div>
+                <div class = "post-title-bar">{{post.title}}</div>
+                <div class = "post-upper-name">{{post.userId}}</div>
 
-  {% for post in post_list %}
-  <ul>
-    {% for key, value in post.items() %}
-    <li>
-      <a>{{key}} - {{value}}</a>
-    </li>
-    {% endfor %}
-  </ul>
-  {% endfor %} 
+                <ul class = "post-upper-list">
+                    <li class = "post-upper-item">
+                        <div class = "post-upper-time">{{post.pstCrtDate}}</div>
+                        <div class = "post-upper-view">{{post.vwCnt}}</div>
+                    </li> 
+                    <li class = "post-upper-item"> 
+                        <div class = "mod-btn"><a href="{{url_for('post_views.post_edit', pstId=post_list[0].pstId)}}">수정</a></div>
+                        <div class = "del-btn"><a href="{{url_for('post_views.post_del', pstId=post_list[0].pstId)}}">삭제</a></div>
+                        {% for message in get_flashed_messages() %}
+                          <script>
+                            Swal.fire({
+                              icon: 'error',
+                              title: '경고',
+                              text: `{{ message }}`,
+                            });
+                          </script>
+                        {% endfor %}
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+
+            <div class = "post-article">{{pstCntnt}}</div>
+
+            <div class = "post-bottom-list">
+              <button type="button" class = "like"> 붐업 </button>
+              <button type="button" class = "hate"> 붐따 </button>
+            </div>
+
+
+            {% if comment_list %} 
+            {% for comment in comment_list %}
+
+            <div class = "post-comment-container">
+              <div class = "now-comment"> 댓글 {} 개</div>
+              <input class = "comment-input" placeholder="댓글을 입력해주세요!">
+                                  
+              <div class = "comment-view">
+                  <ul class = "comment-view-list">
+                      <li class = "comment-view-item">
+                          <div class = "comment-user">{{ comment.userId }}</div>
+                          <div class = "comment-content">{{ comment.cmtCntnt }}</div>
+                          <div class = "comment-time">{{ comment.cmtCrtDate }}</div>
+                          <div class = "comment-btn">
+                              <ul class = "comment-btn-list">
+                                  <li class = "comment-btn-item"> 좋아요 </li>
+                                  <li class = "comment-btn-item"> 싫어요 </li>
+                                  <li class = "comment-btn-item"> <a href="{{url_for('comment_views.comment_del', cmtId=comment.cmtId)}}">삭제하기</a></li>
+                              </ul>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+            </div>
+
+            {% endfor %}
+            {% else %}
+            <li> cmt 가 없습니다.</li>
+            {% endif %}
+
+            <div class = "post-article-under">
+              <button type="button" class = "backtomainBtn" href ="뒤로가기">목록으로 돌아가기</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(window)
+</script>
 
 {% else %}
-  <p>post_list가 없습니다.</p>
+<p>post_list가 없습니다.</p>
 {% endif %}
-
-<p>댓글 창</p>
-
-<p>댓글 추가기능</p>
-
-<form
-  method="post"
-  action="{{url_for('comment_views.comment_add', pstId=post_list[0].pstId)}}"
->
-  <input type="text" name="cmtCntnt" id="cmtCntnt" onkeydown="enterFunc(event,'cmtCntnt','submit')"/>
-  <input type="submit" id="submit" value="추가하기" onclick="btnClick(event)"/>
-</form>
-
-<p>댓글들</p>
-
-<table class="table">
-  <thead>
-    <tr class="table-dark">
-      <th>userId</th>
-      <th>cmtCntnt</th>
-      <th>cmtCrtDate</th>
-      <th>cmtLikeCnt</th>
-      <th>cmtUnlikeCnt</th>
-      <th>기능</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    {% if comment_list %} 
-      {% for comment in comment_list %}
-        <tr>
-          <td>
-            <a>{{ comment.userId }}</a>
-          </td>
-          <td>
-            <a>{{ comment.cmtCntnt }}</a>
-          </td>
-          <td>
-            <a>{{ comment.cmtCrtDate }}</a>
-          </td>
-          <td>
-            <a>{{ comment.cmtLikeCnt }}</a>
-          </td>
-          <td>
-            <a>{{ comment.cmtUnlikeCnt }}</a>
-          </td>
-          <td>
-            <a
-              href="{{url_for('comment_views.comment_del', cmtId=comment.cmtId)}}"
-              >삭제하기</a
-            >
-          </td>
-        </tr>
-        {% endfor %} 
-    {% else %}
-      <tr>
-        <td colspan="6">comment_list가 없습니다.</td>
-      </tr>
-    {% endif %}
-  </tbody>
-</table>
 {% endblock %}
