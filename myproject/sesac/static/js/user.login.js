@@ -1,6 +1,5 @@
 function enterFunc(event, id, focus) {
   data = document.querySelector(`#${id}`);
-
   if (event.code == "Enter") {
     console.log(data.value) 
     
@@ -32,7 +31,7 @@ function btnClick(event){
       event.preventDefault()
     }
   }
-}   
+} 
 function inputClick(){
 //console.log("클릭 클릭")
 li = document.querySelector("#remv")

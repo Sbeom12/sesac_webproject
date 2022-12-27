@@ -6,14 +6,11 @@ function enterFunc(event, id, focus){
         console.log(data.value)
         if(data.value.length==0){
             event.preventDefault()
-            //alert(`${id}은 필수 입력 항목입니다.`)
             Swal.fire({
                 icon: 'waring',                         // Alert 타입
                 title: '경고',         // Alert 제목
                 text: `${id}은 필수 입력 항목입니다.`,  // Alert 내용
             });
-            
-            
         }
         else{
             event.preventDefault()
@@ -35,3 +32,4 @@ function btnClick(event){
         }
     }
 }
+

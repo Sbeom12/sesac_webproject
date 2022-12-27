@@ -92,7 +92,6 @@ def post_edit(pstId):
 		return "로그인 해주세요. <br><a href = '/user/login'> 로그인 하러가기! </a>"
 
 
-
 # /post/write
 # 작성하기 버튼 클릭
 # 게시물 새로 작성하기

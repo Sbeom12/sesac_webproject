@@ -31,11 +31,10 @@ function dropDulp(pwCheckValue){
 
     if(pwValue!=pwCheckValue){
         console.log("pw 와 pwCheck의 값이 다릅니다.")
-        Swal.fire({
-            icon: 'error',                         // Alert 타입
-            title: '경고',         // Alert 제목
-            text: '비밀번호와 일치하지 않습니다. 다시 입력해주세요.',  // Alert 내용
-        });
+        li = document.createElement('li')
+        li.setAttribute("id" ,"new")
+        li.innerText = "비밀번호와 일치하지 않습니다. 다시 입력해주세요."
+        check.appendChild(li)
         pwCheckValue2.value=""
     }
     else{
@@ -59,8 +58,6 @@ function btnClick(event){
 }
 
 function inputClick(){
-
-    console.log("클릭 클릭")
     p = document.querySelector("#new")
     if(p){
         p.remove()
@@ -69,8 +66,6 @@ function inputClick(){
 
 function duplicate(event){
     subNm = document.querySelector("#subNm").value
-    console.log("여기 여기", subNm)
-    
     if(subNm.length==0){
         event.preventDefault()
     }
@@ -110,7 +105,6 @@ function duplicate(event){
 
 function duplicate2(event){
     userId = document.querySelector("#userId").value
-    console.log("여기 여기", userId)
     if(userId.length==0){
         event.preventDefault()
     }

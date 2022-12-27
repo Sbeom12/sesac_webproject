@@ -16,15 +16,12 @@ board_ls = db.load_board_list()
 def user_signup():
     # pages/user.signup.html에서 method POST로 정보가 수신된 경우
     if(request.method == 'POST'):
-        
         # form으로 받아온 정보 저장 
         result = request.form.to_dict()
         print(result)
-        
         tel = result['tel']
         subNm = result['subNm']
         userId = result['userId']
-        
         # 이미 존재하는 date인지 확인하기 위해 db에서 date 출력
         db = DBUpdater()
         
@@ -62,7 +59,6 @@ def user_signup():
 def fetch():
     if request.method == 'POST':
         result = request.get_json()["subNm"]
-        print(result)
         newResult = db.extractWhere("subNm", "UserInfo", "subNm", result)
         
         if(result == newResult):

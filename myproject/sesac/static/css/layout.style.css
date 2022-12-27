@@ -11,8 +11,6 @@ a:link{
 a:visited{
     text-decoration:none;
     color: black;
-}
-
 .menu-item  a:hover{
     color: #76b355;
 }
@@ -126,12 +124,11 @@ header{
     width: 100vw;
 }
 .imagecontainer{
-    height: 360px;
+    /* height: 360px; */
     background-image: url("bannertest.png");
     background-size:cover;
     background-repeat: no-repeat;    
 }
-
 
 .bodywrapper{
     padding-left: 10vw;
@@ -333,7 +330,6 @@ header{
         position:relative;
         
     }
-
 
     .navbar-togglebtn{
         display: block;
@@ -646,12 +642,14 @@ header{
 }
 
 .comment-title{
-    width: 80%;
+    width: 50%;
 }
 .comment-time{
     width: 20%;
 }
-
+.comment-cmt{
+    width:10%;
+}
 .mycomment-index{
     display: flex;
     justify-content: space-between;
@@ -669,13 +667,14 @@ header{
 }
 
 .mycomment-title{
-    width: 80%;
-    text-align: left;
+    width: 50%;
 }
 .mycomment-time{
     width: 20%;
 }
-
+.mycomment-cmt{
+    width: 10%;
+}
 .mypage-bottom{
     margin-top: 100px;
     text-align: end;
@@ -749,6 +748,7 @@ header{
     text-decoration: none;
     color: #91E661;
     font-size:9.5pt;}
+    
 .quickitem a:hover {
     color:white;
     background-color: #91E661;
@@ -756,7 +756,6 @@ header{
 .quicklist li:last-child {
     border-bottom:0;
 }
-
 .adminmenu{
     display:none;
 }
