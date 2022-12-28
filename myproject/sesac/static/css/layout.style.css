@@ -39,7 +39,7 @@ a:visited {
 .wrapper {
   height: auto;
   min-height: 100%;
-  /* padding-top: 114px; */
+  padding-top: 114px;
   background-color:white;
 }
 
