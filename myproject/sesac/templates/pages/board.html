@@ -3,11 +3,7 @@
 <script src="{{url_for('static',filename='js/post.VwCnt.js') }}"></script>
 
 <div class="middle">
-  <div
-    class="imagecontainer"
-    style='background-image: url({{url_for("static", filename= "img/bannertest.png")}})'
-    ;
-  ></div>
+  <img class = "imgcontainer" src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtP2nA%2FbtrULN6ZVHm%2FkNek9g9Pv9lunoCLcqYmQk%2Fimg.png"></div>
 </div>
 
 <div class="bodywrapper">
@@ -75,7 +71,7 @@
           {% for board in boards.board_list %} 
             {% if board.brdId == boards.brdId %}
             <div class="article-title-bar">
-              <h3>{{board.brdNm}} ({{boards.postCnt['count']}})</h3> 
+              <h3 class = "board-name">{{board.brdNm}} ({{boards.postCnt['count']}})</h3> 
               <a href="{{url_for('post_views.post_write')}}">작성하기</a>
               </div>
             {% endif %}

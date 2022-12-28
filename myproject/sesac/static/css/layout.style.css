@@ -39,9 +39,9 @@ a:visited {
 .wrapper {
   height: auto;
   min-height: 100%;
-  padding-bottom: 100px;
-  padding-top: 110px;
-  background-color:#f8ffee;
+  /* padding-bottom: 100px; */
+  padding-top: 114px;
+  background-color:white;
 }
 
 header {
@@ -132,12 +132,13 @@ header {
 /* 배너 */
 .middle {
   width: 100vw;
+  padding: 0;
 }
-.imagecontainer {
-  /* height: 360px; */
-  background-image: url("bannertest.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+
+.imgcontainer {
+  width: 100vw;
+  height: 450px;
+  padding: 0;
 }
 /* 배너 밑 색깔 바꾸기 */
 .banerunder {
@@ -148,7 +149,7 @@ header {
 .bodywrapper {
   padding-left: 4vw;
   padding-right: 4vw;
-  background-color: #f8ffee;
+  background-color: white;
 }
 
 .tablewrapper {
@@ -174,7 +175,7 @@ header {
 
 /* 테이블 리스트 내부 개체 */
 .board-item {
-  background-color: #f8ffee;
+  background-color: white;
   width: 26vw;
   height: 250px;
   max-width: 600px;
@@ -192,7 +193,7 @@ header {
   padding-bottom: 20px;
   padding-right: 10px;
   margin-bottom: 20px;
-  background-color: #f8ffee;
+  background-color: white;
 
 }
 
@@ -281,11 +282,26 @@ header {
   /* vertical-align: center; */
 }
 /* footer */
+
 .bottom {
   height: 100px;
   position: relative;
   transform: tranlateY(-100%);
-  background-color: #dadada;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+  padding-right: 100px;
+  justify-content: space-between;
+}
+
+.bottom-git{
+  position: relative;
+}
+
+.bottom-top{
+  height: 40px;
+  width: 40px;
 }
 
 /* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
@@ -296,16 +312,16 @@ header {
     left: 0;
     width: 100%;
     height: 60px;
-    background-color: #f8ffee;
+    background-color: #ffffff;
     transition: top 0.2s ease-in-out;
   }
 
   .wrapper {
     height: auto;
     min-height: 100%;
-    padding-bottom: 100px;
+    /* padding-bottom: 100px; */
     padding-top: 60px;
-    background-color:#f8ffee;
+    background-color:white;
   }
 
 
@@ -453,6 +469,7 @@ header {
 .board-bodywrapper {
   display: flex;
   justify-content: center;
+  margin-bottom: 100px;
 }
 
 .sidebar {
@@ -525,6 +542,9 @@ header {
   text-align: center;
 }
 
+.articlecontainer{
+  height: 500px;
+}
 .article-item a {
   display: flex;
   justify-content: space-between;
@@ -555,7 +575,8 @@ header {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-align: center;
+  text-align: left;
+  padding-left: 50px;
 }
 
 .board-article-user {
@@ -585,28 +606,44 @@ header {
 
 .paging{
   margin: 10px;
+  margin-top: 40px;
+
 }
 
-/* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
-@media screen and (max-width: 840px) {
-  .sidebar {
-    display: none;
+@media screen and (max-width: 840px){
+
+  .sidebar{
+      display: none;
+  }
+  .main{
+      min-width: 0;
   }
 
-  .articlecontainer {
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
+  .articlecontainer{
+      display: flex;
+      flex-direction: column;
+      height: 500px;
   }
 
-  .article-list {
-    width: 80vw;
+
+  .article-list{
+      min-width: 0;
+      list-style: none;
+      padding: 0;
   }
 
-  .board-list-bar {
-    position: relative;
-    z-index: 1;
-    display: block;
+  .board-list-bar{
+      position:relative;
+      z-index: 1;
+      display: block;
+      margin-top: 0px;
+      margin-bottom: 10px;
+  }
+  .board-name{
+    margin-bottom: 20px;
+  }
+  .board-bodywrapper{
+    margin-bottom: 100px;
   }
 }
 
