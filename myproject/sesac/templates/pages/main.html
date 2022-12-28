@@ -124,16 +124,19 @@
 
               {% for post in post_dict[board.brdId] %}
               <!-- 조회수 +1 -->
-              <li class="inner-item">
-                <a
-                  href="javascript:void(0);"
-                  onclick="lnkClick(event, {{post.pstId}});"
-                >
-                  <div class="articletitle">{{post.title}}</div>
-                  <div class="idname">{{post.userId}}</div>
-                  <div class="hits">{{post.vwCnt}}</div>
-                </a>
-              </li>
+              <div class="pad">
+                <li class="inner-item">
+                  <a
+                    href="javascript:void(0);"
+                    onclick="lnkClick(event, {{post.pstId}});"
+                  >
+                    <div class="articletitle">{{post.title}}</div>
+                    <div class="idname">{{post.userId}}</div>
+                    <div class="hits">{{post.vwCnt}}</div>
+                  </a>
+                </li>
+              </div>
+              
               {% endfor %}
             </ul>
           </li>

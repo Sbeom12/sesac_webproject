@@ -113,7 +113,7 @@
         <div class="menu">
           <ul class="menu-list">
             <li class="menu-item"><a href="{{url_for('main')}}"> 홈</a></li>
-            <li class="menu-item" style="text-align: center">
+            <li class=".btn-item" style="text-align: center">
               <div class="dropdown" style="margin: 0; text-align: center">
                 <button
                   class="btn btn-secondary dropdown-toggle"
@@ -124,7 +124,7 @@
                   aria-expanded="false"
                   style="
                     display: flex;
-                    background-color: white;
+                    background-color: #d0f476;
                     color: black;
                     border: 0px;
                     font-size: 20px;
@@ -153,16 +153,16 @@
             {% if session['room'] %}
             <li class="menu-item">
               <a href="{{url_for('main.chat', tag=session['room'])}}">
-                커뮤니티</a
+                실시간</a
               >
             </li>
             {% else %}
             <li class="menu-item">
-              <a href="{{url_for('main.chat', tag='All')}}"> 커뮤니티</a>
+              <a href="{{url_for('main.chat', tag='All')}}"> 실시간 </a>
             </li>
             {% endif %}
             <li class="menu-item">
-              <a href='{{url_for("board_views.compInfo")}}'> 공모전 정보 </a>
+              <a href='{{url_for("board_views.compInfo")}}'> 공모전 </a>
             </li>
           </ul>
         </div>

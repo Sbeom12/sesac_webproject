@@ -1,5 +1,5 @@
 # myproject/sesac/views/post_views.py
-from flask import Flask, url_for, request, session, redirect, app
+from flask import Flask, url_for, request, session, redirect, app, flash
 from flask import Blueprint, render_template
 from ..sqlModule import DBUpdater
 from datetime import datetime
@@ -18,7 +18,7 @@ def post(pstId):
 	Args:
 		pstId (int): 게시물 ID
 	"""
-	print('post(pstId) ------', pstId) # pstId가 어떻게 전달이 되는거지,,?
+	print('post(pstId) ------', pstId)
 
     # data = 특정 게시물 ID 필터링
 	db = DBUpdater()
@@ -49,12 +49,13 @@ def post_del(pstId):
 			
 			db.del_post(pstId)
 			# 특정 게시물 편집 html 불러오기
-			return redirect(url_for('board_views.board'))
+			return redirect(url_for('board_views.board'), board_ls=board_ls)
 
 		else:
 			print('id가 다름')
+			flash("삭제 권한이 없습니다.")
 			# 특정 게시물 html 불러오기
-			return redirect(url_for('post_views.post', pstId=pstId))
+			return redirect(url_for('post_views.post', pstId=pstId, board_ls=board_ls))
 	else:
 		# 세션이 없는 경우
 		print('First Login')
@@ -70,9 +71,7 @@ def post_edit(pstId):
     
     # data = 특정 게시물 ID 필터링
 	db = DBUpdater()
-	board_ls = db.load_board_list()
 	data = db.load_post_pstId_list(pstId)
-	print(data)
 	board_ls = db.load_board_list()
     # session의 'username'이 있으면 로그인
 	if "username" in session:
@@ -84,9 +83,9 @@ def post_edit(pstId):
 
 		else:
 			print('id가 다름')
+			flash("수정 권한이 없습니다.")
 			# 특정 게시물 html 불러오기
-			return redirect(url_for('post_views.post', pstId=pstId), board_ls=board_ls)
-			# return render_template('pages/post.html', post_list=data)
+			return redirect(url_for('post_views.post', pstId=pstId))
 	else:
 		# 세션이 없는 경우
 		print('First Login')
@@ -99,7 +98,7 @@ def post_edit(pstId):
 @bp.route('/write', methods=('POST', 'GET'))
 def post_write():
 	print("post_write()")
-	db = DBUpdater()
+	db =  DBUpdater()
 	board_ls = db.load_board_list()
 	# session의 'username'이 있으면 로그인
 	if "username" in session: 	
@@ -137,8 +136,7 @@ def post_save_new():
 	db.insertPost(brdId, userId, title, pstCntnt)
 	board_ls = db.load_board_list()
 
-	return redirect(url_for('board_views.board_boardID', brdId=brdId))
-    # return redirect(url_for('post_views.post', pstId=pstId))
+	return redirect(url_for('board_views.board_boardID', brdId=brdId, board_ls=board_ls))
     
 
 # 작성 저장하기 버튼 클릭
@@ -173,6 +171,4 @@ def like_unlike_click(pstId, type, post):
 		# 세션이 없는 경우'
 		print('First Login')
 		return "로그인 해주세요. <br><a href = '/user/login'> 로그인 하러가기! </a>"
-
-	return redirect(url_for('board_views.board_boardID', brdId=brdId, board_ls=board_ls))
 

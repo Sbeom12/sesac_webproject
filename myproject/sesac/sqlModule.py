@@ -12,12 +12,11 @@ class DBUpdater():
     def __init__(self):
         self.conn = pymysql.connect(
             user='root', 
-            passwd='1111', 
+            passwd='12345', 
             host='127.0.0.1', 
             db='community', 
             charset='utf8'
             )
-        
         self.tableList = ['UserInfo', 'Board', 'Post', 'Comment', 'LikeInfo']
         self.cursor = self.conn.cursor()
         self.createTable()
