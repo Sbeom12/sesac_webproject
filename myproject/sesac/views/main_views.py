@@ -17,8 +17,9 @@ def grid():
     post_dict = {}
     for board in board_ls:
         brdId = board['brdId']
-        post_dict[brdId] = db.load_post_brdId_list(brdId)[:5]
-
+        post_dict[brdId] = db.load_post_brdId_list2(brdId)[:5]
+        print(post_dict)
+        print('\n\n\n')
     # 특정 게시물 html 불러오기
     return render_template('pages/main.html', board_ls=board_ls, post_dict=post_dict)
 

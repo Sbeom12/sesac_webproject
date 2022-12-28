@@ -23,11 +23,13 @@ def post(pstId):
     # data = 특정 게시물 ID 필터링
 	db = DBUpdater()
 	data = db.load_post_pstId_list(pstId)
+	userSN = db.load_userInfo_userId_list(data[0]['userId'])
+	print(userSN)	
 	comment_list = db.load_comm_pstId_list(pstId)
 	board_ls = db.load_board_list()
 
 	# 특정 게시물 html 불러오기
-	return render_template('pages/post.html', post_list=data, comment_list=comment_list, board_ls=board_ls)
+	return render_template('pages/post.html', post_list=data, comment_list=comment_list, board_ls=board_ls, userSN=userSN)
 
 
 # /post/del/pstId=<int:pstId>
