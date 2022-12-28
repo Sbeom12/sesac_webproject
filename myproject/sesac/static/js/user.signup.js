@@ -7,9 +7,8 @@ function enterFunc(event, id, focus){
         if(data.value.length==0){
             event.preventDefault()
             Swal.fire({
-                icon: 'warning',                         // Alert 타입
-                title: '경고',         // Alert 제목
-                text: `${id}은 필수 입력 항목입니다.`  // Alert 내용
+                icon: 'warning',
+                text: "필수 입력 항목입니다."
             });
         }
         else{
