@@ -14,15 +14,15 @@ a:visited {
 }
 /* 호버관련 부분 */
 .menu-item a:hover {
-  color: #ffffff;
+  color: #76b355;
   text-decoration: none;
 }
 
 #dropdownBtn:hover{
-  color: #ffffff !important;
+  color: #76b355 !important;
 }
 .dropdown a:hover{
-  color: #ff0000;
+  color: #76b355;
   text-decoration: none;
 }
 
@@ -50,7 +50,7 @@ header {
   left: 0;
   width: 100%;
   height: 114px;
-  background-color: #d0f476;
+  background-color: #ffffff;
   transition: top 0.2s ease-in-out;
 }
 
@@ -421,7 +421,6 @@ header {
     position: relative;
     text-align: center;
   }
- 
 
   .board-table {
     margin-top: 50px;
