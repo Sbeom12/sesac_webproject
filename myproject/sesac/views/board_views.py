@@ -65,4 +65,6 @@ def board_boardID(brdId):
 
 @bp.route('/comp/')
 def compInfo():
-    return render_template('pages/competition.html')
+    db = DBUpdater()
+    board_ls = db.load_board_list()
+    return render_template('pages/competition.html', board_ls=board_ls)

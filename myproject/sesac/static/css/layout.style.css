@@ -12,9 +12,18 @@ a:visited {
   text-decoration: none;
   color: black;
 }
-
+/* 호버관련 부분 */
 .menu-item a:hover {
   color: #ffffff;
+  text-decoration: none;
+}
+.dropdown #button:focus{
+  outline-color: transparent;
+  outline-style:solid;
+  box-shadow: 0 0 0 4px #5a01a7;
+}
+.dropdown a:hover{
+  color: #ff0000;
   text-decoration: none;
 }
 
@@ -26,6 +35,8 @@ a:visited {
   color: #76b355;
   text-decoration: none;
 }
+
+/* 호버관련 부분 끝!*/
 
 .wrapper {
   height: auto;
