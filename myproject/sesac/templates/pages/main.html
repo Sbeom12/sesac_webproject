@@ -2,16 +2,8 @@
 
 <script src="{{url_for('static',filename='js/post.VwCnt.js') }}"></script>
 <!-- baner -->
-<div
-  id="demo"
-  class="carousel slide"
-  data-ride="carousel"
-  style="position: relative; z-index: 1"
->
-  <div
-    class="carousel-inner"
-    style="height: 360px; max-width: 1334px; margin: 0 auto"
-  >
+<div id="demo" class="carousel slide" data-ride="carousel" style="position:relative; z-index:1">
+  <div class="carousel-inner" style= "height: 360px; max-width: 1334px; margin:0 auto;">
     <!-- 슬라이드 쇼 data interval로 속도 조절-->
     <div class="carousel-item active" data-interval="2000">
       <!--가로-->
@@ -78,20 +70,34 @@
     <ul class="carousel-indicators">
       <!--0번부터시작-->
       <li
-        class="banerunder"
         data-target="#demo"
         data-slide-to="0"
         class="active"
-        style="background-color: rgb(0, 0, 0)"
+        style="background-color: rgb(146, 251, 153)"
       ></li>
-      <li class="banerunder" data-target="#demo" data-slide-to="1"></li>
-      <li class="banerunder" data-target="#demo" data-slide-to="2"></li>
-      <li class="banerunder" data-target="#demo" data-slide-to="3"></li>
-      <li class="banerunder" data-target="#demo" data-slide-to="4"></li>
+      <li
+        data-target="#demo"
+        data-slide-to="1"
+        style="background-color: rgb(146, 251, 153)"
+      ></li>
+      <li
+        data-target="#demo"
+        data-slide-to="2"
+        style="background-color: rgb(146, 251, 153)"
+      ></li>
+      <li
+        data-target="#demo"
+        data-slide-to="3"
+        style="background-color: rgb(146, 251, 153)"
+      ></li>
+      <li
+        data-target="#demo"
+        data-slide-to="4"
+        style="background-color: rgb(146, 251, 153)"
+      ></li>
     </ul>
     <!-- 인디케이터 끝 -->
   </div>
-
   <!-- 게시판 -->
   <div class="bodywrapper">
     <div class="tablewrapper">
@@ -116,22 +122,22 @@
                 </div>
               </a>
 
-              <li class="title-inner">
-                <div class="title-article">제목</div>
-                <div class="title-id">작성</div>
-                <div class="title-hits">조회</div>
+              <li class ="title-inner">
+                <div class = "title-article">제목</div>
+                <div class = "title-id">작성</div>
+                <div class = "title-hits">조회</div>
               </li>
-
+              
               {% for post in post_dict[board.brdId] %}
-              <!-- 조회수 +1 -->
-              <li class="inner-item">
+                <li class="inner-item">
+                <!-- 조회수 +1 -->
                 <a
-                  href="javascript:void(0);"
-                  onclick="lnkClick(event, {{post.pstId}});"
-                >
-                  <div class="articletitle">{{post.title}}</div>
-                  <div class="idname">{{post.userId}}</div>
-                  <div class="hits">{{post.vwCnt}}</div>
+                href="javascript:void(0);" 
+                onclick="lnkClick({{post.pstId}});"
+                > 
+                  <div class="articletitle"> {{post.title}} </div>
+                  <div class="idname"> {{post.userId}} </div>
+                  <div class="hits"> {{post.vwCnt}} </div>
                 </a>
               </li>
               {% endfor %}
@@ -139,7 +145,6 @@
           </li>
           {% endfor %}
         </ul>
-
         <!-- 게시판 리스트 담은 테이블 끝 -->
       </div>
     </div>
@@ -147,4 +152,3 @@
   </div>
   <!-- wrapper 끝 -->
   {% endblock %}
-</div>
