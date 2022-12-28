@@ -39,8 +39,7 @@ a:visited {
 .wrapper {
   height: auto;
   min-height: 100%;
-  /* padding-bottom: 100px; */
-  padding-top: 114px;
+  /* padding-top: 114px; */
   background-color:white;
 }
 
@@ -286,12 +285,15 @@ header {
 .bottom {
   height: 100px;
   position: relative;
-  transform: tranlateY(-100%);
+  transform: translateY(-100%);
   background-color: #f0f0f0;
+  
   display: flex;
   align-items: center;
+
   padding-left: 100px;
   padding-right: 100px;
+  
   justify-content: space-between;
 }
 
@@ -453,7 +455,7 @@ header {
   }
   
   .board-item {
-    background-color: #eff5e6;
+    background-color: #ffffff;
     height: 230px;
     width: 80vw;
     max-width: 600px;
@@ -918,13 +920,13 @@ header {
 
 /* ------------ 포스트 페이지 ------------ */
 
-/* .post-title-bar{
+.post-title-bar{
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: space-between;
     margin-bottom: 15px;
     padding: 0px;
-} */
+} 
 
 .postcontainer {
   min-width: 600px;
@@ -947,11 +949,13 @@ header {
   font-weight: bold;
   margin-top: 0px;
   margin-bottom: 15px;
+  text-align: left;
 }
 .post-upper-name {
   padding: 0px;
   margin: 0px;
   font-size: 15px;
+  text-align: left;
 }
 
 .post-upper-list {
@@ -1063,6 +1067,8 @@ header {
 }
 .comment-content {
   width: 60%;
+  text-align: left;
+  padding-left: 30px;
 }
 .comment-time {
   width: 15%;
@@ -1085,7 +1091,7 @@ header {
 
 .post-article-under {
   margin-top: 40px;
-  margin-down: 50px;
+  margin-bottom: 50px;
   text-align: center;
 }
 

@@ -14,20 +14,23 @@
 
 <script src="{{url_for('static',filename='js/post.js') }}"></script>
 
+
 {% if board_ls %}
 <div class="wrapper">
   <div class="overlay"></div>
 
   <div class="middle">
-    <div class="imagecontainer"></div>
+    <img class = "imgcontainer" src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtP2nA%2FbtrULN6ZVHm%2FkNek9g9Pv9lunoCLcqYmQk%2Fimg.png"></div>
   </div>
+  
+
   <div class="bodywrapper">
     <div class="board-bodywrapper">
       <aside class="sidebar">
         <div class="sidebar-title"><h3 class="sidebar-name">📋</h3></div>
         <ul class="sidebar-list">
           <li class="sidebar-item">
-            <a href="{{url_for('board_views.board')}}">전체 게시판</a>
+            <a href="{{url_for('board_views.board')}}">전체게시판</a>
           </li>
           {% if board_ls %} 
             {% for board in board_ls %}
@@ -98,7 +101,6 @@
                 action="{{url_for('comment_views.comment_add', pstId=post_list[0].pstId)}}"
                 style="display: flex;"
               >
-              <div>
                 <input
                     class="comment-input"
                     type="text"
@@ -122,27 +124,27 @@
                   <li class="comment-view-item">
                     <div class="comment-user">{{ comment.userId }}</div>
                     <div class="comment-content">{{ comment.cmtCntnt }}</div>
-                    <div class="comment-time">{{ comment.cmtCrtDate.strftime('%Y-%m-%d') }}</div>
+                    <div class="comment-time">{{ comment.cmtCrtDate.strftime('%Y-%m-%d')}}</div>
                     <div class="comment-btn">
                       <ul class="comment-btn-list">
                         <li class="comment-btn-item">
                           <a>{{ comment.cmtLikeCnt }}</a>
                           <a
                             href="{{url_for('post_views.like_unlike_click', pstId=comment.cmtId, type='like', post=0)}}"
-                            >좋아요</a
+                            >O</a
                           >
                         </li>
                         <li class="comment-btn-item">
                           <a>{{ comment.cmtUnlikeCnt }}</a>
                           <a
                             href="{{url_for('post_views.like_unlike_click', pstId=comment.cmtId, type='unlike', post=0)}}"
-                            >싫어요</a
+                            >X</a
                           >
                         </li>
                         <li class="comment-btn-item">
                           <a
                             href="{{url_for('comment_views.comment_del', cmtId=comment.cmtId)}}"
-                            >삭제하기</a
+                            >삭제</a
                           >
                         </li>
                       </ul>

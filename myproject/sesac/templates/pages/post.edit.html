@@ -71,9 +71,9 @@
         {%else%}
           {%for name in board_ls %}
             {%if brdId == name.brdId%}
-            <option name = 'brdId' value='{{name.brdId}}' selected>{{name.brdNm}}</option>
+            <option name = 'brdId' value='{{name.brdId}}' selected>{{name.brdNm}}게시판</option>
             {%else%}
-            <option name = 'brdId' value='{{name.brdId}}'>{{name.brdNm}}</option>
+            <option name = 'brdId' value='{{name.brdId}}'>{{name.brdNm}}게시판</option>
             {%endif%}
           {%endfor%}
         {%endif%}
