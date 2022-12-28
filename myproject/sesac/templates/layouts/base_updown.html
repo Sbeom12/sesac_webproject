@@ -158,16 +158,16 @@
             {% if session['room'] %}
             <li class="menu-item">
               <a href="{{url_for('main.chat', tag=session['room'])}}">
-                커뮤니티</a
+                실시간</a
               >
             </li>
             {% else %}
             <li class="menu-item">
-              <a href="{{url_for('main.chat', tag='All')}}"> 커뮤니티</a>
+              <a href="{{url_for('main.chat', tag='All')}}"> 실시간 </a>
             </li>
             {% endif %}
             <li class="menu-item">
-              <a href='{{url_for("board_views.compInfo")}}'> 공모전 정보 </a>
+              <a href='{{url_for("board_views.compInfo")}}'> 공모전 </a>
             </li>
           </ul>
         </div>

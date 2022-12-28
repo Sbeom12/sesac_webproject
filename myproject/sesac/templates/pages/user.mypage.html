@@ -55,30 +55,34 @@
 
       <ul class = "myarticle-list">
         <li class = "myarticle-index">
-            <div class = "index-board"> 게시물 분류</div>
-            <div class = "index-title"> 게시물 제목</div>
-            <div class = "index-hits"> 조회 </div>
-            <div class = "index-time"> 작성일 </div>
+            <div class = "index-board">대분류</div>
+            <div class = "index-board"> 중분류</div>
+            <div class = "index-title">제목</div>
+            <div class = "index-hits"> 조회수 </div>
+            <div class = "index-time"> 생성일 </div>
         </li>
         {% if post_list %} 
         {% for post in post_list %}
+
         <li class = "myarticle-item">
+            <div class="myarticle-board"> 
+              <a href="{{url_for('post_views.post', pstId=post.pstId)}}">
+                {{ post.brdId }}
+              </a>
+            </div>
             <div class = "myarticle-board"> {{ post.pstId }} </div>
             <div class = "myarticle-title"> 
               <a href="{{url_for('post_views.post',pstId=post.pstId)}}">{{ post.title }}</a>
             </div>
-            <div> 
-              <a href="{{url_for('post_views.post',pstId=post.pstId)}}">
-              {{ post.brdId }}
-              </a>
-            </div>
-            <div class = "myarticle-hits"> 조회수 </div>
-            <div class = "myarticle-time"> 작성일 </div>
+            <div class = "myarticle-hits"> {{post.vwCnt}} </div>
+            <div class = "myarticle-time"> {{post.pstCrtDate.strftime('%Y-%m-%d')}} </div>
         </li>
         {% endfor %}
+
         {% else %}
         <li>작성한 게시물이 없습니다.</li>
-        {% endif %}
+
+        {% endif%}
       </ul>
     </div>
 
@@ -88,23 +92,25 @@
       </a>
       <ul class = "mycomment-list">
         <li class = "mycomment-index">
-          <div class = "comment-cmt">게시판 분류</div>
-          <div class = "comment-cmt">게시물 분류</div>
-          <div class = "comment-cmt">댓글 분류</div>
-          <div class = "comment-title"> 댓글 내용</div>
-          <div class = "comment-time"> 작성시간</div>
+          <div class = "comment-cmt">대분류</div>
+          <div class = "comment-cmt">중분류</div>
+          <div class = "comment-cmt">소분류</div>
+          <div class = "comment-title">내용</div>
+          <div class = "comment-time"> 생성일 </div>
         </li>
         
         {% if comm_list %} 
-        {% for comm in comm_list %}
-        <li class = "mycomment-item">
-          <div class = "mycomment-cmt">{{ comm.brdId }}</div>
-          <div class = "mycomment-cmt">{{ comm.pstId }}</div>
-          <div class = "mycomment-cmt">{{ comm.cmtId }}</div>
-          <div class = "mycomment-title"> {{ comm.cmtCntnt }}</div>
-          <div class = "mycomment-time">{{ comm.cmtCrtDate }}</div>
-        </li>
-        {% endfor %}
+          {% for comm in comm_list %}
+            <li class = "mycomment-item">
+              
+              <div class = "mycomment-cmt"> 3</div>
+              
+              <div class = "mycomment-cmt">{{ comm.pstId }}</div>
+              <div class = "mycomment-cmt"> {{ comm.cmtId }}</div>
+              <div class = "mycomment-title"> {{ comm.cmtCntnt }}</div>
+              <div class = "mycomment-time">{{ comm.cmtCrtDate.strftime('%Y-%m-%d') }}</div>
+            </li>
+          {% endfor %}
         {% else %}
         <li>작성한 댓글이 없습니다.</li>
         {% endif %}

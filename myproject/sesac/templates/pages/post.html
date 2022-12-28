@@ -1,4 +1,5 @@
 {% extends '/layouts/base_updown.html' %} {% block content %}
+
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css"
@@ -13,7 +14,7 @@
 
 <script src="{{url_for('static',filename='js/post.js') }}"></script>
 
-{% if post_list %}
+{% if board_ls %}
 <div class="wrapper">
   <div class="overlay"></div>
 
@@ -28,14 +29,16 @@
           <li class="sidebar-item">
             <a href="{{url_for('board_views.board')}}">전체 게시판</a>
           </li>
-          {% if board_ls %} {% for board in board_ls %}
-          <li class="sidebar-item">
-            <a
-              href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"
-              >{{board.brdNm}}</a
-            >
-          </li>
-          {% endfor %} {% endif %}
+          {% if board_ls %} 
+            {% for board in board_ls %}
+            <li class="sidebar-item">
+              <a
+                href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"
+                >{{board.brdNm}}</a
+              >
+            </li>
+          {% endfor %} 
+          {% endif %}
         </ul>
       </aside>
 
@@ -43,69 +46,59 @@
         <div class="articlecontainer">
           <div class="postcontainer">
             <div class="post-upper">
-              {% if post_list %} {% for post in post_list %}
-              {%for name in board_ls %} {%if post.brdId == name.brdId%}
-              <div class="post-position">{{name.brdNm}}게시판</div>
-              {%endif%} {%endfor%}
-              <div class="post-title-bar">{{post.title}}</div>
+              {% if post_list %} 
+              {% for post in post_list %}
+                {% for board in board_ls %}
+                  {% if board.brdId == post.brdId %}
+                    <div class="post-position">{{board.brdNm}}</div>
+                  {% endif %}
+                {% endfor %}
+              <div class="post-title-bar"><h2>{{post.title}}</h2></div>
               <div class="post-upper-name">{{post.userId}}</div>
 
               <ul class="post-upper-list">
                 <li class="post-upper-item">
-                  <div class="post-upper-time">{{post.pstCrtDate}}</div>
-                  <div class="post-upper-view">{{post.vwCnt}}</div>
+                  <div class="post-upper-time">생성일: {{post.pstCrtDate.strftime('%Y-%m-%d')}}</div>
+                  <div class="post-upper-view">조회수: {{post.vwCnt}}</div>
                 </li>
                 <li class="post-upper-item">
                   <div class="mod-btn">
-                    <a
-                      href="{{url_for('post_views.post_edit', pstId=post.pstId)}}"
-                      >수정</a
-                    >
+                    <a href="{{url_for('post_views.post_edit', pstId=post.pstId)}}">수정</a>
                   </div>
                   <div class="del-btn">
-                    <a
-                      href="{{url_for('post_views.post_del', pstId=post.pstId)}}"
-                      >삭제</a
-                    >
+                    <a href="{{url_for('post_views.post_del', pstId=post.pstId)}}">삭제</a>
                   </div>
                   {% for message in get_flashed_messages() %}
-                  <script>
-                    Swal.fire({
-                      icon: "error",
-                      title: "경고",
-                      text: `{{ message }}`,
-                    });
-                  </script>
+                    <script>
+                      Swal.fire({
+                        icon: 'error',
+                        title: '경고',
+                        text: `{{ message }}`,
+                      });
+                    </script>
                   {% endfor %}
                 </li>
               </ul>
-              {% endfor %}{% endif %}
+              {% endfor %}
             </div>
 
             <div class="post-article">{{post_list[0].pstCntnt}}</div>
 
             <div class="post-bottom-list">
-              <button type="button" class="like">붐업</button>
-              <button type="button" class="hate">붐따</button>
-              <a>{{post_list[0].pstLikeCnt}}</a>
-              <a>{{post_list[0].pstUnlikeCnt}}</a>
-              <a
-                href="{{url_for('post_views.like_unlike_click', pstId=post_list[0].pstId, type='like', post=1)}}"
-                >좋아요</a
-              >
-              <a
-                href="{{url_for('post_views.like_unlike_click', pstId=post_list[0].pstId, type='unlike', post=1)}}"
-                >싫어요</a
-              >
             </div>
 
             <div class="post-comment-container">
+              <a href="{{url_for('post_views.like_unlike_click', pstId=post_list[0].pstId, type='like', post=1)}}">좋아요 [ {{post_list[0].pstLikeCnt}} ]</a>
+              <a href="{{url_for('post_views.like_unlike_click', pstId=post_list[0].pstId, type='unlike', post=1)}}">싫어요[ {{post_list[0].pstUnlikeCnt}} ]</a>
+              <br><br>
               <div class="now-comment">댓글</div>
+
               <form
                 method="post"
                 action="{{url_for('comment_views.comment_add', pstId=post_list[0].pstId)}}"
                 style="display: flex;"
               >
+              <div>
                 <input
                     class="comment-input"
                     type="text"
@@ -122,14 +115,14 @@
                     onclick="btnClick(event)"
                   />
                 </form>
-
-              {% if comment_list %} {% for comment in comment_list %}
+              {% if comment_list %} 
+              {% for comment in comment_list %}
               <div class="comment-view">
                 <ul class="comment-view-list">
                   <li class="comment-view-item">
                     <div class="comment-user">{{ comment.userId }}</div>
                     <div class="comment-content">{{ comment.cmtCntnt }}</div>
-                    <div class="comment-time">{{ comment.cmtCrtDate }}</div>
+                    <div class="comment-time">{{ comment.cmtCrtDate.strftime('%Y-%m-%d') }}</div>
                     <div class="comment-btn">
                       <ul class="comment-btn-list">
                         <li class="comment-btn-item">
@@ -181,6 +174,9 @@
 <script>
   $(window);
 </script>
+
 {% else %}
 <p>post_list가 없습니다.</p>
-{% endif %}{% endblock %}
+{% endif %}
+{% endif %}
+{% endblock %}

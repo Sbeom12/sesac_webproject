@@ -40,7 +40,8 @@ a:visited {
   height: auto;
   min-height: 100%;
   padding-bottom: 100px;
-  padding-top: 114px;
+  padding-top: 110px;
+  background-color:#f8ffee;
 }
 
 header {
@@ -96,7 +97,7 @@ header {
 }
 
 .btn-login:hover {
-  background-color: #bde852;
+  background-color: white;
 }
 
 .btn-sign {
@@ -145,8 +146,9 @@ header {
 
 /* 게시판 */
 .bodywrapper {
-  padding-left: 10vw;
-  padding-right: 10vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  background-color: #f8ffee;
 }
 
 .tablewrapper {
@@ -159,6 +161,8 @@ header {
   max-width: 1353px;
 }
 
+
+
 /* 테이블 리스트 */
 .board-list {
   list-style: none;
@@ -170,7 +174,7 @@ header {
 
 /* 테이블 리스트 내부 개체 */
 .board-item {
-  background-color: white;
+  background-color: #f8ffee;
   width: 26vw;
   height: 250px;
   max-width: 600px;
@@ -188,6 +192,8 @@ header {
   padding-bottom: 20px;
   padding-right: 10px;
   margin-bottom: 20px;
+  background-color: #f8ffee;
+
 }
 
 .board-link:link {
@@ -220,6 +226,9 @@ header {
   font-size: 14px;
   line-height: 25px;
 }
+.pad{
+  padding-left:25px;
+}
 
 .title-inner {
   display: flex;
@@ -247,30 +256,29 @@ header {
 }
 
 .articletitle {
-  width: 60%;
-  text-align: center;
+  width: 55%;
+  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .idname {
-  width: 10%;
+  width: 22%;
   padding-right: 20px;
-  text-align: center;
+  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .hits {
-  width: 30%;
-  text-align: center;
+  width: 18%;
+  text-align: left;
   font-size: 12px;
   font-weight: bold;
   color: #aeaeae;
-  text-align: center;
-  vertical-align: center;
+  /* vertical-align: center; */
 }
 /* footer */
 .bottom {
@@ -278,10 +286,6 @@ header {
   position: relative;
   transform: tranlateY(-100%);
   background-color: #dadada;
-}
-
-.btn-top {
-  /* 위치 수정 예정 */
 }
 
 /* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
@@ -292,7 +296,7 @@ header {
     left: 0;
     width: 100%;
     height: 60px;
-    background-color: white;
+    background-color: #f8ffee;
     transition: top 0.2s ease-in-out;
   }
 
@@ -301,6 +305,7 @@ header {
     min-height: 100%;
     padding-bottom: 100px;
     padding-top: 60px;
+    background-color:#f8ffee;
   }
 
 
@@ -430,8 +435,9 @@ header {
     display: flex;
     flex-direction: column;
   }
+  
   .board-item {
-    background-color: white;
+    background-color: #eff5e6;
     height: 230px;
     width: 80vw;
     max-width: 600px;
@@ -468,6 +474,7 @@ header {
 
 .main {
   margin-top: 80px;
+  text-align: center;
   width: 850px;
 }
 
@@ -572,6 +579,14 @@ header {
   text-align: center;
 }
 
+.page{
+  margin: 5px;
+}
+
+.paging{
+  margin: 10px;
+}
+
 /* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
 @media screen and (max-width: 840px) {
   .sidebar {
@@ -642,15 +657,19 @@ header {
 
 .index-board {
   width: 10%;
+  /* background-color: rgba(174, 241, 166, 0.717); */
 }
 .index-title {
-  width: 60%;
+  width: 40%;
+  /* background-color: rgba(174, 241, 166, 0.717); */
 }
 .index-hits {
   width: 10%;
+  /* background-color: rgba(174, 241, 166, 0.717); */
 }
 .index-time {
   width: 20%;
+  /* background-color: rgba(174, 241, 166, 0.717); */
 }
 
 .myarticle-index {
@@ -673,7 +692,7 @@ header {
   width: 10%;
 }
 .myarticle-title {
-  width: 60%;
+  width: 40%;
 }
 .myarticle-hits {
   width: 10%;
@@ -708,7 +727,7 @@ header {
 }
 
 .comment-title {
-  width: 50%;
+  width: 40%;
 }
 
 .comment-time {
@@ -734,7 +753,7 @@ header {
 }
 
 .mycomment-title {
-  width: 50%;
+  width: 40%;
 }
 .mycomment-time {
   width: 20%;

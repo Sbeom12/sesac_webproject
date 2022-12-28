@@ -6,7 +6,10 @@ function enterFunc(event, id, focus){
         console.log(data.value)
         if(data.value.length==0){
             event.preventDefault()
-            alert(`${id}은 필수 입력 항목입니다.`)
+            Swal.fire({
+                icon: 'warning',
+                text: '댓글을 작성해주세요.'
+            });
         }
         else{
             event.preventDefault()
@@ -20,5 +23,9 @@ function btnClick(event){
 
   if(cmtCntnt.value.length==0){
       event.preventDefault()
+      Swal.fire({
+        icon: 'warning',
+        text: '댓글을 작성해주세요.'
+    });
     }
 }

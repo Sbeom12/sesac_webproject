@@ -17,7 +17,6 @@ class DBUpdater():
             db='community', 
             charset='utf8'
             )
-        
         self.tableList = ['UserInfo', 'Board', 'Post', 'Comment', 'LikeInfo']
         self.cursor = self.conn.cursor()
         self.createTable()
