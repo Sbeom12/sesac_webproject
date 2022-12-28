@@ -12,7 +12,7 @@ class DBUpdater():
     def __init__(self):
         self.conn = pymysql.connect(
             user='root', 
-            passwd='qhdkscjfwj0!', 
+            passwd='12345', 
             host='127.0.0.1', 
             db='community', 
             charset='utf8'
@@ -331,10 +331,14 @@ class DBUpdater():
         
             
     def insert_comment(self, pstId , userId, cmtCntnt):
+        sql = f"""
+        INSERT INTO Comment  (pstId , userId, cmtCntnt)
+        VALUES ({pstId},\'{userId}\',\'{cmtCntnt}\');"""
+        print(sql)
         try:
             sql = f"""
             INSERT INTO Comment  (pstId , userId, cmtCntnt)
-            VALUES ({pstId},{userId},\'{cmtCntnt}\');"""
+            VALUES ({pstId},\'{userId}\',\'{cmtCntnt}\');"""
             self.cursor.execute(sql)
             self.conn.commit()
             print('insert_comment - success')
@@ -403,7 +407,7 @@ class DBUpdater():
             # post = 1
             sql = f"""
             INSERT INTO LikeInfo (pstId, userId, post)
-            VALUES ({pstId}, '{userId}', {post});"""
+            VALUES ({pstId}, \'{userId}\', {post});"""
             print(sql)
             self.cursor.execute(sql)
             self.conn.commit()
@@ -437,13 +441,13 @@ class DBUpdater():
                 sql = f"""
                 UPDATE LikeInfo
                 SET {like}_cnt = {value}
-                WHERE post= {post} AND pstId = {pstId} AND userId = {userId}"""
+                WHERE post= {post} AND pstId = {pstId} AND userId = \'{userId}\'"""
             else:
                 value = 0
                 sql = f"""
                 UPDATE LikeInfo
                 SET {like}_cnt = {value}
-                WHERE post= {post} AND pstId = {pstId} AND userId = {userId}"""    
+                WHERE post= {post} AND pstId = {pstId} AND userId = \'{userId}\'"""    
                 
             self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
             self.cursor.execute(sql)
@@ -638,7 +642,7 @@ class DBUpdater():
     
     # userInfo
     def update_grade(self, userId):
-        sql = f"SELECT * FROM UserInfo where userId={userId}"
+        sql = f"SELECT * FROM UserInfo where userId=\'{userId}\'"
         self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
         self.cursor.execute(sql)
         data = self.cursor.fetchall()
@@ -646,14 +650,14 @@ class DBUpdater():
             sql = f"""
             UPDATE UserInfo
             SET grade = 0
-            WHERE userId = {userId};"""
+            WHERE userId = \'{userId}\';"""
             self.cursor.execute(sql)
             self.conn.commit()
         else:
             sql = f"""
             UPDATE UserInfo
             SET grade = 1
-            WHERE userId = {userId};"""
+            WHERE userId = \'{userId}\';"""
             self.cursor.execute(sql)
             self.conn.commit()
             

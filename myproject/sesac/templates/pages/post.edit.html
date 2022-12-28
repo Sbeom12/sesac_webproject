@@ -20,10 +20,10 @@
             <select name="brdId">
               {%for name in board_ls %} {%if p.brdId == name.brdId%}
               <option name="brdId" value="{{name.brdId}}" selected>
-                {{name.brdNm}}게시판
+                {{name.brdNm}}
               </option>
               {%else%}
-              <option name="brdId" value="{{name.brdId}}">{{name.brdNm}}게시판</option>
+              <option name="brdId" value="{{name.brdId}}">{{name.brdNm}}</option>
               {%endif%} {%endfor%}
             </select>
           </div>
@@ -71,9 +71,9 @@
         {%else%}
           {%for name in board_ls %}
             {%if brdId == name.brdId%}
-            <option name = 'brdId' value='{{name.brdId}}' selected>{{name.brdNm}}게시판</option>
+            <option name = 'brdId' value='{{name.brdId}}' selected>{{name.brdNm}}</option>
             {%else%}
-            <option name = 'brdId' value='{{name.brdId}}'>{{name.brdNm}}게시판</option>
+            <option name = 'brdId' value='{{name.brdId}}'>{{name.brdNm}}</option>
             {%endif%}
           {%endfor%}
         {%endif%}
