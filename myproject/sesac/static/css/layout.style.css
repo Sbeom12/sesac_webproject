@@ -970,6 +970,7 @@ header {
   border-right: 0px;
   padding: 15px;
   font-size: 15px;
+  border: 1px solid #dadada;
 }
 
 .submit-input {

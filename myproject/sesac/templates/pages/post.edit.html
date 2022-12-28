@@ -11,9 +11,8 @@
 {% if post_list %} 
 <article>
 	<div class="container" role="main">
-    <h2>글 작성</h2>
+    <h2>게시물 편집</h2>
     <br><br>
-
     {% for p in post_list %}
       <form
         method="post"
@@ -23,21 +22,19 @@
         action="{{ url_for('post_views.post_save_edit', pstId=p.pstId)}}"
         >
           <div class="mb-3">
-            <label for="title">제목</label>
-            <input type="text" class="form-control" name="title" id="title" value="{{p.title}}"/>
-          </div>
-
-          <div class="mb-3">
             <select name="brdId">
               {%for name in board_ls %} {%if p.brdId == name.brdId%}
               <option name="brdId" value="{{name.brdId}}" selected>
-                {{name.brdNm}}
+                {{name.brdNm}}게시판
               </option>
               {%else%}
-              <option name="brdId" value="{{name.brdId}}">{{name.brdNm}}</option>
+              <option name="brdId" value="{{name.brdId}}">{{name.brdNm}}게시판</option>
               {%endif%} {%endfor%}
             </select>
-            
+          </div>
+          <div class="mb-3">
+            <label for="title">제목</label>
+            <input type="text" class="form-control" name="title" id="title" value="{{p.title}}"/>
           </div>
           <div class="mb-3">
             <label for="content">내용</label>
@@ -70,18 +67,20 @@
     role="form"
     action="{{ url_for('post_views.post_save_new')}}"
     >
+      <div class="mb-3">
+        {%for name in board_ls%}
+        <select name="brdId">
+          <option name="brdId" value="{{name.brdId}}" selected>
+            {{name.brdNm}}게시판
+          </option>
+          <option name="brdId" value="{{name.brdId}}">{{name.brdNm}}게시판</option>
+          {%endfor%}
+        </select>
+      </div>
 
       <div class="mb-3">
         <label for="title">제목</label>
         <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
-      </div>
-
-      <div class="mb-3">
-        <select name="brdId">
-          {%for name in board_ls%}
-          <option name="brdId" value="{{name.brdId}}">{{name.brdNm}}</option>
-          {%endfor%}
-        </select>
       </div>
 
       <div class="mb-3">
@@ -94,7 +93,6 @@
         <button type="submit" class="btn btn-sm btn-success" id="btnSave" onclick="btnClick(event)">저장하기</button>
         <a class="btn btn-sm btn-success" id="btnSave" href="{{url_for('board_views.board')}}">취소하기</a>
       </div>
-
     </form>
   </div>
 </article>

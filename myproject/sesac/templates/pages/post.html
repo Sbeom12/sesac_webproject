@@ -44,7 +44,9 @@
           <div class="postcontainer">
             <div class="post-upper">
               {% if post_list %} {% for post in post_list %}
-              <div class="post-position">{{post.brdId}}</div>
+              {%for name in board_ls %} {%if post.brdId == name.brdId%}
+              <div class="post-position">{{name.brdNm}}게시판</div>
+              {%endif%} {%endfor%}
               <div class="post-title-bar">{{post.title}}</div>
               <div class="post-upper-name">{{post.userId}}</div>
 
@@ -100,28 +102,26 @@
             <div class="post-comment-container">
               <div class="now-comment">댓글</div>
               <form
-                style="display: flex;"
                 method="post"
                 action="{{url_for('comment_views.comment_add', pstId=post_list[0].pstId)}}"
+                style="display: flex;"
               >
-                
-                    <input
-                      class="comment-input"
-                      type="text"
-                      name="cmtCntnt"
-                      id="cmtCntnt"
-                      placeholder="댓글을 입력해주세요"
-                      onkeydown="enterFunc(event,'cmtCntnt','submit')"
-                    />
-                    <input
-                        class="submit-input"
-                        type="submit"
-                        id="submit"
-                        value="추가"
-                        onclick="btnClick(event)"
-                      />
-                
-                    </form>
+                <input
+                    class="comment-input"
+                    type="text"
+                    name="cmtCntnt"
+                    id="cmtCntnt"
+                    placeholder="댓글을 입력해주세요"
+                    onkeydown="enterFunc(event,'cmtCntnt','submit')"
+                  />
+                <input
+                    class="submit-input"
+                    type="submit"
+                    id="submit"
+                    value="추가하기"
+                    onclick="btnClick(event)"
+                  />
+                </form>
 
               {% if comment_list %} {% for comment in comment_list %}
               <div class="comment-view">
