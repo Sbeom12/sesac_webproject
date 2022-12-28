@@ -98,27 +98,30 @@
             </div>
 
             <div class="post-comment-container">
-              <div class="now-comment">댓글 {} 개</div>
+              <div class="now-comment">댓글</div>
               <form
+                style="display: flex;"
                 method="post"
                 action="{{url_for('comment_views.comment_add', pstId=post_list[0].pstId)}}"
               >
-                <input
-                  class="comment-input"
-                  type="text"
-                  name="cmtCntnt"
-                  id="cmtCntnt"
-                  placeholder="댓글을 입력해주세요"
-                  onkeydown="enterFunc(event,'cmtCntnt','submit')"
-                />
-                <input
-                  class="submit-input"
-                  type="submit"
-                  id="submit"
-                  value="추가하기"
-                  onclick="btnClick(event)"
-                />
-              </form>
+                
+                    <input
+                      class="comment-input"
+                      type="text"
+                      name="cmtCntnt"
+                      id="cmtCntnt"
+                      placeholder="댓글을 입력해주세요"
+                      onkeydown="enterFunc(event,'cmtCntnt','submit')"
+                    />
+                    <input
+                        class="submit-input"
+                        type="submit"
+                        id="submit"
+                        value="추가"
+                        onclick="btnClick(event)"
+                      />
+                
+                    </form>
 
               {% if comment_list %} {% for comment in comment_list %}
               <div class="comment-view">
@@ -155,7 +158,7 @@
                 </ul>
               </div>
               {% endfor %} {% else %}
-              <li>cmt 가 없습니다.</li>
+              <li style="list-style: none;"></li>
               {% endif %}
             </div>
 

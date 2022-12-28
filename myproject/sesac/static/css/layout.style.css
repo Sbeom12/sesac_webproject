@@ -17,10 +17,9 @@ a:visited {
   color: #ffffff;
   text-decoration: none;
 }
-.dropdown #button:focus{
-  outline-color: transparent;
-  outline-style:solid;
-  box-shadow: 0 0 0 4px #5a01a7;
+
+#dropdownBtn:hover{
+  color: #ffffff !important;
 }
 .dropdown a:hover{
   color: #ff0000;
@@ -35,7 +34,6 @@ a:visited {
   color: #76b355;
   text-decoration: none;
 }
-
 /* 호버관련 부분 끝!*/
 
 .wrapper {
@@ -128,6 +126,7 @@ header {
   padding-left: 25px;
   padding-right: 25px;
 }
+
 
 /* 배너 */
 .middle {
@@ -304,6 +303,11 @@ header {
     padding-top: 60px;
   }
 
+
+  .loginbar-list{
+    margin: 0px;
+  }
+
   /* 버튼 */
 
   .navbar-togglebtn {
@@ -312,6 +316,7 @@ header {
     padding-left: 10vw;
     left: 15px;
     margin: 2px;
+    top: 11px;
   }
 
   .navbar-togglebtn,
@@ -414,7 +419,9 @@ header {
     color: black;
     z-index: 999;
     position: relative;
+    text-align: center;
   }
+ 
 
   .board-table {
     margin-top: 50px;
@@ -462,6 +469,7 @@ header {
 
 .main {
   margin-top: 80px;
+  width: 850px;
 }
 
 .article-title-bar {
@@ -955,16 +963,21 @@ header {
   font-weight: bold;
 }
 
+
 .comment-input {
   min-width: 650px;
   width: 90%;
-  border: 1px solid black;
+  border: 1px solid ;
+  border-right: 0px;
   padding: 15px;
   font-size: 15px;
 }
 
 .submit-input {
   width: 10%;
+  background-color: #76b355;
+  border: 1px solid #76b355;
+  color: white;
 }
 
 .comment-view {
