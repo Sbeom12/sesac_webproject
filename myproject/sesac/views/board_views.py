@@ -33,7 +33,6 @@ def board():
     return render_template('pages/board.html', boards=boards, board_ls=board_ls)
 
 # /board/boardId
-
 @bp.route('/brdId=<int:brdId>/', methods=('GET', 'POST'))
 def board_boardID(brdId):
     number= 5
