@@ -12,15 +12,17 @@ a:visited {
   text-decoration: none;
   color: black;
 }
-
+/* 호버관련 부분 */
 .menu-item a:hover {
-  color: white;
-
+  color: #76b355;
   text-decoration: none;
 }
 
-.btn-item a:hover{
-  color: black;
+#dropdownBtn:hover{
+  color: #76b355 !important;
+}
+.dropdown a:hover{
+  color: #76b355;
   text-decoration: none;
 }
 
@@ -32,6 +34,7 @@ a:visited {
   color: #76b355;
   text-decoration: none;
 }
+/* 호버관련 부분 끝!*/
 
 .wrapper {
   height: auto;
@@ -47,8 +50,8 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  height: 110px;
-  background-color: #d0f476;
+  height: 114px;
+  background-color: #ffffff;
   transition: top 0.2s ease-in-out;
 }
 
@@ -124,6 +127,7 @@ header {
   padding-left: 25px;
   padding-right: 25px;
 }
+
 
 /* 배너 */
 .middle {
@@ -304,6 +308,11 @@ header {
     background-color:#f8ffee;
   }
 
+
+  .loginbar-list{
+    margin: 0px;
+  }
+
   /* 버튼 */
 
   .navbar-togglebtn {
@@ -312,6 +321,7 @@ header {
     padding-left: 10vw;
     left: 15px;
     margin: 2px;
+    top: 11px;
   }
 
   .navbar-togglebtn,
@@ -414,6 +424,7 @@ header {
     color: black;
     z-index: 999;
     position: relative;
+    text-align: center;
   }
 
   .board-table {
@@ -464,6 +475,7 @@ header {
 .main {
   margin-top: 80px;
   text-align: center;
+  width: 850px;
 }
 
 .article-title-bar {
@@ -969,17 +981,22 @@ header {
   font-weight: bold;
 }
 
+
 .comment-input {
   min-width: 650px;
   width: 90%;
-  border: 1px solid black;
+  border: 1px solid ;
+  border-right: 0px;
   padding: 15px;
   font-size: 15px;
-  height: 12px;
+  border: 1px solid #dadada;
 }
 
 .submit-input {
   width: 10%;
+  background-color: #76b355;
+  border: 1px solid #76b355;
+  color: white;
 }
 
 .comment-view {

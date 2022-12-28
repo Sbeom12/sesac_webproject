@@ -91,29 +91,30 @@
               <a href="{{url_for('post_views.like_unlike_click', pstId=post_list[0].pstId, type='like', post=1)}}">좋아요 [ {{post_list[0].pstLikeCnt}} ]</a>
               <a href="{{url_for('post_views.like_unlike_click', pstId=post_list[0].pstId, type='unlike', post=1)}}">싫어요[ {{post_list[0].pstUnlikeCnt}} ]</a>
               <br><br>
+              <div class="now-comment">댓글</div>
+
               <form
                 method="post"
                 action="{{url_for('comment_views.comment_add', pstId=post_list[0].pstId)}}"
+                style="display: flex;"
               >
               <div>
                 <input
-                  class="comment-input"
-                  type="text"
-                  name="cmtCntnt"
-                  id="cmtCntnt"
-                  placeholder="댓글을 입력해주세요"
-                  onkeydown="enterFunc(event,'cmtCntnt','submit')"
-                />
+                    class="comment-input"
+                    type="text"
+                    name="cmtCntnt"
+                    id="cmtCntnt"
+                    placeholder="댓글을 입력해주세요"
+                    onkeydown="enterFunc(event,'cmtCntnt','submit')"
+                  />
                 <input
-                  class="submit-input"
-                  type="submit"
-                  id="submit"
-                  value="추가하기"
-                  onclick="btnClick(event)"
-                />
-              </div>
-              </form>
-
+                    class="submit-input"
+                    type="submit"
+                    id="submit"
+                    value="추가하기"
+                    onclick="btnClick(event)"
+                  />
+                </form>
               {% if comment_list %} 
               {% for comment in comment_list %}
               <div class="comment-view">
@@ -149,9 +150,8 @@
                   </li>
                 </ul>
               </div>
-              {% endfor %}
-              {% else %}
-              <li>cmt 가 없습니다.</li>
+              {% endfor %} {% else %}
+              <li style="list-style: none;"></li>
               {% endif %}
             </div>
 

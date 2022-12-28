@@ -61,7 +61,6 @@
       <header class="menucontainer">
         <div class="loginbar">
           <ul class="loginbar-list">
-            <!-- 드롭다운 애니메이션, 햄버거 버튼 아이콘 수정 예정 -->
             <a class="navbar-togglebtn" href="#">
               <span></span>
               <span></span>
@@ -113,8 +112,8 @@
         <div class="menu">
           <ul class="menu-list">
             <li class="menu-item"><a href="{{url_for('main')}}"> 홈</a></li>
-            <li class=".btn-item" style="text-align: center">
-              <div class="dropdown" style="margin: 0; text-align: center">
+            <li class="menu-item">
+              <div class="dropdown" style="margin: auto 0; text-align: center">
                 <button
                   class="btn btn-secondary dropdown-toggle"
                   type="button"
@@ -124,8 +123,8 @@
                   aria-expanded="false"
                   style="
                     display: flex;
-                    background-color: #d0f476;
-                    color: black;
+                    background-color: rgba(255, 255, 255, 0);
+                    color: rgb(0, 0, 0);
                     border: 0px;
                     font-size: 20px;
                     margin: 0px;
@@ -136,6 +135,12 @@
                 </button>
 
                 <div class="dropdown-menu">
+                  <a
+                  class="dropdown-item"
+                  style="z-index: 101"
+                  href="{{url_for('board_views.board')}}"
+                  >전체게시판</a
+                  >
                   {% for board in board_ls%}
                   <a
                     class="dropdown-item"
