@@ -12,9 +12,17 @@ a:visited {
   text-decoration: none;
   color: black;
 }
-
+/* 호버관련 부분 */
 .menu-item a:hover {
-  color: #ffffff;
+  color: #76b355;
+  text-decoration: none;
+}
+
+#dropdownBtn:hover{
+  color: #76b355 !important;
+}
+.dropdown a:hover{
+  color: #76b355;
   text-decoration: none;
 }
 
@@ -26,12 +34,13 @@ a:visited {
   color: #76b355;
   text-decoration: none;
 }
+/* 호버관련 부분 끝!*/
 
 .wrapper {
   height: auto;
   min-height: 100%;
-  padding-bottom: 100px;
   padding-top: 114px;
+  background-color:white;
 }
 
 header {
@@ -41,7 +50,7 @@ header {
   left: 0;
   width: 100%;
   height: 114px;
-  background-color: #d0f476;
+  background-color: #ffffff;
   transition: top 0.2s ease-in-out;
 }
 
@@ -87,7 +96,7 @@ header {
 }
 
 .btn-login:hover {
-  background-color: #bde852;
+  background-color: white;
 }
 
 .btn-sign {
@@ -118,15 +127,17 @@ header {
   padding-right: 25px;
 }
 
+
 /* 배너 */
 .middle {
   width: 100vw;
+  padding: 0;
 }
-.imagecontainer {
-  /* height: 360px; */
-  background-image: url("bannertest.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+
+.imgcontainer {
+  width: 100vw;
+  height: 450px;
+  padding: 0;
 }
 /* 배너 밑 색깔 바꾸기 */
 .banerunder {
@@ -135,8 +146,9 @@ header {
 
 /* 게시판 */
 .bodywrapper {
-  padding-left: 10vw;
-  padding-right: 10vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  background-color: white;
 }
 
 .tablewrapper {
@@ -148,6 +160,8 @@ header {
   margin-top: 70px;
   max-width: 1353px;
 }
+
+
 
 /* 테이블 리스트 */
 .board-list {
@@ -178,6 +192,8 @@ header {
   padding-bottom: 20px;
   padding-right: 10px;
   margin-bottom: 20px;
+  background-color: white;
+
 }
 
 .board-link:link {
@@ -210,6 +226,9 @@ header {
   font-size: 14px;
   line-height: 25px;
 }
+.pad{
+  padding-left:25px;
+}
 
 .title-inner {
   display: flex;
@@ -237,41 +256,54 @@ header {
 }
 
 .articletitle {
-  width: 60%;
-  text-align: center;
+  width: 55%;
+  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .idname {
-  width: 10%;
+  width: 22%;
   padding-right: 20px;
-  text-align: center;
+  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .hits {
-  width: 30%;
-  text-align: center;
+  width: 18%;
+  text-align: left;
   font-size: 12px;
   font-weight: bold;
   color: #aeaeae;
-  text-align: center;
-  vertical-align: center;
+  /* vertical-align: center; */
 }
 /* footer */
+
 .bottom {
   height: 100px;
   position: relative;
-  transform: tranlateY(-100%);
-  background-color: #dadada;
+  transform: translateY(-100%);
+  background-color: #f0f0f0;
+  
+  display: flex;
+  align-items: center;
+
+  padding-left: 100px;
+  padding-right: 100px;
+  
+  justify-content: space-between;
 }
 
-.btn-top {
-  /* 위치 수정 예정 */
+.bottom-git{
+  position: relative;
+}
+
+.bottom-top{
+  height: 40px;
+  width: 40px;
 }
 
 /* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
@@ -282,15 +314,21 @@ header {
     left: 0;
     width: 100%;
     height: 60px;
-    background-color: white;
+    background-color: #ffffff;
     transition: top 0.2s ease-in-out;
   }
 
   .wrapper {
     height: auto;
     min-height: 100%;
-    padding-bottom: 100px;
+    /* padding-bottom: 100px; */
     padding-top: 60px;
+    background-color:white;
+  }
+
+
+  .loginbar-list{
+    margin: 0px;
   }
 
   /* 버튼 */
@@ -301,6 +339,7 @@ header {
     padding-left: 10vw;
     left: 15px;
     margin: 2px;
+    top: 11px;
   }
 
   .navbar-togglebtn,
@@ -403,6 +442,7 @@ header {
     color: black;
     z-index: 999;
     position: relative;
+    text-align: center;
   }
 
   .board-table {
@@ -413,8 +453,9 @@ header {
     display: flex;
     flex-direction: column;
   }
+  
   .board-item {
-    background-color: white;
+    background-color: #ffffff;
     height: 230px;
     width: 80vw;
     max-width: 600px;
@@ -430,6 +471,7 @@ header {
 .board-bodywrapper {
   display: flex;
   justify-content: center;
+  margin-bottom: 100px;
 }
 
 .sidebar {
@@ -451,6 +493,8 @@ header {
 
 .main {
   margin-top: 80px;
+  text-align: center;
+  width: 850px;
 }
 
 .article-title-bar {
@@ -500,6 +544,9 @@ header {
   text-align: center;
 }
 
+.articlecontainer{
+  height: 500px;
+}
 .article-item a {
   display: flex;
   justify-content: space-between;
@@ -530,7 +577,8 @@ header {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-align: center;
+  text-align: left;
+  padding-left: 50px;
 }
 
 .board-article-user {
@@ -554,26 +602,50 @@ header {
   text-align: center;
 }
 
-/* 반응형 가로 넓이가 840 이하면 미디어 쿼리 */
-@media screen and (max-width: 840px) {
-  .sidebar {
-    display: none;
+.page{
+  margin: 5px;
+}
+
+.paging{
+  margin: 10px;
+  margin-top: 40px;
+
+}
+
+@media screen and (max-width: 840px){
+
+  .sidebar{
+      display: none;
+  }
+  .main{
+      min-width: 0;
   }
 
-  .articlecontainer {
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
+  .articlecontainer{
+      display: flex;
+      flex-direction: column;
+      height: 500px;
   }
 
-  .article-list {
-    width: 80vw;
+
+  .article-list{
+      min-width: 0;
+      list-style: none;
+      padding: 0;
   }
 
-  .board-list-bar {
-    position: relative;
-    z-index: 1;
-    display: block;
+  .board-list-bar{
+      position:relative;
+      z-index: 1;
+      display: block;
+      margin-top: 0px;
+      margin-bottom: 10px;
+  }
+  .board-name{
+    margin-bottom: 20px;
+  }
+  .board-bodywrapper{
+    margin-bottom: 100px;
   }
 }
 
@@ -624,15 +696,19 @@ header {
 
 .index-board {
   width: 10%;
+  /* background-color: rgba(174, 241, 166, 0.717); */
 }
 .index-title {
-  width: 60%;
+  width: 40%;
+  /* background-color: rgba(174, 241, 166, 0.717); */
 }
 .index-hits {
   width: 10%;
+  /* background-color: rgba(174, 241, 166, 0.717); */
 }
 .index-time {
   width: 20%;
+  /* background-color: rgba(174, 241, 166, 0.717); */
 }
 
 .myarticle-index {
@@ -655,7 +731,7 @@ header {
   width: 10%;
 }
 .myarticle-title {
-  width: 60%;
+  width: 40%;
 }
 .myarticle-hits {
   width: 10%;
@@ -690,7 +766,7 @@ header {
 }
 
 .comment-title {
-  width: 50%;
+  width: 40%;
 }
 
 .comment-time {
@@ -716,7 +792,7 @@ header {
 }
 
 .mycomment-title {
-  width: 50%;
+  width: 40%;
 }
 .mycomment-time {
   width: 20%;
@@ -839,5 +915,192 @@ header {
   .adminmenu a {
     color: #91e661;
     font-weight: 700;
+  }
+}
+
+/* ------------ 포스트 페이지 ------------ */
+
+.post-title-bar{
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 0px;
+} 
+
+.postcontainer {
+  min-width: 600px;
+  max-width: 850px;
+}
+.post-title-bar {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  padding: 0px;
+}
+
+.post-upper {
+  border-bottom: 2px solid #91e661;
+}
+
+.post-position {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+.post-upper-name {
+  padding: 0px;
+  margin: 0px;
+  font-size: 15px;
+  text-align: left;
+}
+
+.post-upper-list {
+  list-style: none;
+  display: flex;
+  padding: 0px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.post-upper-item {
+  display: flex;
+}
+
+.post-upper-time {
+  margin-right: 10px;
+  font-size: 15px;
+}
+
+.post-upper-view {
+  font-size: 15px;
+}
+
+.mod-btn {
+  font-size: 15px;
+  margin-right: 10px;
+}
+
+.del-btn {
+  font-size: 15px;
+}
+
+.post-article {
+  margin-top: 60px;
+  line-height: 1.8rem;
+  text-align: justify;
+  text-indent: 2rem;
+}
+
+.post-bottom-list {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.like {
+  margin-right: 10px;
+}
+
+.hate {
+  margin-left: 10px;
+}
+
+.post-comment-container {
+  border-top: 2px solid #91e661;
+}
+
+.now-comment {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.comment-input {
+  min-width: 650px;
+  width: 90%;
+  border: 1px solid ;
+  border-right: 0px;
+  padding: 15px;
+  font-size: 15px;
+  border: 1px solid #dadada;
+}
+
+.submit-input {
+  width: 10%;
+  background-color: #76b355;
+  border: 1px solid #76b355;
+  color: white;
+}
+
+.comment-view {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.comment-view-list {
+  list-style: none;
+  padding: 0px;
+}
+.comment-view-item {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dadada;
+}
+.comment-view-item:last-child {
+  content: "";
+  padding-bottom: 25px;
+  border-bottom: 2px solid #91e661;
+}
+
+.comment-user {
+  width: 10%;
+}
+.comment-content {
+  width: 60%;
+  text-align: left;
+  padding-left: 30px;
+}
+.comment-time {
+  width: 15%;
+  font-size: 13px;
+}
+.comment-btn {
+  width: 15%;
+}
+.comment-btn-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  font-size: 13px;
+  justify-content: end;
+}
+.comment-btn-item::after {
+  content: "";
+  margin: 4px;
+}
+
+.post-article-under {
+  margin-top: 40px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+@media screen and (max-width: 840px) {
+  .postcontainer {
+    margin-top: 20px;
+    min-width: 0;
+  }
+  .comment-input {
+    min-width: 0;
   }
 }

@@ -4,9 +4,18 @@
   href="{{ url_for('static', filename='css/admin.css') }}"
 />
 
-<section>
-  <h2>admin.admin.comminfo.html.html</h2>
+<section class = "page-upper">
+  <h2 class = "page-title">댓글 관리</h2>
 </section>
+
+<div class="quickmenu">
+  <ul class = "quicklist">
+    <li class = "quickitem"><a href="{{url_for('admin_views.admin_userinfo')}}">유저 관리</a></li>
+    <li class = "quickitem"><a href="{{url_for('admin_views.admin_boardinfo')}}">게시판 관리</a></li>
+    <li class = "quickitem"><a href="{{url_for('admin_views.admin_postinfo')}}">게시물 관리</a></li>
+    <li class = "quickitem"><a href="{{url_for('admin_views.admin_comminfo')}}">댓글 관리</a></li>
+  </ul>
+</div>
 
 <div class="commInfo">
   <div class="commTable">

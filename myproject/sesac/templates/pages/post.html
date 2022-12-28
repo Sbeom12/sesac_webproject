@@ -1,103 +1,184 @@
-
 {% extends '/layouts/base_updown.html' %} {% block content %}
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css"
+/>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style_menu.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
+<script type="text/javascript" defer src="main.js"></script>
+<script type="text/javascript" defer src="menu.js"></script>
+
 <script src="{{url_for('static',filename='js/post.js') }}"></script>
 
-<h2>post.html</h2>
-<p>post</p>
 
-<a href="{{url_for('post_views.post_edit', pstId=post_list[0].pstId)}}"
-  >편집하기</a
->
-<a href="{{url_for('post_views.post_del', pstId=post_list[0].pstId)}}"
-  >삭제하기</a
-><br />
+{% if board_ls %}
+<div class="wrapper">
+  <div class="overlay"></div>
 
-{% if post_list %} {% for post in post_list %}
-<ul>
-  {% for key, value in post.items() %}
-  <li>
-    <a id="{{key}}">{{key}} - {{value}}</a>
-  </li>
-  {% endfor %}
-  <a
-    href="{{url_for('post_views.like_unlike_click', pstId=post.pstId, type='like', post=1)}}"
-    >좋아요</a
-  >
-  <a
-    href="{{url_for('post_views.like_unlike_click', pstId=post.pstId, type='unlike', post=1)}}"
-    >싫어요</a
-  >
-</ul>
-{% endfor %} {% else %}
+  <div class="middle">
+    <img class = "imgcontainer" src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtP2nA%2FbtrULN6ZVHm%2FkNek9g9Pv9lunoCLcqYmQk%2Fimg.png"></div>
+  </div>
+  
+
+  <div class="bodywrapper">
+    <div class="board-bodywrapper">
+      <aside class="sidebar">
+        <div class="sidebar-title"><h3 class="sidebar-name">📋</h3></div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item">
+            <a href="{{url_for('board_views.board')}}">전체게시판</a>
+          </li>
+          {% if board_ls %} 
+            {% for board in board_ls %}
+            <li class="sidebar-item">
+              <a
+                href="{{url_for('board_views.board_boardID', brdId=board.brdId)}}"
+                >{{board.brdNm}}</a
+              >
+            </li>
+          {% endfor %} 
+          {% endif %}
+        </ul>
+      </aside>
+
+      <section class="main">
+        <div class="articlecontainer">
+          <div class="postcontainer">
+            <div class="post-upper">
+              {% if post_list %} 
+              {% for post in post_list %}
+                {% for board in board_ls %}
+                  {% if board.brdId == post.brdId %}
+                    <div class="post-position">{{board.brdNm}}</div>
+                  {% endif %}
+                {% endfor %}
+              <div class="post-title-bar"><h2>{{post.title}}</h2></div>
+              <div class="post-upper-name">{{userSN[0].subNm}}</div>
+
+              <ul class="post-upper-list">
+                <li class="post-upper-item">
+                  <div class="post-upper-time">생성일: {{post.pstCrtDate.strftime('%Y-%m-%d')}}</div>
+                  <div class="post-upper-view">조회수: {{post.vwCnt}}</div>
+                </li>
+                <li class="post-upper-item">
+                  <div class="mod-btn">
+                    <a href="{{url_for('post_views.post_edit', pstId=post.pstId)}}">수정</a>
+                  </div>
+                  <div class="del-btn">
+                    <a href="{{url_for('post_views.post_del', pstId=post.pstId)}}">삭제</a>
+                  </div>
+                  {% for message in get_flashed_messages() %}
+                    <script>
+                      Swal.fire({
+                        icon: 'error',
+                        title: '경고',
+                        text: `{{ message }}`,
+                      });
+                    </script>
+                  {% endfor %}
+                </li>
+              </ul>
+              {% endfor %}
+            </div>
+
+            <div class="post-article">{{post_list[0].pstCntnt}}</div>
+
+            <div class="post-bottom-list">
+            </div>
+
+            <div class="post-comment-container">
+              <a href="{{url_for('post_views.like_unlike_click', pstId=post_list[0].pstId, type='like', post=1)}}">좋아요 [ {{post_list[0].pstLikeCnt}} ]</a>
+              <a href="{{url_for('post_views.like_unlike_click', pstId=post_list[0].pstId, type='unlike', post=1)}}">싫어요[ {{post_list[0].pstUnlikeCnt}} ]</a>
+              <br><br>
+              <div class="now-comment">댓글</div>
+
+              <form
+                method="post"
+                action="{{url_for('comment_views.comment_add', pstId=post_list[0].pstId)}}"
+                style="display: flex;"
+              >
+                <input
+                    class="comment-input"
+                    type="text"
+                    name="cmtCntnt"
+                    id="cmtCntnt"
+                    placeholder="댓글을 입력해주세요"
+                    onkeydown="enterFunc(event,'cmtCntnt','submit')"
+                  />
+                <input
+                    class="submit-input"
+                    type="submit"
+                    id="submit"
+                    value="추가하기"
+                    onclick="btnClick(event)"
+                  />
+                </form>
+              {% if comment_list %} 
+              {% for comment in comment_list %}
+              <div class="comment-view">
+                <ul class="comment-view-list">
+                  <li class="comment-view-item">
+                    <div class="comment-user">{{ comment.subNm }}</div>
+                    <div class="comment-content">{{ comment.cmtCntnt }}</div>
+                    <div class="comment-time">{{ comment.cmtCrtDate.strftime('%Y-%m-%d')}}</div>
+                    <div class="comment-btn">
+                      <ul class="comment-btn-list">
+                        <li class="comment-btn-item">
+                          <a>{{ comment.cmtLikeCnt }}</a>
+                          <a
+                            href="{{url_for('post_views.like_unlike_click', pstId=comment.cmtId, type='like', post=0)}}"
+                            >O</a
+                          >
+                        </li>
+                        <li class="comment-btn-item">
+                          <a>{{ comment.cmtUnlikeCnt }}</a>
+                          <a
+                            href="{{url_for('post_views.like_unlike_click', pstId=comment.cmtId, type='unlike', post=0)}}"
+                            >X</a
+                          >
+                        </li>
+                        <li class="comment-btn-item">
+                          <a
+                            href="{{url_for('comment_views.comment_del', cmtId=comment.cmtId)}}"
+                            >삭제</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              {% endfor %} {% else %}
+              <li style="list-style: none;"></li>
+              {% endif %}
+            </div>
+
+            <div class="post-article-under">
+              <button type="button" class="backtomainBtn">
+                <a
+                  href="{{url_for('board_views.board_boardID', brdId=post_list[0].brdId)}}"
+                >
+                  목록으로 돌아가기</a
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(window);
+</script>
+
+{% else %}
 <p>post_list가 없습니다.</p>
 {% endif %}
-<p>댓글 창</p>
-<p>댓글 추가기능</p>
-
-<form
-  method="post"
-  action="{{url_for('comment_views.comment_add', pstId=post_list[0].pstId)}}"
->
-  <input
-    type="text"
-    name="cmtCntnt"
-    id="cmtCntnt"
-    onkeydown="enterFunc(event,'cmtCntnt','submit')"
-  />
-  <input type="submit" id="submit" value="추가하기" onclick="btnClick(event)" />
-</form>
-
-<p>댓글들</p>
-
-<table class="table">
-  <thead>
-    <tr class="table-dark">
-      <th>userId</th>
-      <th>cmtCntnt</th>
-      <th>cmtCrtDate</th>
-      <th>cmtLikeCnt</th>
-      <th>cmtUnlikeCnt</th>
-      <th>기능</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% if comment_list %} {% for comment in comment_list %}
-    <tr>
-      <td>
-        <a>{{ comment.subNm }}</a>
-      </td>
-      <td>
-        <a>{{ comment.cmtCntnt }}</a>
-      </td>
-      <td>
-        <a>{{ comment.cmtCrtDate.strftime('%Y-%m-%d')}}</a>
-      </td>
-      <td>
-        <a>{{ comment.cmtLikeCnt }}</a>
-        <a
-          href="{{url_for('post_views.like_unlike_click', pstId=comment.cmtId, type='like', post=0)}}"
-          >좋아요</a
-        >
-      </td>
-      <td>
-        <a>{{ comment.cmtUnlikeCnt }}</a>
-        <a
-          href="{{url_for('post_views.like_unlike_click', pstId=comment.cmtId, type='unlike', post=0)}}"
-          >싫어요</a
-        >
-      </td>
-      <td>
-        <a href="{{url_for('comment_views.comment_del', cmtId=comment.cmtId)}}"
-          >삭제하기</a
-        >
-      </td>
-    </tr>
-    {% endfor %} {% else %}
-    <tr>
-      <td colspan="6">comment_list가 없습니다.</td>
-    </tr>
-
-    {% endif %}
-  </tbody>
-</table>
+{% endif %}
 {% endblock %}

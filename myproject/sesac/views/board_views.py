@@ -33,7 +33,6 @@ def board():
     return render_template('pages/board.html', boards=boards, board_ls=board_ls)
 
 # /board/boardId
-
 @bp.route('/brdId=<int:brdId>/', methods=('GET', 'POST'))
 def board_boardID(brdId):
     number= 5
@@ -61,8 +60,10 @@ def board_boardID(brdId):
     boards['postCnt']= cntAll
     boards['max_page']= list(range(1, max_page+1))
     print('-'*20,boards)
-    return render_template('pages/board.html', boards=boards)
+    return render_template('pages/board.html', boards=boards, board_ls=board_list)
 
 @bp.route('/comp/')
 def compInfo():
-    return render_template('pages/competition.html')
+    db = DBUpdater()
+    board_ls = db.load_board_list()
+    return render_template('pages/competition.html', board_ls=board_ls)

@@ -12,12 +12,11 @@ class DBUpdater():
     def __init__(self):
         self.conn = pymysql.connect(
             user='root', 
-            passwd='1111', 
+            passwd='qhdkscjfwj0!', 
             host='127.0.0.1', 
             db='community', 
             charset='utf8'
             )
-        
         self.tableList = ['UserInfo', 'Board', 'Post', 'Comment', 'LikeInfo']
         self.cursor = self.conn.cursor()
         self.createTable()
@@ -265,6 +264,13 @@ class DBUpdater():
         data = self.cursor.fetchall()
         return data
     
+    def load_post_brdId_list2(self, brdId):
+        sql = f'SELECT * FROM Post p JOIN UserInfo u On p.userId=u.userId WHERE brdId={brdId} ORDER BY pstCrtDate DESC ;'
+        self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+        self.cursor.execute(sql)
+        data = self.cursor.fetchall()
+        return data
+    
     def load_post_pstId_list(self, pstid):
         sql = f'SELECT * FROM Post WHERE pstId={pstid};'
         self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
@@ -274,6 +280,14 @@ class DBUpdater():
     
     def load_post_userId_list(self, userId):
         sql = f'SELECT * FROM Post WHERE userId=\"{userId}\";'
+        self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
+        self.cursor.execute(sql)
+        data = self.cursor.fetchall()
+        return data
+        
+    def load_userInfo_userId_list(self, userId):
+        sql = f'SELECT * FROM UserInfo WHERE userId=\"{userId}\";'
+
         self.cursor = self.conn.cursor(pymysql.cursors.DictCursor)
         self.cursor.execute(sql)
         data = self.cursor.fetchall()

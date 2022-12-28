@@ -1,17 +1,30 @@
+.page-upper {
+  margin-top: 120px;
+  text-align: center;
+}
+.page-title {
+  font-weight: bold;
+}
+
 /* >>>>>>>>>>>>>>>>>>>>>> admin - borderinfo <<<<<<<<<<<<<<<<<<<<<<*/
 /* >>>>>>>>>>>>>>>>>>>>>> admin - borderinfo <<<<<<<<<<<<<<<<<<<<<<*/
 /* >>>>>>>>>>>>>>>>>>>>>> admin - borderinfo <<<<<<<<<<<<<<<<<<<<<<*/
 /* >>>>>>>>>>>>>>>>>>>>>> admin - borderinfo <<<<<<<<<<<<<<<<<<<<<<*/
 /* >>>>>>>>>>>>>>>>>>>>>> admin - borderinfo <<<<<<<<<<<<<<<<<<<<<<*/
 .brdInfo {
-  width: 80%;
+  margin-top: 50px;
+  margin-right: 10vw;
+  margin-left: 10vw;
+
   display: flex;
   flex-direction: row;
   justify-self: center;
   align-items: center;
 }
+
 .brdTable {
-  width: 80%;
+  width: 80vw;
+
   display: flex;
   flex-direction: column;
   justify-self: center;
@@ -27,6 +40,29 @@
   align-items: center;
   /* align-content: space-around; */
 }
+
+.brdinner > * {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: rgb(0, 186, 22);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brditems {
+  border-bottom: 1px solid #dadada;
+  display: flex;
+}
+.brditems > * {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  justify-content: center;
+}
 .brdinner > *,
 .brditems > * {
   width: 30%;
@@ -37,20 +73,30 @@
   /* align-content: space-around; */
 }
 
+.modify-bar {
+  font-size: 15px;
+}
+
 /* >>>>>>>>>>>>>>>>>>>>>> admin - userinfo <<<<<<<<<<<<<<<<<<<<<<*/
 /* >>>>>>>>>>>>>>>>>>>>>> admin - userinfo <<<<<<<<<<<<<<<<<<<<<<*/
 /* >>>>>>>>>>>>>>>>>>>>>> admin - userinfo <<<<<<<<<<<<<<<<<<<<<<*/
 /* >>>>>>>>>>>>>>>>>>>>>> admin - userinfo <<<<<<<<<<<<<<<<<<<<<<*/
 /* >>>>>>>>>>>>>>>>>>>>>> admin - userinfo <<<<<<<<<<<<<<<<<<<<<<*/
 .userInfo {
-  width: 80%;
+  margin-top: 50px;
+  margin-right: 10vw;
+  margin-left: 10vw;
+
   display: flex;
   flex-direction: row;
+
   justify-self: center;
   align-items: center;
 }
+
 .userTable {
-  width: 80%;
+  width: 80vw;
+
   display: flex;
   flex-direction: column;
   justify-self: center;
@@ -66,14 +112,36 @@
   align-items: center;
   /* align-content: space-around; */
 }
+
+.userinner > * {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: rgb(0, 186, 22);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.useritems > * {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dadada;
+}
 .userinner > *,
 .useritems > * {
-  width: 30%;
-  display: flex;
-  flex-direction: row;
+  width: 10%;
+  /* display: flex; */
+  /* flex-direction: row;
   justify-self: center;
-  align-items: center;
+  align-items: center; */
+  text-align: center;
   /* align-content: space-around; */
+}
+.inner-email {
+  width: 30%;
 }
 
 /* >>>>>>>>>>>>>>>>>>>>>> admin - postinfo <<<<<<<<<<<<<<<<<<<<<<*/
@@ -81,15 +149,92 @@
 /* >>>>>>>>>>>>>>>>>>>>>> admin - postinfo <<<<<<<<<<<<<<<<<<<<<<*/
 /* >>>>>>>>>>>>>>>>>>>>>> admin - postinfo <<<<<<<<<<<<<<<<<<<<<<*/
 /* >>>>>>>>>>>>>>>>>>>>>> admin - postinfo <<<<<<<<<<<<<<<<<<<<<<*/
-.commInfo {
-  width: 80%;
+
+.postInfo {
+  margin-top: 50px;
+  margin-right: 10vw;
+  margin-left: 10vw;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-self: center;
+  align-items: center;
+}
+
+.postTable {
+  width: 80vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  /* align-items: center; */
+  align-content: space-between;
+}
+
+.postTable > * {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-self: center;
   align-items: center;
+  /* align-content: space-around; */
+}
+
+.postitems {
+  border-bottom: 1px solid #dadada;
+}
+.postinner > * {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: rgb(0, 186, 22);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.postitems > * {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+.postinner > *,
+.postitems > * {
+  width: 12%;
+  /* display: flex; */
+  /* flex-direction: row;
+  justify-self: center;
+  align-items: center; */
+  text-align: center;
+  /* align-content: space-around; */
+}
+
+.inner-date {
+  font-size: 13px;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>> admin - commInfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - commInfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - commInfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - commInfo <<<<<<<<<<<<<<<<<<<<<<*/
+/* >>>>>>>>>>>>>>>>>>>>>> admin - commInfo <<<<<<<<<<<<<<<<<<<<<<*/
+
+.commInfo {
+  margin-top: 50px;
+  margin-right: 10vw;
+  margin-left: 10vw;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-self: center;
+  align-items: center;
 }
 .commTable {
-  width: 80%;
+  width: 80vw;
+
   display: flex;
   flex-direction: column;
   justify-self: center;
@@ -105,12 +250,35 @@
   align-items: center;
   /* align-content: space-around; */
 }
+
+.commitems {
+  border-bottom: 1px solid #dadada;
+}
+
+.comminner > * {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: rgb(0, 186, 22);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.commitems > * {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
 .comminner > *,
 .commitems > * {
   width: 30%;
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-self: center;
-  align-items: center;
+  justify-self: center; */
+  /* align-items: center; */
+  text-align: center;
   /* align-content: space-around; */
 }

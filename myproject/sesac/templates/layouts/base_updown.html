@@ -61,7 +61,6 @@
       <header class="menucontainer">
         <div class="loginbar">
           <ul class="loginbar-list">
-            <!-- 드롭다운 애니메이션, 햄버거 버튼 아이콘 수정 예정 -->
             <a class="navbar-togglebtn" href="#">
               <span></span>
               <span></span>
@@ -113,8 +112,8 @@
         <div class="menu">
           <ul class="menu-list">
             <li class="menu-item"><a href="{{url_for('main')}}"> 홈</a></li>
-            <li class="menu-item" style="text-align: center">
-              <div class="dropdown" style="margin: 0; text-align: center">
+            <li class="menu-item">
+              <div class="dropdown" style="margin: auto 0; text-align: center">
                 <button
                   class="btn btn-secondary dropdown-toggle"
                   type="button"
@@ -124,8 +123,8 @@
                   aria-expanded="false"
                   style="
                     display: flex;
-                    background-color: white;
-                    color: black;
+                    background-color: rgba(255, 255, 255, 0);
+                    color: rgb(0, 0, 0);
                     border: 0px;
                     font-size: 20px;
                     margin: 0px;
@@ -136,6 +135,12 @@
                 </button>
 
                 <div class="dropdown-menu">
+                  <a
+                  class="dropdown-item"
+                  style="z-index: 101"
+                  href="{{url_for('board_views.board')}}"
+                  >전체게시판</a
+                  >
                   {% for board in board_ls%}
                   <a
                     class="dropdown-item"
@@ -153,16 +158,16 @@
             {% if session['room'] %}
             <li class="menu-item">
               <a href="{{url_for('main.chat', tag=session['room'])}}">
-                커뮤니티</a
+                실시간</a
               >
             </li>
             {% else %}
             <li class="menu-item">
-              <a href="{{url_for('main.chat', tag='All')}}"> 커뮤니티</a>
+              <a href="{{url_for('main.chat', tag='All')}}"> 실시간 </a>
             </li>
             {% endif %}
             <li class="menu-item">
-              <a href='{{url_for("board_views.compInfo")}}'> 공모전 정보 </a>
+              <a href='{{url_for("board_views.compInfo")}}'> 공모전 </a>
             </li>
           </ul>
         </div>
@@ -170,14 +175,17 @@
 
       <!-- 기본 템플릿 안에 삽입될 내용 Start -->
       {% block content %} {% endblock %}
-      <!-- 기본 템플릿 안에 삽입될 내용 End -->
+      <!-- 기본 템플릿 안에 삽입될 내용 End -->   
     </div>
-    <!--<footer class="bottom">
-      <p>footer test</p>
-      <a href="#" class="btn_top"> top button(위치 바꿀거임) </a>
-    </footer>-->
+    <!-- <footer class="bottom">
+      <a href ="https://github.com/Sbeom12/sesac_webproject"> <img class = "bottom-git" src = "https://seeklogo.com/images/G/github-logo-5F384D0265-seeklogo.com.png" style="width: 40px; height: 40px;"></a>
+    
+    
+      <a href="#" class="btn_top"> <img class = "bottom-top" src = "https://ps.w.org/wpfront-scroll-top/assets/icon.svg?rev=1534312"> </a>
+    </footer> -->
     <script>
       $(window);
     </script>
   </body>
+
 </html>
