@@ -72,8 +72,9 @@
             {% if board.brdId == boards.brdId %}
             <div class="article-title-bar">
               <h3 class = "board-name">{{board.brdNm}} ({{boards.postCnt['count']}})</h3> 
-              <a href="{{url_for('post_views.post_write')}}">작성하기</a>
-              </div>
+              <a href="{{url_for('post_views.post_write', brdId=board.brdId)}}">작성하기</a>
+              {%else%}
+              <a href="{{url_for('post_views.post_write', brdId=9999)}}">작성하기</a>
             {% endif %}
           {% endfor %}
         {% else %}

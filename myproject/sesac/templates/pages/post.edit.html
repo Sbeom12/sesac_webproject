@@ -63,13 +63,20 @@
     action="{{ url_for('post_views.post_save_new')}}"
     >
       <div class="mb-3">
-        {%for name in board_ls%}
         <select name="brdId">
-          <option name="brdId" value="{{name.brdId}}" selected>
-            {{name.brdNm}}게시판
-          </option>
-          <option name="brdId" value="{{name.brdId}}">{{name.brdNm}}게시판</option>
+        {%if brdId==9999 %}
+          {%for name in board_ls%}
+          <option name = 'brdId' value='{{name.brdId}}' >{{name.brdNm}}</option>
           {%endfor%}
+        {%else%}
+          {%for name in board_ls %}
+            {%if brdId == name.brdId%}
+            <option name = 'brdId' value='{{name.brdId}}' selected>{{name.brdNm}}</option>
+            {%else%}
+            <option name = 'brdId' value='{{name.brdId}}'>{{name.brdNm}}</option>
+            {%endif%}
+          {%endfor%}
+        {%endif%}
         </select>
       </div>
 

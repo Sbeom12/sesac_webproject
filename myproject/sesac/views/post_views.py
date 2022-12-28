@@ -95,18 +95,17 @@ def post_edit(pstId):
 # /post/write
 # 작성하기 버튼 클릭
 # 게시물 새로 작성하기
-@bp.route('/write', methods=('POST', 'GET'))
-def post_write():
+@bp.route('/write/<int:brdId>', methods=('POST', 'GET'))
+def post_write(brdId):
 	print("post_write()")
 	db =  DBUpdater()
 	board_ls = db.load_board_list()
 	# session의 'username'이 있으면 로그인
 	if "username" in session: 	
 		# 세션이 있는 경우
-		db =  DBUpdater()
 		# 특정 게시물 편집 html 불러오기
 		board_ls = db.load_board_list()
-		return render_template('pages/post.edit.html', board_ls=board_ls)
+		return render_template('pages/post.edit.html', board_ls=board_ls ,brdId=brdId)
 	else:
 		# 세션이 없는 경우'
 		print('First Login')
